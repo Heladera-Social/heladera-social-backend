@@ -1,6 +1,6 @@
 .login
   h2.title
-    = t('login.title')
+    = t('login_title')
   = form_for(resource, as: resource_name, url: session_path(resource_name)) do |f|
     .field
       = f.email_field :email, autofocus: true, class: 'input', placeholder: "Email"
@@ -9,9 +9,9 @@
     .actions
       = f.submit "Log in", class: 'main-button'
     .field.recover
-      = link_to "Forgot your password?", new_password_path(resource_name)
+      = link_to "Recuperar Contraseña", new_password_path(resource_name)
     hr
     .field
       a href=new_registration_path(resource_name)
         .secondary-button
-          = "Sign Up"
+          = "Registrate!"

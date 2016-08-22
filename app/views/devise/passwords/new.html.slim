@@ -1,11 +1,14 @@
-h2
-  | Forgot your password?
-= form_for(resource, as: resource_name, url: password_path(resource_name), html: { method: :post }) do |f|
-  = devise_error_messages!
-  .field
-    = f.label :email
-    br
-    = f.email_field :email, autofocus: true
-  .actions
-    = f.submit "Send me reset password instructions"
-= render "devise/shared/links"
+.login
+	h2.recover-title
+		= t('recover_password_title')
+	= form_for(resource, as: resource_name, url: password_path(resource_name), html: { method: :post }) do |f|
+	  = devise_error_messages!
+	  .field
+	    = f.email_field :email, autofocus: true, class: 'input', placeholder: "Email"
+	  .actions
+	    = f.submit "Recibir Correo", class: 'main-button'
+	  hr
+		.field
+			a href=new_session_path(resource_name)
+				.secondary-button
+					= "Log In"

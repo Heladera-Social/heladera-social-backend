@@ -21,3 +21,6 @@
 
 es:
   hello: "Hola mundo"
+  sign_up: "Registrate"
+  login_title: 'Inciar Sesion'
+  recover_password_title: "Recuperar Contraseña"
