@@ -8,3 +8,51 @@
 
 @import 'commons';
 
+.login{
+	margin: 0 auto;
+	text-align: center;
+	margin-top: 15%;
+	width: 300px;
+
+	.title{
+		font-family:AvenirNext-Bold;
+		font-size:36px;
+		color:#4a4a4a;
+	}
+
+	.input{
+		background:#ffffff;
+		border:1px solid #979797;
+		box-shadow:inset 0px 1px 3px 0px rgba(0,0,0,0.50);
+		border-radius:3px;
+		width:298px;
+		height:34px;
+		margin-top: 20px;
+	}
+
+	.main-button{
+		border:1px solid #979797;
+		border-radius:6px;
+		height:34px;
+		margin-top: 20px;
+		width:298px;
+	}
+
+	.secondary-button{
+		border:1px solid #979797;
+		text-align: center;
+		vertical-align: center;
+		border-radius:6px;
+		width:300px;
+		height:34px;
+		padding-top: 7px;
+	}
+
+	.recover{
+		font-family:AvenirNext-Medium;
+		font-size:16px;
+		color:#4a4a4a;
+		margin-top: 15px;
+		text-align: right;
+	}
+}
