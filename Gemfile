@@ -60,6 +60,7 @@ gem 'inherited_resources'
 gem 'formtastic'
 gem 'ransack'
 gem 'polyamorous'
+gem 'activeadmin-translate'
 
 # Enables Slim templates
 gem 'slim-rails'

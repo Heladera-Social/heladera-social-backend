@@ -5,4 +5,5 @@ class Donation < ActiveRecord::Base
 
   belongs_to :user
   belongs_to :storage_unit
+  accepts_nested_attributes_for :products, :allow_destroy => true
 end

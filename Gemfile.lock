@@ -41,6 +41,10 @@ GEM
       rails-html-sanitizer (~> 1.0, >= 1.0.2)
     active_model_serializers (0.9.4)
       activemodel (>= 3.2)
+    activeadmin-translate (0.2.2)
+      activeadmin
+      globalize3
+      railties
     activejob (4.2.6)
       activesupport (= 4.2.6)
       globalid (>= 0.3.0)
@@ -144,6 +148,9 @@ GEM
       i18n
     globalid (0.3.6)
       activesupport (>= 4.1.0)
+    globalize3 (0.1.0)
+      activemodel (>= 3.0.0)
+      activerecord (>= 3.0.0)
     google-webfonts-rails (0.0.4)
       activesupport (> 3.2.0, < 5.0)
     has_scope (0.6.0)
@@ -380,6 +387,7 @@ PLATFORMS
 DEPENDENCIES
   active_model_serializers
   activeadmin!
+  activeadmin-translate
   autoprefixer-rails
   awesome_print
   better_errors
@@ -442,6 +450,9 @@ DEPENDENCIES
   unicorn
   web-console
   webmock
+
+RUBY VERSION
+   ruby 2.3.1p112
 
 BUNDLED WITH
    1.12.5
