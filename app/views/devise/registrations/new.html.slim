@@ -1,20 +1,43 @@
-.login
-  h2.title
-    = t('sign_up')
-  = form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f|
-    = devise_error_messages!
-    .field
-      = f.email_field :email, autofocus: true, class: 'input', placeholder: "Email"
-    .field
-      = f.password_field :password, autocomplete: "off", class: 'input', placeholder: "Contraseña"
-    .field
-      = f.password_field :password_confirmation, autocomplete: "off", class: 'input', placeholder: "Repetir Contraseña"
-    .actions
-      = f.submit "Sign up", class: 'main-button'
-    hr
-    .field
-      a href=new_session_path(resource_name)
-        .secondary-button
-          = "Log In"
-
-  
+.container
+  .row
+    .col-md-6.col-md-offset-3
+      .panel.panel-login
+        .panel-heading
+          .row
+            .col-xs-6
+              a#login-form-link.active href="#"  Ingresar
+            .col-xs-6
+              a#register-form-link href="#"  Registrarse
+          hr/
+        .panel-body
+          .row
+            .col-lg-12
+              form#login-form action="http://phpoll.com/login/process" method="post" role="form" style=("display: block;") 
+                .form-group
+                  input#username.form-control name="email" placeholder="Email" tabindex="1" type="text" value="" /
+                .form-group
+                  input#password.form-control name="password" placeholder="Contraseña" tabindex="2" type="password" /
+                .form-group
+                  .row
+                    .col-sm-6.col-sm-offset-3
+                      input#login-submit.form-control.btn.btn-login name="login-submit" tabindex="4" type="submit" value=("Ingresar") /
+                .form-group
+                  .row
+                    .col-lg-12
+                      .text-center
+                        a.forgot-password href="http://phpoll.com/recover" tabindex="5"  Recuperar contraseña
+              form#register-form action="http://phpoll.com/register/process" method="post" role="form" style=("display: none;") 
+                .form-group
+                  input#name.form-control name="name" placeholder="Nombre" tabindex="2" type="text" /
+                .form-group
+                  input#surname.form-control name="surname" placeholder="Apellido" tabindex="2" type="text" /
+                .form-group
+                  input#email.form-control name="email" placeholder=("Correo electrónico") tabindex="1" type="email" value="" /
+                .form-group
+                  input#password.form-control name="password" placeholder="Constraseña" tabindex="2" type="password" /
+                .form-group
+                  input#confirm-password.form-control name="confirm-password" placeholder=("Confirmar constraseña") tabindex="2" type="password" /
+                .form-group
+                  .row
+                    .col-sm-6.col-sm-offset-3
+                      input#register-submit.form-control.btn.btn-register name="register-submit" tabindex="4" type="submit" value=("Crear") /
