@@ -1,0 +1,9 @@
+nav.navbar.navbar-default.navbar-static-top
+  .container
+    a.navbar-brand href=root_path
+      = "Heladera Social"
+    .navbar-text.navbar-right
+      - if current_user
+        = "#{current_user.full_name}"
+      - unless current_user
+        a.navbar-link href=new_session_path(User)  Iniciar Sesion
