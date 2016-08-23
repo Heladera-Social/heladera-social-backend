@@ -23,9 +23,10 @@ html
     .container
         .left-bar.col-md-9.div[style="width: 800px;padding-left:0px;"]
             #sidebar_builder[style="width: 800px; height: 600px;"]
-
+        = yield
+    
     = render 'layouts/trello_alert'
     = render 'layouts/google_analytics'
     = javascript_include_tag 'application', 'data-turbolinks-track' => true
 
-    = yield
+    

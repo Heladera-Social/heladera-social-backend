@@ -1,3 +1,32 @@
-.text-center
-  h1
-    | Welcome to HeladeraSocialBackend
+
+	.row
+	  .right-bar.col-md-3.filters-bar
+	  	.filters
+	  		h3
+	  			| Localidad
+		  	.select-style
+		  		select#localities
+		  		  option value="-34.5711;-58.4233"  Palermo
+		  		  option value="-34.5895;-58.3974"  Recoleta
+		  		  option value="-34.6177;-58.3621"  Puerto Madero
+		  		  option value="-34.6212;-58.3731"  San Telmo
+	  		h3
+	  			| Tipo de denuncia
+		  	.select-style
+		  		select
+		  		  option value="bache"  Bache
+		  		  option value="alumbrado"  Alumbrado
+		  		  option value="pintura"  Pintura
+	  		h3
+	  			| Resueltas?
+		  	.select-style
+		  		select
+		  		  option value="si"  Si
+		  		  option value="no"  No
+	  	
+	  	hr
+	  	.right-bar.denounces
+	  		h3
+	  			| Denuncias
+	  		
+		#sidebar_container
