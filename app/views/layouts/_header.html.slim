@@ -6,4 +6,4 @@ nav.navbar.navbar-default.navbar-static-top
       - if current_user
         = "#{current_user.full_name}"
       - unless current_user
-        a.navbar-link href=new_session_path(User)  Iniciar Sesion
+        a.navbar-link href=new_registration_path(User)  Iniciar Sesion

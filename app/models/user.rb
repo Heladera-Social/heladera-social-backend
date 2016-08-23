@@ -6,6 +6,8 @@ class User < ActiveRecord::Base
 
   has_many :donations
 
+  has_and_belongs_to_many :storage_units, join_table: :storage_unit_managers
+
   def full_name
     name + last_name
   end

@@ -1,2 +1,32 @@
 .container
-  
+    .left-bar.col-md-9.div[style="width: 800px;padding-left:0px;"]
+        #sidebar_builder[style="width: 800px; height: 600px;"]
+	.row
+	  .right-bar.col-md-3.filters-bar
+	  	.filters
+	  		h3
+	  			| Localidad
+		  	.select-style
+		  		select#localities
+		  		  option value="-34.5711;-58.4233"  Palermo
+		  		  option value="-34.5895;-58.3974"  Recoleta
+		  		  option value="-34.6177;-58.3621"  Puerto Madero
+		  		  option value="-34.6212;-58.3731"  San Telmo
+	  		h3
+	  			| Comida disponible
+		  	.select-style
+		  		select
+		  		  option value="fideos"  fideos
+		  		  option value="hamburguesa"  hamburguesa
+		  		  option value="pizza"  pizza
+	  		h3
+	  			| Abiertos actualmente?
+		  	.select-style
+		  		select
+		  		  option value="si"  Si
+		  		  option value="no"  No
+	  	
+	  	hr
+	  	
+	  		
+		#sidebar_container

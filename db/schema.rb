@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160823023913) do
+ActiveRecord::Schema.define(version: 20160823031802) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -79,6 +79,16 @@ ActiveRecord::Schema.define(version: 20160823023913) do
   add_index "products", ["donation_id"], name: "index_products_on_donation_id", using: :btree
   add_index "products", ["product_type_id"], name: "index_products_on_product_type_id", using: :btree
 
+  create_table "storage_unit_managers", force: :cascade do |t|
+    t.integer  "user_id"
+    t.integer  "storage_unit_id"
+    t.datetime "created_at",      null: false
+    t.datetime "updated_at",      null: false
+  end
+
+  add_index "storage_unit_managers", ["storage_unit_id"], name: "index_storage_unit_managers_on_storage_unit_id", using: :btree
+  add_index "storage_unit_managers", ["user_id"], name: "index_storage_unit_managers_on_user_id", using: :btree
+
   create_table "storage_units", force: :cascade do |t|
     t.string   "name"
     t.string   "email"
@@ -93,21 +103,22 @@ ActiveRecord::Schema.define(version: 20160823023913) do
   end
 
   create_table "users", force: :cascade do |t|
-    t.string   "email",                  default: "", null: false
-    t.string   "encrypted_password",     default: "", null: false
+    t.string   "email",                  default: "",    null: false
+    t.string   "encrypted_password",     default: "",    null: false
     t.string   "reset_password_token"
     t.datetime "reset_password_sent_at"
     t.datetime "remember_created_at"
-    t.integer  "sign_in_count",          default: 0,  null: false
+    t.integer  "sign_in_count",          default: 0,     null: false
     t.datetime "current_sign_in_at"
     t.datetime "last_sign_in_at"
     t.inet     "current_sign_in_ip"
     t.inet     "last_sign_in_ip"
-    t.datetime "created_at",                          null: false
-    t.datetime "updated_at",                          null: false
+    t.datetime "created_at",                             null: false
+    t.datetime "updated_at",                             null: false
     t.string   "name"
     t.string   "last_name"
     t.string   "telephone"
+    t.boolean  "manager",                default: false
   end
 
   add_index "users", ["email"], name: "index_users_on_email", unique: true, using: :btree
@@ -117,4 +128,6 @@ ActiveRecord::Schema.define(version: 20160823023913) do
   add_foreign_key "donations", "users"
   add_foreign_key "products", "donations"
   add_foreign_key "products", "product_types"
+  add_foreign_key "storage_unit_managers", "storage_units"
+  add_foreign_key "storage_unit_managers", "users"
 end
