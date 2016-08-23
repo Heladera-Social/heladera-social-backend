@@ -60,20 +60,20 @@ handler.buildMap { internal: id: 'sidebar_builder' }, ->
     {
       lat: -34.5620844
       lng: -58.4588766
-      name: 'Bache'
-      infowindow: 'Avenida Cabildo y Juramento. Denunciado por @Juan. Estado: Pendiente de resolver. Fecha 11/05/16'
+      name: 'Fideos'
+      infowindow: 'Avenida Cabildo y Juramento. Donado por @Juan. Fecha 11/05/16'
     }
     {
       lat: -34.6307264
       lng: -58.4718442
-      name: 'Iluminacion'
-      infowindow: 'Avenida Rivadavia y Avenida Nazca. Denunciado por @Maria. Estado: Resuelto. Fecha: 18/05/16'
+      name: 'Hamburguesa'
+      infowindow: 'Avenida Rivadavia y Avenida Nazca. Donado por @Maria. Fecha: 18/05/18'
     }
     {
       lat: -34.6412239
       lng: -58.5496334
-      name: 'Obra sin permiso'
-      infowindow: 'Diaz Velez 123. Denunciado por @Roberto. Estado: Pendiente de resolver. Se han sumado 47 personas a este pedido. Fecha: 1/3/16'
+      name: 'Pizza'
+      infowindow: 'Diaz Velez 123. Donado por @Roberto. Fecha Vencimiento: 1/3/17'
     }
   ]
   markers = handler.addMarkers(json_array)
