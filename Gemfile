@@ -85,6 +85,13 @@ gem 'meta-tags'
 
 gem 'newrelic_rpm'
 
+gem 'gmaps4rails'
+
+gem 'compass-rails'
+gem 'chosen-rails'
+gem 'underscore-rails'
+
+
 group :development do
   # Gem to detect N+1 queries
   gem 'bullet'
