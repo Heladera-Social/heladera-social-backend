@@ -7,6 +7,7 @@ class StorageUnitsController < ApplicationController
 
   def show
     @storage_unit = StorageUnit.find(params[:id])
+    @available_products = @storage_unit.products.unexpired
   end
 
   def favorites

@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160830015511) do
+ActiveRecord::Schema.define(version: 20160830032912) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -84,10 +84,12 @@ ActiveRecord::Schema.define(version: 20160830015511) do
     t.datetime "created_at",      null: false
     t.datetime "updated_at",      null: false
     t.integer  "donation_id"
+    t.integer  "storage_unit_id"
   end
 
   add_index "products", ["donation_id"], name: "index_products_on_donation_id", using: :btree
   add_index "products", ["product_type_id"], name: "index_products_on_product_type_id", using: :btree
+  add_index "products", ["storage_unit_id"], name: "index_products_on_storage_unit_id", using: :btree
 
   create_table "storage_unit_managers", force: :cascade do |t|
     t.integer  "user_id"
@@ -140,6 +142,7 @@ ActiveRecord::Schema.define(version: 20160830015511) do
   add_foreign_key "fav_storage_units", "users"
   add_foreign_key "products", "donations"
   add_foreign_key "products", "product_types"
+  add_foreign_key "products", "storage_units"
   add_foreign_key "storage_unit_managers", "storage_units"
   add_foreign_key "storage_unit_managers", "users"
 end

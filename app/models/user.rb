@@ -12,7 +12,7 @@ class User < ActiveRecord::Base
                                                    join_table: :fav_storage_units
 
   def full_name
-    name + " " + last_name
+    "#{name} #{last_name}"
   end
 
   def favorite_storage_unit?(storage_unit)
