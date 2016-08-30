@@ -3,5 +3,7 @@ class StorageUnit < ActiveRecord::Base
 
   has_and_belongs_to_many :managers, class_name: 'User', join_table: :storage_unit_managers
 
+  has_and_belongs_to_many :favorited_users, class_name: 'User', join_table: :fav_storage_units
+
   has_many :donations
 end
