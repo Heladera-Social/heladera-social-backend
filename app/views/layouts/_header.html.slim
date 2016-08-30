@@ -5,5 +5,6 @@ nav.navbar.navbar-default.navbar-static-top
     .navbar-text.navbar-right
       - if current_user
         = "#{current_user.full_name}"
+      	= link_to('Cerrar Sesion', destroy_user_session_path, :method => :delete)
       - unless current_user
         a.navbar-link href=new_registration_path(User)  Iniciar Sesion
