@@ -1,0 +1,13 @@
+.container.storage-list
+  .h2 
+    = "Heladeras"
+  .container-fluid
+    - @storage_units.each do |storage|
+      .row
+        .col-xs-12.col-md-8
+          .h4 
+            a href=storage_unit_path(storage)
+              = "Nombre de la heladera"
+        .col-xs-6.col-md-4
+          button.btn.btn-primary.favorite type="button"  Favorito
+
