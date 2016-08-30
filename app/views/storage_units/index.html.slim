@@ -7,7 +7,8 @@
         .col-xs-12.col-md-8
           .h4 
             a href=storage_unit_path(storage)
-              = "Nombre de la heladera"
-        .col-xs-6.col-md-4
-          button.btn.btn-primary.favorite type="button"  Favorito
+              = storage.name
+        - if current_user
+          .col-xs-6.col-md-4
+            button.btn.btn-primary.favorite type="button"  Favorito
 

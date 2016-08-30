@@ -68,4 +68,58 @@
 	.favorite{
 		width: 80%;
 	}
+
+	h2{
+		text-decoration: underline;
+		font-family:AvenirNext-Bold;
+		text-transform: capitalize;
+		font-size:24px;
+		color:#4a4a4a;
+	}
+
+	h4{
+		text-decoration: underline;
+		margin-bottom: 33px;
+		font-family:AvenirNext-Medium;
+		font-size:18px;
+		color:#4a4a4a;
+	}
+
+	h3{
+		font-family:AvenirNext-Bold;
+		text-transform: capitalize;
+		font-size:20px;
+		color:#4a4a4a;
+	}
+
+	.map{
+		width: 100%;
+		height: 200px;
+		border: 1px solid #979797;
+		margin-top: 50px;
+
+		img{
+			max-width: 100%;
+			height: 100%;
+		}
+	}
+
+	.favorite-button{
+		float: right;
+    	margin-top: 20px;
+    	width: 60%;
+	}
+
+	.storage-information{
+		margin-top: 33px;
+	}
+
+	table{
+		width: 80%;
+		text-align: center;
+	}
+
+	th{
+		text-align: center;
+	}
 }
