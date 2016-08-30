@@ -1,0 +1,42 @@
+.container.storage-list
+  .container-fluid
+    .row
+      .col-xs-12.col-md-8
+        h2 
+          = @storage_unit.name
+      - if current_user
+        .col-xs-6.col-md-4
+          button.btn.btn-primary.favorite-button type="button"  Favorito
+  .map
+    = image_tag('map.png')
+  .storage-information
+    h4 id='direccion'
+      = "Direccion: #{@storage_unit.address}"
+    h4 id='encargado'
+      = "Nobre del encargado"
+    h4 id='horarios'
+      = "Horarios de atencion: #{@storage_unit.service_time_from}:#{@storage_unit.service_time_to}"
+    h4 id='telefono'
+      = "Telefono: #{@storage_unit.telephone}"
+    h4 id='email'
+      = "Email: #{@storage_unit.email}"
+  .products
+    h3
+      = "Productos disponibles"
+    table.table.table-hover
+      thead
+        tr
+          th
+            = "Nombre"
+          th
+            = "Cantidad"
+          th
+            = "Fecha de Vencimiento"
+      tbody
+        tr
+          td
+            = "Leche"
+          td
+            = "2 Litros"
+          td
+            = "22/10/2016"
