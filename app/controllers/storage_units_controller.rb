@@ -39,6 +39,7 @@ class StorageUnitsController < ApplicationController
   end
 
   def remove_from_favorites(storage_unit)
-    current_user.favorite_storage_units.delete!(storage_unit)
+    current_user.favorite_storage_units.delete(storage_unit)
+    current_user.save!
   end
 end
