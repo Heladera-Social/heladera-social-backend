@@ -15,4 +15,7 @@ class User < ActiveRecord::Base
     name + " " + last_name
   end
 
+  def favorite_storage_unit?(storage_unit)
+    favorite_storage_units.include?(storage_unit)
+  end
 end
