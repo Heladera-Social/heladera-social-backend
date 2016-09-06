@@ -1,6 +1,6 @@
 ActiveAdmin.register StorageUnit do
 
-permit_params :name, :email, :telephone, :address, :latitude, :longitude, :service_time_from, :service_time_to
+permit_params :name, :email, :telephone, :address, :latitude, :longitude, :service_time_from, :service_time_to, manager_ids: []
 
 index do
   selectable_column
@@ -29,6 +29,7 @@ show do
     rows :telephone
     rows :latitude
     rows :longitude
+    rows :managers
     rows :service_time_from
     rows :service_time_to
   end
@@ -44,6 +45,7 @@ form do |f|
     f.input :longitude
     f.input :service_time_from
     f.input :service_time_to
+    f.input :managers, :as => :select, :input_html => {:multiple => true}
   end
   f.actions
 end

@@ -9,7 +9,7 @@ HeladeraSocialBackend::Application.routes.draw do
   mount Sidekiq::Web, at: 'sidekiq'
   mount PgHero::Engine, at: 'pghero'
 
-  resources :storage_units, only: [:index, :show] do
+  resources :storage_units, only: [:index, :show, :edit, :update] do
     collection do
       get :favorites
     end
