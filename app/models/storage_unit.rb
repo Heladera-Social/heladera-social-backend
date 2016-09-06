@@ -7,5 +7,7 @@ class StorageUnit < ActiveRecord::Base
 
   has_many :donations
 
+  accepts_nested_attributes_for :managers
+
   has_many :products
 end

@@ -1,10 +1,17 @@
-nav.navbar.navbar-default.navbar-static-top
+nav.navbar.navbar-default.navbar-static-top.header
   .container
     a.navbar-brand href=root_path
       = "Heladera Social"
     .navbar-text
 	    a.navbar-link href=storage_units_path
 	      = "Heladeras"
+        - if current_user && current_user.manager
+          a.navbar-link href=storage_units_path
+            = "Agregar Donacion"
+          a.navbar-link href=storage_units_path
+            = "Donacion"
+          a.navbar-link href=storage_units_path
+            = "Productos"  
     .navbar-text.navbar-right
       - if current_user
       	= link_to('Cerrar Sesion', destroy_user_session_path, :method => :delete)

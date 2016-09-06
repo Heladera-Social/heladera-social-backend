@@ -4,16 +4,21 @@
       .col-xs-12.col-md-8
         h2 
           = @storage_unit.name
-      - if current_user
+      - if current_user && !current_user.manager
         .col-xs-6.col-md-4
           button.btn.btn-primary.favorite-button type="button"  Favorito
+      - if current_user && current_user.manager 
+        .col-xs-6.col-md-4
+          a href=edit_storage_unit_path(@storage_unit)
+            button.btn.btn-primary.favorite type="button"  Editar
   .map
     = image_tag('map.png')
   .storage-information
     h4 id='direccion'
       = "Direccion: #{@storage_unit.address}"
     h4 id='encargado'
-      = "Nobre del encargado"
+      a href="#"
+        = "Encargado: #{@storage_unit.managers.first.name}"
     h4 id='horarios'
       = "Horarios de atencion: #{@storage_unit.service_time_from}:#{@storage_unit.service_time_to}"
     h4 id='telefono'

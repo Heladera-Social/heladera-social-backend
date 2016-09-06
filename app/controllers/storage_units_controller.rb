@@ -1,13 +1,28 @@
 class StorageUnitsController < ApplicationController
   def index
-    @storage_units = StorageUnit.all
+    @storage_units = StorageUnit.all unless current_user && current_user.manager
+    @storage_units = current_user.storage_units if current_user && current_user.manager
     # TODO: Filter by product type (if storage unit inventory contains product)
     # TODO: Filter by location
+  end
+
+  def edit
+    @storage_unit = StorageUnit.find(params[:id])
+    redirect_to root_path unless current_user.storage_units.include?(@storage_unit)
   end
 
   def show
     @storage_unit = StorageUnit.find(params[:id])
     @available_products = @storage_unit.products.unexpired
+  end
+  
+  def update
+    @storage_unit = StorageUnit.find(params[:id])
+    if @storage_unit.update_attributes(storage_unit_params)
+      redirect_to storage_units_path
+    else
+      render 'edit'
+    end
   end
 
   def favorites
@@ -32,6 +47,10 @@ class StorageUnitsController < ApplicationController
   end
 
   private
+
+  def storage_unit_params
+    params.require(:storage_unit).permit(:name, :email, :telephone, :address, :latitude, :longitude, :service_time_from, :service_time_to)
+  end
 
   def add_to_favorites(storage_unit)
     current_user.update_attributes!(

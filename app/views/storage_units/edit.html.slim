@@ -1,0 +1,34 @@
+.container.storage-edit
+  .container-fluid
+    .row
+      .col-xs-12.col-md-8
+        h2 
+          = "Editar Heladera"
+    .row
+      = form_for @storage_unit, :method => "post" do |f|
+        .edit-form
+          .form-input
+            = f.label :nombre
+            = f.text_field :name, class: 'form-control', required: true
+          .form-input
+            = f.label :email
+            = f.email_field :email, class: 'form-control', required: true
+          .form-input
+            = f.label :Direccion
+            = f.text_field :address, class: 'form-control', required: true
+          .form-input
+            = f.label :Telefono
+            = f.text_field :telephone, class: 'form-control', required: true
+          .form-input
+            = f.label :Latitud
+            = f.text_field :latitude, class: 'form-control', required: true
+          .form-input
+            = f.label :Longitud
+            = f.text_field :longitude, class: 'form-control', required: true
+          .form-input
+            = f.label :Desde
+            = f.text_field :service_time_from, class: 'form-control', required: true
+          .form-input
+            = f.label :Hasta
+            = f.text_field :service_time_to, class: 'form-control', required: true
+          = f.submit "Guardar Cambios", class: "btn btn-primary"
