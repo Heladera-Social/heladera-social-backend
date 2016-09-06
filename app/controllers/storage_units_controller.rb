@@ -13,6 +13,7 @@ class StorageUnitsController < ApplicationController
 
   def show
     @storage_unit = StorageUnit.find(params[:id])
+    @available_products = @storage_unit.products.unexpired
   end
   
   def update
@@ -58,6 +59,7 @@ class StorageUnitsController < ApplicationController
   end
 
   def remove_from_favorites(storage_unit)
-    current_user.favorite_storage_units.delete!(storage_unit)
+    current_user.favorite_storage_units.delete(storage_unit)
+    current_user.save!
   end
 end
