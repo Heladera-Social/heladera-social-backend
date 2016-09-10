@@ -18,4 +18,14 @@ HeladeraSocialBackend::Application.routes.draw do
       delete :unfavorite
     end
   end
+
+  resources :donations, only: [:create, :new, :show] do
+    collection do
+      get :favorites
+    end
+    member do
+      post :favorite
+      delete :unfavorite
+    end
+  end
 end

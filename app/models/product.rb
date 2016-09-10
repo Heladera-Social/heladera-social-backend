@@ -1,5 +1,5 @@
 class Product < ActiveRecord::Base
-  validates :product_type, :quantity, presence: true
+  validates :product_type, presence: true
   belongs_to :product_type
 
   belongs_to :donation
