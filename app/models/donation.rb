@@ -6,4 +6,11 @@ class Donation < ActiveRecord::Base
   belongs_to :user
   belongs_to :storage_unit
   accepts_nested_attributes_for :products, allow_destroy: true
+  after_create :add_to_storage_unit
+
+  def add_to_storage_unit
+    products.find_each do |product|
+      storage_unit.add_to_inventory(product)
+    end
+  end
 end

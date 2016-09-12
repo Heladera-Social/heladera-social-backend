@@ -1,0 +1,26 @@
+.container.storage-list
+  .container-fluid
+    .row
+      .col-xs-12.col-md-8
+        h2 
+          = @donation.user.name
+  .products
+    h3
+      = "Productos disponibles"
+    table.table.table-hover
+      thead
+        tr
+          th
+            = "Nombre"
+          th
+            = "Cantidad"
+          th
+            = "Fecha de Vencimiento"
+      tbody
+        tr
+          td
+            = "Leche"
+          td
+            = "2 Litros"
+          td
+            = "22/10/2016"
