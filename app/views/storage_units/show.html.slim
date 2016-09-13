@@ -38,10 +38,11 @@
           th
             = "Fecha de Vencimiento"
       tbody
-        tr
-          td
-            = "Leche"
-          td
-            = "2 Litros"
-          td
-            = "22/10/2016"
+        - @products.each do |p|
+          tr
+            td
+              = "#{p.product_type.name}"
+            td
+              = "#{p.quantity} #{p.product_type.measurement_unit}"
+            td
+              = "#{p.expiration_date}"

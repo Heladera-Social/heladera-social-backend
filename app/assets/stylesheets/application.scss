@@ -1,7 +1,7 @@
 @import 'bootstrap-sprockets';
 @import 'bootstrap';
 @import 'font-awesome';
-
+@import 'bootstrap-datepicker3';
 @import 'variables/colors';
 
 @import 'overrides/bootstrap_overrides';
@@ -138,5 +138,15 @@
 
 	.form-input{
 		margin-bottom: 15px;
+	}
+
+	.filters{
+		.form-group{
+			margin-right: 20px;
+
+			label{
+				margin-right: 20px;
+			}
+		}
 	}
 }

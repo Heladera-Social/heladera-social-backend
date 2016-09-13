@@ -1,0 +1,45 @@
+.container.storage-edit
+  .container-fluid
+    .row
+      .col-xs-12.col-md-8
+        h2 
+          = "Productos"
+    .row
+    	.col-xs-12
+	    	form.form-inline.filters
+	    	  .form-group
+	    	    label Filtrar
+	    	    input#exampleInputName2.form-control placeholder=("Nombre") type="text"
+	    	  .form-group
+	    	    input#exampleInputEmail2.form-control placeholder="Tipo" type="text"
+	    	  .form-group
+	    	    input#exampleInputEmail2.form-control placeholder="Vencimiento" type="text"
+	    	  button.btn.btn-default type="submit"  Buscar
+    hr
+    .row
+    	.col-xs-12
+	    	.products
+	    	  table.table.table-hover
+	    	    thead
+	    	      tr
+	    	        th
+	    	          = "Nombre"
+	    	        th
+	    	          = "Cantidad"
+	    	        th
+	    	          = "Heladera"
+	    	        th
+	    	          = "Fecha de Vencimiento"
+	    	    tbody
+	    	      - @products.each do |p|
+		    	      tr
+		    	        td
+		    	          = "#{p.product_type.name}"
+		    	        td
+		    	          = "#{p.quantity} #{p.product_type.measurement_unit}"
+		    	        td
+		    	          a href=storage_unit_path(p.storage_unit)
+		    	          	= "#{p.storage_unit.name}"
+		    	        td
+		    	          = "#{p.expiration_date}"
+
