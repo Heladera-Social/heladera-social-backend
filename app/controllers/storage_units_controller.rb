@@ -12,6 +12,13 @@ class StorageUnitsController < ApplicationController
   end
 
   def show
+    @products = []
+    current_user.storage_units.each do |s|
+      s.products.each do |p|
+        @products << p
+      end
+    end
+    @products = @products.uniq
     @storage_unit = StorageUnit.find(params[:id])
     @available_products = @storage_unit.products.unexpired
   end

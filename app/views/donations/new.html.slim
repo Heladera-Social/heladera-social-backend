@@ -1,0 +1,18 @@
+.container.storage-edit
+  .container-fluid
+    .row
+      .col-xs-12.col-md-8
+        h2 
+          = "Editar Heladera"
+    .row
+      = form_for @donation, :method => "post" do |f|
+      	= f.label :Heladera
+        = select_tag "Heladera", options_for_select(@storage_units.collect {|p| [ p['name'], p['id'] ] })
+        = f.fields_for :products do |ff|
+          = f.label :Producto
+          = select_tag "Productos", options_for_select(@product_types.collect {|p| [ p['name'], p['id'] ] })
+          = f.label :Cantidad
+          = ff.text_field :quantity, class: 'form-control', required: true
+          = f.label :Vencimiento
+          = ff.hidden_field :expiration_date, class: 'form-control', required: true
+        = f.submit "Donar!", class: "btn btn-primary"

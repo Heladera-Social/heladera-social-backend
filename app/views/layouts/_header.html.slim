@@ -6,11 +6,11 @@ nav.navbar.navbar-default.navbar-static-top.header
 	    a.navbar-link href=storage_units_path
 	      = "Heladeras"
         - if current_user && current_user.manager
-          a.navbar-link href=storage_units_path
+          a.navbar-link href=new_donation_path
             = "Agregar Donacion"
           a.navbar-link href=storage_units_path
             = "Extraccion"
-          a.navbar-link href=storage_units_path
+          a.navbar-link href=products_path
             = "Productos"  
     .navbar-text.navbar-right
       - if current_user

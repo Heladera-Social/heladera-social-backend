@@ -28,4 +28,7 @@ HeladeraSocialBackend::Application.routes.draw do
       delete :unfavorite
     end
   end
+
+  resources :products, only: [:index] do
+  end
 end

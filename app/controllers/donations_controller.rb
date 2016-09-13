@@ -5,6 +5,9 @@ class DonationsController < ApplicationController
   end
   
   def new
+    return redirect_to root_path if !current_user
+    @storage_units = current_user.storage_units if current_user && current_user.manager
+    @product_types = ProductType.all
     @donation = Donation.new
   end
 
