@@ -14,6 +14,7 @@ HeladeraSocialBackend::Application.routes.draw do
       get :favorites
     end
     member do
+      get :product_types
       post :favorite
       delete :unfavorite
     end

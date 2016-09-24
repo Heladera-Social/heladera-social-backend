@@ -39,4 +39,41 @@ describe StorageUnitsController do
       end
     end
   end
+
+  describe '#product_types' do
+    let!(:meat) { create(:product_type, name: 'Meat') }
+    let!(:beans) { create(:product_type, name: 'Canned Beans') }
+    let!(:bananas) { create(:product_type, name: 'Bananas') }
+    let!(:meat1) do
+      create(:product, product_type: meat, quantity: 3, expiration_date: Time.zone.today)
+    end
+    let!(:beans1) do
+      create(:product, product_type: meat, quantity: 2, expiration_date: Time.zone.yesterday)
+    end
+    let!(:donation) do
+      create(:donation, user: user, storage_unit: storage_unit, products: [meat1, beans1])
+    end
+    context 'User is signed in' do
+      before(:each) { sign_in user }
+
+      it 'shows an available product type' do
+        get :product_types, id: storage_unit.id
+        expect(product_type_ids).to include meat.id
+      end
+
+      it 'does not show a product type that is not in the storage unit' do
+        get :product_types, id: storage_unit.id
+        expect(product_type_ids).not_to include bananas.id
+      end
+
+      it 'does not show a product type where all the products are expired' do
+        get :product_types, id: storage_unit.id
+        expect(product_type_ids).not_to include beans.id
+      end
+    end
+
+    def product_type_ids
+      JSON.parse(response.body).map { |type| type['id'] }
+    end
+  end
 end
