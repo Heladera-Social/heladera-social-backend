@@ -10,7 +10,9 @@
 @import 'https://fonts.googleapis.com/css?family=Oswald:700';
 @import 'https://fonts.googleapis.com/css?family=Open+Sans';
 
-
+.form-control[readonly]{
+	background-color: white !important;
+}
 .login{
 	margin: 0 auto;
 	text-align: center;
