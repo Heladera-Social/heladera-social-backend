@@ -6,13 +6,17 @@ class StorageUnit < ActiveRecord::Base
   has_and_belongs_to_many :favorited_users, class_name: 'User', join_table: :fav_storage_units
 
   has_many :donations
+  has_many :extractions
 
   accepts_nested_attributes_for :managers
 
   has_many :products
 
   def add_to_inventory(product)
-    inventory_unit = products.find_or_create_by!(product_type: product.product_type, expiration_date: product.expiration_date)
+    inventory_unit = products.find_or_create_by!(
+      product_type: product.product_type,
+      expiration_date: product.expiration_date
+    )
     inventory_unit.update_attributes!(quantity: (inventory_unit.quantity || 0) + product.quantity)
   end
 end
