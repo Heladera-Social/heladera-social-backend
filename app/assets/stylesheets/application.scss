@@ -9,6 +9,10 @@
 @import 'commons';
 @import 'https://fonts.googleapis.com/css?family=Oswald:700';
 @import 'https://fonts.googleapis.com/css?family=Open+Sans';
+<<<<<<< HEAD
+=======
+
+>>>>>>> bc9b82cb251f25c8c8d9577a47165980cf62ae28
 
 .form-control[readonly]{
 	background-color: white !important;
@@ -197,6 +201,7 @@
     box-sizing: border-box;
     box-shadow: 0 0 16px 0 rgba(0,0,0,0.15);
     top: 0;
+<<<<<<< HEAD
 }
 
 h1 {
@@ -225,6 +230,36 @@ h3 {
 	text-align:left;
 }
 
+=======
+}
+
+h1 {
+	font-family:Oswald-Bold;
+	font-size:70px;
+	color:#000000;
+	letter-spacing:0px;
+	line-height:87px;
+	text-align:left;
+}
+
+h2 {
+	font-family:Oswald-Bold;
+	font-size:45px;
+	color:#000000;
+	letter-spacing:0px;
+	line-height:70px;
+	text-align:left;
+}
+
+h3 {
+	font-family:Oswald-Bold;
+	font-size:32px;
+	color:#000000;
+	letter-spacing:0px;
+	text-align:left;
+}
+
+>>>>>>> bc9b82cb251f25c8c8d9577a47165980cf62ae28
 h4 {
 	font-family:OpenSans-Extrabold;
 	font-size:18px;
@@ -248,4 +283,23 @@ h4 {
 
 .storage-list, .storage-edit {
 	padding-top:100px;
+<<<<<<< HEAD
+=======
+}
+
+.form-group input{
+	background:#fdb949;
+	border:3px solid #fdb949;
+	box-shadow:inset 0px 1px 3px 0px rgba(0,0,0,0.50);
+	border-radius:3px;
+	margin-top: 20px;
+	border:2px solid #fdb949;
+	width:435px;
+	height:53px;
+	font-family:'Open Sans';
+	font-size:16px;
+	color:#4a4a4a;
+	letter-spacing:0px;
+	text-align:center;
+>>>>>>> bc9b82cb251f25c8c8d9577a47165980cf62ae28
 }

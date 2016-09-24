@@ -10,5 +10,5 @@ class Product < ActiveRecord::Base
   delegate :name, to: :product_type
   delegate :measurement_unit, to: :product_type
 
-  scope :unexpired, -> { where('expiration_date > ? OR expiration_date IS NULL', Time.zone.now) }
+  scope :unexpired, -> { where('expiration_date >= ? OR expiration_date IS NULL', Time.zone.today) }
 end
