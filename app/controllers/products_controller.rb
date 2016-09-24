@@ -1,10 +1,20 @@
 class ProductsController < ApplicationController
 
   def index
-  	@products = Product.where(product_type: params[:product_type]).uniq if params[:product_type].present?
-    @products = Product.all.uniq unless params[:product_type].present?
     @storage_units = current_user.storage_units.all
+    @products = Product.where.not(product_id: nil)
+    @products = @products.where(product_type: product_type) if product_type.present?
+    @products = @products.where(expiration_date: expiration_date) if expiration_date.present?
     @products_types = ProductType.all
   end
-  
+
+  private
+
+  def product_type
+    params[:product_type]
+  end
+
+  def expiration_date
+    params[:expiration_date]
+  end
 end
