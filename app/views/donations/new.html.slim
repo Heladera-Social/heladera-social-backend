@@ -1,27 +1,27 @@
 .container.storage-edit
-  .container-fluid
-    .row
-      .col-xs-12.col-md-8
-        h2 
-          = "Agregar Donacion"
-    .row
-      = nested_form_for @donation, :method => "post" do |f|
-      	= f.label :Heladera
-        = f.select "storage_unit_id", options_for_select(@storage_units.collect {|p| [ p['name'], p['id'] ] })
-        = f.fields_for :products do |products|
-          = f.label :Producto
-          = products.select "product_type_id", options_for_select(@product_types.collect {|p| [ p['name'], p['id'] ] })
-          br
-          = f.label :Cantidad
-          = products.text_field :quantity, class: 'form-control', required: true
-          br
-          .row
-            .col-xs-3.col-md-8
-              = f.label :Vencimiento
-            .col-xs-9.col-md-8
-              = products.text_field :expiration_date, class: 'form-control', required: true
-          br
-          = products.link_to_remove "Eliminar producto"
-        p
-          = f.link_to_add "Agregar Producto", :products
-        = f.submit "Donar!", class: "btn btn-primary"
+    .container-fluid
+      .row
+        .col-xs-12.col-md-8
+          h2 
+            = "Agregar Donacion"
+      .row
+        = nested_form_for @donation, :method => "post" do |f|
+        	= f.label :Heladera
+          = f.select "storage_unit_id", options_for_select(@storage_units.collect {|p| [ p['name'], p['id'] ] })
+          = f.fields_for :products do |products|
+            = f.label :Producto
+            = products.select "product_type_id", options_for_select(@product_types.collect {|p| [ p['name'], p['id'] ] })
+            br
+            = f.label :Cantidad
+            = products.text_field :quantity, class: 'form-control', required: true
+            br
+            .row
+              .col-xs-3.col-md-8
+                = f.label :Vencimiento
+              .col-xs-9.col-md-8
+                = products.text_field :expiration_date, class: 'form-control', required: true
+            br  
+            = products.link_to_remove "Eliminar producto", class: 'btn-secondary'
+          p
+            = f.link_to_add "Agregar Producto", :products, class: 'btn-primary'
+          = f.submit "Donar!", class: "btn btn-primary"

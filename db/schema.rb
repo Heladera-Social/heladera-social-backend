@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160830032912) do
+ActiveRecord::Schema.define(version: 20160924190611) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -58,6 +58,28 @@ ActiveRecord::Schema.define(version: 20160830032912) do
 
   add_index "donations", ["storage_unit_id"], name: "index_donations_on_storage_unit_id", using: :btree
   add_index "donations", ["user_id"], name: "index_donations_on_user_id", using: :btree
+
+  create_table "extraction_products", force: :cascade do |t|
+    t.integer  "product_type_id"
+    t.integer  "extraction_id"
+    t.float    "required_quantity", default: 0.0
+    t.float    "received_quantity", default: 0.0
+    t.datetime "created_at",                      null: false
+    t.datetime "updated_at",                      null: false
+  end
+
+  add_index "extraction_products", ["extraction_id"], name: "index_extraction_products_on_extraction_id", using: :btree
+  add_index "extraction_products", ["product_type_id"], name: "index_extraction_products_on_product_type_id", using: :btree
+
+  create_table "extractions", force: :cascade do |t|
+    t.integer  "user_id"
+    t.integer  "storage_unit_id"
+    t.datetime "created_at",      null: false
+    t.datetime "updated_at",      null: false
+  end
+
+  add_index "extractions", ["storage_unit_id"], name: "index_extractions_on_storage_unit_id", using: :btree
+  add_index "extractions", ["user_id"], name: "index_extractions_on_user_id", using: :btree
 
   create_table "fav_storage_units", force: :cascade do |t|
     t.integer  "user_id"
@@ -138,6 +160,10 @@ ActiveRecord::Schema.define(version: 20160830032912) do
 
   add_foreign_key "donations", "storage_units"
   add_foreign_key "donations", "users"
+  add_foreign_key "extraction_products", "extractions"
+  add_foreign_key "extraction_products", "product_types"
+  add_foreign_key "extractions", "storage_units"
+  add_foreign_key "extractions", "users"
   add_foreign_key "fav_storage_units", "storage_units"
   add_foreign_key "fav_storage_units", "users"
   add_foreign_key "products", "donations"

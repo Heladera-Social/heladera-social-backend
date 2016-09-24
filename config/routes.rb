@@ -19,16 +19,7 @@ HeladeraSocialBackend::Application.routes.draw do
     end
   end
 
-  resources :donations, only: [:create, :new, :show] do
-    collection do
-      get :favorites
-    end
-    member do
-      post :favorite
-      delete :unfavorite
-    end
-  end
-
-  resources :products, only: [:index] do
-  end
+  resources :donations, only: [:create, :new, :show]
+  resources :extractions, only: [:create, :new, :show]
+  resources :products, only: [:index]
 end
