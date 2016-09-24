@@ -1,0 +1,21 @@
+.container.storage-edit
+  .container-fluid
+    .row
+      .col-xs-12.col-md-8
+        h2 
+          = "Generar extraccion"
+    .row
+      = nested_form_for @extraction, :method => "post" do |f|
+      	= f.label :Heladera
+        = f.select "storage_unit_id", options_for_select(@storage_units.collect {|p| [ p['name'], p['id'] ] }), required: true
+        = f.fields_for :extraction_products do |products|
+          = f.label :Producto
+          = products.select "product_type_id", options_for_select(@product_types.collect {|p| [ p['name'], p['id'] ] }),required: true
+          br
+          = f.label :Cantidad
+          = products.number_field :required_quantity, class: 'form-control', required: true
+          br
+          = products.link_to_remove "Eliminar producto"
+        p
+          = f.link_to_add "Agregar Producto", :extraction_products
+        = f.submit "Donar!", class: "btn btn-primary"

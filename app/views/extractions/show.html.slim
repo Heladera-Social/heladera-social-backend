@@ -3,24 +3,25 @@
     .row
       .col-xs-12.col-md-8
         h2 
-          = @extraction.user.name
-  .products
-    h3
-      = "Productos disponibles"
-    table.table.table-hover
-      thead
-        tr
-          th
-            = "Nombre"
-          th
-            = "Cantidad"
-          th
-            = "Fecha de Vencimiento"
-      tbody
-        tr
-          td
-            = "Leche"
-          td
-            = "2 Litros"
-          td
-            = "22/10/2016"
+          = "Extraccion Numero #{@extraction.id}"
+        h3
+          a href=storage_unit_path(@extraction.storage_unit)
+            = "#{@extraction.storage_unit.name}"
+    .products
+      h3
+        = "Productos Donados"
+      table.table.table-hover
+        thead
+          tr
+            th
+              = "Nombre"
+            th
+              = "Cantidad"
+        tbody
+          - @extraction.extraction_products.each do |p|
+            tr
+              td
+                = "#{p.name}"
+              td
+                = "#{p.received_quantity} #{p.measurement_unit}"
+              

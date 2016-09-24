@@ -7,24 +7,30 @@
         h3
           a href=storage_unit_path(@donation.storage_unit)
             = "#{@donation.storage_unit.name}"
-  .products
-    h3
-      = "Productos Donados"
-    table.table.table-hover
-      thead
-        tr
-          th
-            = "Nombre"
-          th
-            = "Cantidad"
-          th
-            = "Fecha de Vencimiento"
-      tbody
-        - @donation.products.each do |p|
+        h5 id='nonmbre'
+          = "Nombre: #{@donation.name}"
+        h5 id='apellido'
+          = "Apellido: #{@donation.last_name}"
+        h5 id='telefono'
+          = "Telefono: #{@donation.telephone}"
+    .products
+      h3
+        = "Productos Donados"
+      table.table.table-hover
+        thead
           tr
-            td
-              = "#{p.name}"
-            td
-              = "#{p.quantity} #{p.measurement_unit}"
-            td
-              = "#{p.expiration_date}"
+            th
+              = "Nombre"
+            th
+              = "Cantidad"
+            th
+              = "Fecha de Vencimiento"
+        tbody
+          - @donation.products.each do |p|
+            tr
+              td
+                = "#{p.name}"
+              td
+                = "#{p.quantity} #{p.measurement_unit}"
+              td
+                = "#{p.expiration_date}"

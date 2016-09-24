@@ -22,6 +22,7 @@ class DonationsController < ApplicationController
   private
 
   def donation_params
-    params.require(:donation).permit(:storage_unit_id, products_attributes: [:product_type_id, :quantity, :expiration_date])
+    byebug
+    params.require(:donation).permit(:storage_unit_id, :name, :last_name, :telephone, products_attributes: [:product_type_id, :quantity, :expiration_date])
   end
 end

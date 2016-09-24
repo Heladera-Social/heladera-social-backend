@@ -6,7 +6,13 @@
           = "Agregar Donacion"
     .row
       = nested_form_for @donation, :method => "post" do |f|
-      	= f.label :Heladera
+      	= f.label :Nome
+        = f.text_field :name, class: 'form-control', required: true
+        = f.label :Apellido
+        = f.text_field :last_name, class: 'form-control', required: true
+        = f.label :Telefono
+        = f.number_field :telephone, class: 'form-control', required: true
+        = f.label :Heladera
         = f.select "storage_unit_id", options_for_select(@storage_units.collect {|p| [ p['name'], p['id'] ] }), required: true
         = f.fields_for :products do |products|
           = f.label :Producto
