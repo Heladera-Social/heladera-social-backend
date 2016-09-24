@@ -3,10 +3,13 @@
     .row
       .col-xs-12.col-md-8
         h2 
-          = @donation.user.name
+          = "Donacion Numero #{@donation.id}"
+        h3
+          a href=storage_unit_path(@donation.storage_unit)
+            = "#{@donation.storage_unit.name}"
   .products
     h3
-      = "Productos disponibles"
+      = "Productos Donados"
     table.table.table-hover
       thead
         tr
@@ -17,10 +20,11 @@
           th
             = "Fecha de Vencimiento"
       tbody
-        tr
-          td
-            = "Leche"
-          td
-            = "2 Litros"
-          td
-            = "22/10/2016"
+        - @donation.products.each do |p|
+          tr
+            td
+              = "#{p.name}"
+            td
+              = "#{p.quantity} #{p.measurement_unit}"
+            td
+              = "#{p.expiration_date}"

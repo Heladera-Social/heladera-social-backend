@@ -3,16 +3,25 @@
     .row
       .col-xs-12.col-md-8
         h2 
-          = "Editar Heladera"
+          = "Agregar Donacion"
     .row
-      = form_for @donation, :method => "post" do |f|
+      = nested_form_for @donation, :method => "post" do |f|
       	= f.label :Heladera
-        = select_tag "Heladera", options_for_select(@storage_units.collect {|p| [ p['name'], p['id'] ] })
-        = f.fields_for :products do |ff|
+        = f.select "storage_unit_id", options_for_select(@storage_units.collect {|p| [ p['name'], p['id'] ] })
+        = f.fields_for :products do |products|
           = f.label :Producto
-          = select_tag "Productos", options_for_select(@product_types.collect {|p| [ p['name'], p['id'] ] })
+          = products.select "product_type_id", options_for_select(@product_types.collect {|p| [ p['name'], p['id'] ] })
+          br
           = f.label :Cantidad
-          = ff.text_field :quantity, class: 'form-control', required: true
-          = f.label :Vencimiento
-          = ff.hidden_field :expiration_date, class: 'form-control', required: true
+          = products.text_field :quantity, class: 'form-control', required: true
+          br
+          .row
+            .col-xs-3.col-md-8
+              = f.label :Vencimiento
+            .col-xs-9.col-md-8
+              = products.text_field :expiration_date, class: 'form-control', required: true
+          br
+          = products.link_to_remove "Eliminar producto"
+        p
+          = f.link_to_add "Agregar Producto", :products
         = f.submit "Donar!", class: "btn btn-primary"

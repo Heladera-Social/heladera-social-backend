@@ -6,15 +6,10 @@
           = "Productos"
     .row
     	.col-xs-12
-	    	form.form-inline.filters
-	    	  .form-group
-	    	    label Filtrar
-	    	    input#exampleInputName2.form-control placeholder=("Nombre") type="text"
-	    	  .form-group
-	    	    input#exampleInputEmail2.form-control placeholder="Tipo" type="text"
-	    	  .form-group
-	    	    input#exampleInputEmail2.form-control placeholder="Vencimiento" type="text"
-	    	  button.btn.btn-default type="submit"  Buscar
+    		= form_tag products_path, :method => "get" do
+    		  .form-group
+    		    = select_tag :product_type, options_for_select(@products_types.collect {|p| [ p['name'], p['id'] ] })
+    		    = submit_tag "Search", :name => nil
     hr
     .row
     	.col-xs-12
