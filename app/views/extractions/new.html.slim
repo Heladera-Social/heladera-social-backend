@@ -10,10 +10,12 @@
         = f.select "storage_unit_id", options_for_select(@storage_units.collect {|p| [ p['name'], p['id'] ] }), required: true
         = f.fields_for :extraction_products do |products|
           = f.label :Producto
+          br
           = products.select "product_type_id", options_for_select(@product_types.collect {|p| [ p['name'], p['id'] ] }),required: true
           br
           = f.label :Cantidad
-          = products.number_field :required_quantity, class: 'form-control', required: true
+          br
+          = products.number_field :required_quantity, class: 'form-control, orange-input', required: true
           br
           = products.link_to_remove "Eliminar producto"
         p

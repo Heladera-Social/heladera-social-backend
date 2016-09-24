@@ -6,12 +6,12 @@
           = "Agregar Donacion"
     .row
       = nested_form_for @donation, :method => "post" do |f|
-      	= f.label :Nome
-        = f.text_field :name, class: 'form-control', required: true
+      	= f.label :Nombre
+        = f.text_field :name, class: 'form-control, orange-input', required: true
         = f.label :Apellido
-        = f.text_field :last_name, class: 'form-control', required: true
+        = f.text_field :last_name, class: 'form-control, orange-input', required: true
         = f.label :Telefono
-        = f.number_field :telephone, class: 'form-control', required: true
+        = f.number_field :telephone, class: 'form-control, orange-input', required: true
         = f.label :Heladera
         = f.select "storage_unit_id", options_for_select(@storage_units.collect {|p| [ p['name'], p['id'] ] }), required: true
         = f.fields_for :products do |products|
@@ -19,13 +19,14 @@
           = products.select "product_type_id", options_for_select(@product_types.collect {|p| [ p['name'], p['id'] ] }),required: true
           br
           = f.label :Cantidad
-          = products.number_field :quantity, class: 'form-control', required: true
+          br
+          = products.number_field :quantity, class: 'form-control, orange-input', required: true
           br
           .row
             .col-xs-3.col-md-8
               = f.label :Vencimiento
             .col-xs-9.col-md-8
-              = products.text_field :expiration_date, class: 'form-control', required: true, data: {provide: "datepicker"}, readonly:"readonly"
+              = products.text_field :expiration_date, class: 'form-control, orange-input', required: true, data: {provide: "datepicker"}, readonly:"readonly"
           br  
           = products.link_to_remove "Eliminar producto", class: 'btn-secondary'
         p
