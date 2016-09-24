@@ -1,5 +1,5 @@
 class Donation < ActiveRecord::Base
-  validates :user, :storage_unit, presence: true
+  validates :user, :storage_unit, :products, presence: true
 
   has_many :products
 
