@@ -25,9 +25,15 @@
             .col-xs-3.col-md-8
               = f.label :Vencimiento
             .col-xs-9.col-md-8
+<<<<<<< HEAD
               = products.text_field :expiration_date, class: 'form-control', required: true, data: {provide: "datepicker"}, readonly:"readonly"
           br
           = products.link_to_remove "Eliminar producto"
+=======
+              = products.text_field :expiration_date, class: 'form-control', required: true
+          br  
+          = products.link_to_remove "Eliminar producto", class: 'btn-secondary'
+>>>>>>> a4ee6c5da97c8c6bdcbfc5768278141bc2f62976
         p
-          = f.link_to_add "Agregar Producto", :products
+          = f.link_to_add "Agregar Producto", :products, class: 'btn-primary'
         = f.submit "Donar!", class: "btn btn-primary"

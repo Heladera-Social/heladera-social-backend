@@ -22,5 +22,4 @@ HeladeraSocialBackend::Application.routes.draw do
   resources :donations, only: [:create, :new, :show]
   resources :extractions, only: [:create, :new, :show]
   resources :products, only: [:index]
-
 end
