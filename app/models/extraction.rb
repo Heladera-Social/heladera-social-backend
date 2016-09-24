@@ -1,5 +1,5 @@
 class Extraction < ActiveRecord::Base
-  validates :user, :storage_unit, presence: true
+  validates :user, :storage_unit, :extraction_products, presence: true
 
   has_many :extraction_products
 
