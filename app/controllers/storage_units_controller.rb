@@ -54,6 +54,12 @@ class StorageUnitsController < ApplicationController
     redirect_to storage_units_path
   end
 
+  def product_types
+    storage_unit = StorageUnit.find(params[:id])
+    product_type_ids = storage_unit.products.available.pluck(:product_type_id)
+    render json: ProductType.where(id: product_type_ids), each_serializer: ProductTypeSerializer 
+  end
+
   private
 
   def storage_unit_params
