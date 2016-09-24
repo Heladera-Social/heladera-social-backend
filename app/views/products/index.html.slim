@@ -10,6 +10,7 @@
     		  .form-group
     		  	= select_tag :storage_unit_id, options_for_select(@storage_units.collect {|p| [ p['name'], p['id'] ] })
     		    = select_tag :product_type, options_for_select(@products_types.collect {|p| [ p['name'], p['id'] ] })
+    		    = date_field_tag :expiration_date
     		    = submit_tag "Search", :name => nil
     hr
     .row
