@@ -1,6 +1,7 @@
 class ProductsController < ApplicationController
 
   def index
+    @storage_units = current_user.storage_units.all
     @products = Product.where.not(product_id: nil)
     @products = @products.where(product_type: product_type) if product_type.present?
     @products = @products.where(expiration_date: expiration_date) if expiration_date.present?

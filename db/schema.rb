@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160924190611) do
+ActiveRecord::Schema.define(version: 20160924204106) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -54,6 +54,9 @@ ActiveRecord::Schema.define(version: 20160924190611) do
     t.integer  "storage_unit_id"
     t.datetime "created_at",      null: false
     t.datetime "updated_at",      null: false
+    t.string   "name"
+    t.string   "last_name"
+    t.string   "telephone"
   end
 
   add_index "donations", ["storage_unit_id"], name: "index_donations_on_storage_unit_id", using: :btree
@@ -76,6 +79,9 @@ ActiveRecord::Schema.define(version: 20160924190611) do
     t.integer  "storage_unit_id"
     t.datetime "created_at",      null: false
     t.datetime "updated_at",      null: false
+    t.string   "name"
+    t.string   "last_name"
+    t.string   "telephone"
   end
 
   add_index "extractions", ["storage_unit_id"], name: "index_extractions_on_storage_unit_id", using: :btree
@@ -101,10 +107,10 @@ ActiveRecord::Schema.define(version: 20160924190611) do
 
   create_table "products", force: :cascade do |t|
     t.integer  "product_type_id"
-    t.float    "quantity",        default: 0.0
+    t.float    "quantity"
     t.date     "expiration_date"
-    t.datetime "created_at",                    null: false
-    t.datetime "updated_at",                    null: false
+    t.datetime "created_at",      null: false
+    t.datetime "updated_at",      null: false
     t.integer  "donation_id"
     t.integer  "storage_unit_id"
   end

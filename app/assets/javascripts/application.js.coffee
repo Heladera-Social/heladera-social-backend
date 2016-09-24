@@ -18,3 +18,5 @@
 #= require bootstrap-datepicker
 #= require jquery_nested_form
 #= require_tree .
+
+$('[data-behaviour~=datepicker]').datepicker({"format": "yyyy-mm-dd", "weekStart": 1, "autoclose": true});

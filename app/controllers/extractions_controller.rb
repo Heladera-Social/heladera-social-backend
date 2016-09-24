@@ -5,12 +5,15 @@ class ExtractionsController < ApplicationController
   end
   
   def new
+    return redirect_to root_path if !current_user
+    @storage_units = current_user.storage_units if current_user && current_user.manager
+    @product_types = ProductType.all
     @extraction = Extraction.new
   end
 
   def create
-    Extraction.create!(extraction_params.merge(user: current_user))
-    render 'show'
+    extraction = Extraction.create!(extraction_params.merge(user: current_user))
+    redirect_to extraction_path(extraction.id)
   end
 
   private
@@ -18,6 +21,9 @@ class ExtractionsController < ApplicationController
   def extraction_params
     params.require(:extraction).permit(
       :storage_unit_id,
+      :name, 
+      :last_name, 
+      :telephone,
       extraction_products_attributes: [:product_type_id, :required_quantity]
     )
   end
