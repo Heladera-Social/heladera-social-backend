@@ -20,6 +20,7 @@ class StorageUnitsController < ApplicationController
     end
     @products = @products.uniq
     @storage_unit = StorageUnit.find(params[:id])
+    @donations = @storage_unit.donations
     @available_products = @storage_unit.products.unexpired
   end
   

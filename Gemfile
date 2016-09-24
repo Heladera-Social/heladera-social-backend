@@ -94,6 +94,9 @@ gem 'underscore-rails'
 
 gem 'bootstrap-datepicker-rails'
 
+gem 'nested_form'
+gem 'pg_search'
+
 
 group :development do
   # Gem to detect N+1 queries

@@ -229,6 +229,7 @@ GEM
     mini_portile2 (2.1.0)
     minitest (5.9.0)
     multi_json (1.12.1)
+    nested_form (0.3.2)
     newrelic_rpm (3.16.2.321)
     nokogiri (1.6.8)
       mini_portile2 (~> 2.1.0)
@@ -237,6 +238,10 @@ GEM
     parser (2.3.1.2)
       ast (~> 2.2)
     pg (0.18.4)
+    pg_search (1.0.6)
+      activerecord (>= 3.1)
+      activesupport (>= 3.1)
+      arel
     pghero (1.4.1)
       activerecord
     pkg-config (1.1.7)
@@ -456,8 +461,10 @@ DEPENDENCIES
   loadjs
   meta-tags
   metamagic
+  nested_form
   newrelic_rpm
   pg
+  pg_search
   pghero
   polyamorous
   pry-byebug

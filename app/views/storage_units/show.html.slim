@@ -46,3 +46,17 @@
               = "#{p.quantity} #{p.product_type.measurement_unit}"
             td
               = "#{p.expiration_date}"
+  .products
+    h3
+      = "Donaciones"
+    table.table.table-hover
+      thead
+        tr
+          th
+            = "Nombre"
+      tbody
+        - @donations.each do |d|
+          tr
+            td
+              a href=donation_path(d.id)
+                = "Donacion Numero #{d.id}"

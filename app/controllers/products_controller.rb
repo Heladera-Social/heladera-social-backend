@@ -1,13 +1,9 @@
 class ProductsController < ApplicationController
 
   def index
-    @products = []
-    current_user.storage_units.each do |s|
-      s.products.each do |p|
-        @products << p
-      end
-    end
-    @products = @products.uniq
+  	@products = Product.where(product_type: params[:product_type]).uniq if params[:product_type].present?
+    @products = Product.all.uniq unless params[:product_type].present?
+    @products_types = ProductType.all
   end
   
 end

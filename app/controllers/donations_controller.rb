@@ -12,8 +12,11 @@ class DonationsController < ApplicationController
   end
 
   def create
-    Donation.create!(donation_params.merge(user: current_user))
-    render 'show'
+    donation = Donation.create!(donation_params.merge(user: current_user))
+    donation.products.each do |p|
+      p.update_attributes(storage_unit_id: params[:donation][:storage_unit_id])
+    end
+    redirect_to donation_path(donation.id)
   end
 
   private

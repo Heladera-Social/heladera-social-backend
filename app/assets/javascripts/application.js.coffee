@@ -16,4 +16,5 @@
 #= require turbolinks
 #= require underscore
 #= require bootstrap-datepicker
+#= require jquery_nested_form
 #= require_tree .
