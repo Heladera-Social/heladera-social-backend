@@ -12,14 +12,9 @@ class StorageUnitsController < ApplicationController
   end
 
   def show
-    @products = []
-    current_user.storage_units.each do |s|
-      s.products.unexpired.each do |p|
-        @products << p
-      end
-    end
-    @products = @products.uniq
     @storage_unit = StorageUnit.find(params[:id])
+    @products = @storage_unit.products
+    @products = @products.uniq
     @donations = @storage_unit.donations
     @available_products = @storage_unit.products.unexpired
   end
