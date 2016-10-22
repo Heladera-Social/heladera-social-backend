@@ -6,13 +6,13 @@ describe ExtractionsController do
   let!(:meat) { create(:product_type, name: 'Meat') }
   let!(:beans) { create(:product_type, name: 'Canned Beans') }
   let!(:meat1) do
-    create(:product, product_type: meat, quantity: 3, expiration_date: Time.zone.today)
+    create(:donation_product, product_type: meat, quantity: 3, expiration_date: Time.zone.today)
   end
   let!(:meat2) do
-    create(:product, product_type: meat, quantity: 2, expiration_date: Time.zone.tomorrow)
+    create(:donation_product, product_type: meat, quantity: 2, expiration_date: Time.zone.tomorrow)
   end
   let!(:donation) do
-    create(:donation, user: user, storage_unit: storage_unit, products: [meat1, meat2])
+    create(:donation, user: user, storage_unit: storage_unit, donation_products: [meat1, meat2])
   end
 
   let(:extraction_params) do
@@ -26,7 +26,7 @@ describe ExtractionsController do
   before(:each) { sign_in user }
   
   describe '#create' do
-    it 'creates a donation' do
+    it 'creates an extraction' do
       post :create, extraction: extraction_params
       expect(Extraction.count).to eq(1)
     end
