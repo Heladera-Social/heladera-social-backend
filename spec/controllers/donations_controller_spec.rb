@@ -11,7 +11,7 @@ describe DonationsController do
       products_attributes: [
         { product_type_id: meat, quantity: 1, expiration_date: Time.zone.today },
         { product_type_id: meat, quantity: 1, expiration_date: Time.zone.tomorrow },
-        { product_type_id: beans, quantity: 2 }
+        { product_type_id: beans, quantity: 2, label: 'Beans' }
       ]
     }
   end
@@ -28,6 +28,12 @@ describe DonationsController do
       post :create, donation: donation_params
       expect(Product.count).to eq 6
     end
+
+    it 'labels products correctly' do
+      post :create, donation: donation_params
+      expect(Product.inventory.where(label: 'Beans').count).to eq 1
+    end
+
 
     it 'sets the 3 storage unit inventory products' do
       post :create, donation: donation_params

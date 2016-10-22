@@ -16,7 +16,6 @@ class ExtractionService
     received = 0
     inventory_units(extraction_product).find_each do |inventory_unit|
       break if received == extraction_product.required_quantity
-      byebug
       required = extraction_product.required_quantity - received
       to_remove = required > inventory_unit.quantity ? inventory_unit.quantity : required
       inventory_unit.update_attributes!(quantity: inventory_unit.quantity - to_remove)

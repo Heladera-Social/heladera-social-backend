@@ -15,7 +15,9 @@ class StorageUnit < ActiveRecord::Base
   def add_to_inventory(product)
     inventory_unit = products.find_or_create_by!(
       product_type: product.product_type,
-      expiration_date: product.expiration_date
+      expiration_date: product.expiration_date,
+      label: product.label,
+      code: product.code
     )
     inventory_unit.update_attributes!(quantity: (inventory_unit.quantity || 0) + product.quantity)
   end

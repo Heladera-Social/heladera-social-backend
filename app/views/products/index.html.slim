@@ -5,38 +5,46 @@
         h2 
           = "Productos"
     .row
-    	.col-xs-12
-    		= form_tag products_path, :method => "get" do
-    		  .form-group
-    		  	= select_tag :storage_unit_id, options_for_select(@storage_units.collect {|p| [ p['name'], p['id'] ] })
-    		    = select_tag :product_type, options_for_select(@products_types.collect {|p| [ p['name'], p['id'] ] })
-    		    = date_field_tag :expiration_date
-    		    = submit_tag "Buscar", :name => nil, :class => 'btn-primary'
+      .col-xs-12
+        = form_tag products_path, :method => "get" do
+          .form-group
+            = select_tag :storage_unit_id, options_for_select(@storage_units.collect {|p| [ p['name'], p['id'] ] })
+            = select_tag :product_type, options_for_select(@products_types.collect {|p| [ p['name'], p['id'] ] })
+            = date_field_tag :expiration_date
+            = submit_tag "Buscar", :name => nil, :class => 'btn-primary'
     hr
     .row
-    	.col-xs-12
-	    	.products
-	    	  table.table.table-hover
-	    	    thead
-	    	      tr
-	    	        th
-	    	          = "Nombre"
-	    	        th
-	    	          = "Cantidad"
-	    	        th
-	    	          = "Heladera"
-	    	        th
-	    	          = "Fecha de Vencimiento"
-	    	    tbody
-	    	      - @products.each do |p|
-		    	      tr
-		    	        td
-		    	          = "#{p.product_type.name}"
-		    	        td
-		    	          = "#{p.quantity} #{p.product_type.measurement_unit}"
-		    	        td
-		    	          a href=storage_unit_path(p.storage_unit)
-		    	          	= "#{p.storage_unit.name}"
-		    	        td
-		    	          = "#{p.expiration_date}"
+      .col-xs-12
+        .products
+          table.table.table-hover
+            thead
+              tr
+                th
+                  = 'Código'
+                th
+                  = 'Etiqueta'
+                th
+                  = "Tipo"
+                th
+                  = "Cantidad"
+                th
+                  = "Heladera"
+                th
+                  = "Fecha de Vencimiento"
+            tbody
+              - @products.each do |p|
+                tr
+                  td
+                    = "#{(p.code || '').upcase}"
+                  td
+                    = "#{p.label}"
+                  td
+                    = "#{p.product_type.name}"
+                  td
+                    = "#{p.quantity} #{p.product_type.measurement_unit}"
+                  td
+                    a href=storage_unit_path(p.storage_unit)
+                      = "#{p.storage_unit.name}"
+                  td
+                    = "#{p.expiration_date}"
 

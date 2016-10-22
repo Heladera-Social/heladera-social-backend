@@ -2,6 +2,17 @@ ActiveAdmin.register User do
 
 permit_params :email, :name, :last_name, :password, :password_confirmation, :telephone, :manager
 
+controller do
+  def update
+    if params[:user][:password].blank?
+      params[:user].delete('password')
+      params[:user].delete('password_confirmation')
+    end
+    super
+  end
+
+end
+
 index do
   id_column
   column :email
