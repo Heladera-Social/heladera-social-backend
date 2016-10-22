@@ -24,7 +24,7 @@ class ExtractionsController < ApplicationController
       :name, 
       :last_name, 
       :telephone,
-      extraction_products_attributes: [:product_type_id, :required_quantity]
+      extraction_products_attributes: [:product_id, :quantity]
     )
   end
 end

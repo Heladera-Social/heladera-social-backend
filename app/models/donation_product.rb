@@ -4,8 +4,9 @@ class DonationProduct < ActiveRecord::Base
   HALF_CODE_LENGTH = 3 
 
   validates :product_type, presence: true
-  belongs_to :product_type
+  validates :quantity, numericality: { greater_than: 0 }
 
+  belongs_to :product_type
   belongs_to :donation
 
   delegate :name, to: :product_type
