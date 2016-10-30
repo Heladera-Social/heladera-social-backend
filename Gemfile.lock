@@ -466,6 +466,7 @@ DEPENDENCIES
   jquery-turbolinks
   launchy
   loadjs
+  mail
   meta-tags
   metamagic
   nested_form

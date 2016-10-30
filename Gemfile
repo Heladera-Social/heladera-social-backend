@@ -101,6 +101,8 @@ gem 'pg_search'
 gem 'rails-erd'
 gem 'ruby-graphviz'
 
+gem 'mail'
+
 group :development do
   # Gem to detect N+1 queries
   gem 'bullet'
