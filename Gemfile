@@ -97,6 +97,9 @@ gem 'bootstrap-datepicker-rails'
 gem 'nested_form'
 gem 'pg_search'
 
+# Entity relation diagram
+gem 'rails-erd'
+gem 'ruby-graphviz'
 
 group :development do
   # Gem to detect N+1 queries
