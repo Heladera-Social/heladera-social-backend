@@ -45,13 +45,18 @@ describe StorageUnitsController do
     let!(:beans) { create(:product_type, name: 'Canned Beans') }
     let!(:bananas) { create(:product_type, name: 'Bananas') }
     let!(:meat1) do
-      create(:product, product_type: meat, quantity: 3, expiration_date: Time.zone.today)
+      create(:donation_product, product_type: meat, quantity: 3, expiration_date: Time.zone.today)
     end
     let!(:beans1) do
-      create(:product, product_type: meat, quantity: 2, expiration_date: Time.zone.yesterday)
+      create(
+        :donation_product,
+        product_type: meat,
+        quantity: 2,
+        expiration_date: Time.zone.yesterday
+      )
     end
     let!(:donation) do
-      create(:donation, user: user, storage_unit: storage_unit, products: [meat1, beans1])
+      create(:donation, user: user, storage_unit: storage_unit, donation_products: [meat1, beans1])
     end
     context 'User is signed in' do
       before(:each) { sign_in user }

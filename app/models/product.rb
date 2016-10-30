@@ -1,5 +1,6 @@
 class Product < ActiveRecord::Base
   include PgSearch
+
   validates :product_type, presence: true
   belongs_to :product_type
 

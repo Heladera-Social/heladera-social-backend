@@ -8,10 +8,10 @@ describe DonationsController do
   let(:donation_params) do
     {
       storage_unit_id: storage_unit.id,
-      products_attributes: [
+      donation_products_attributes: [
         { product_type_id: meat, quantity: 1, expiration_date: Time.zone.today },
         { product_type_id: meat, quantity: 1, expiration_date: Time.zone.tomorrow },
-        { product_type_id: beans, quantity: 2 }
+        { product_type_id: beans, quantity: 2, label: 'Beans' }
       ]
     }
   end
@@ -24,10 +24,21 @@ describe DonationsController do
       expect(Donation.count).to eq 1
     end
 
-    it 'creates the 3 donated products plus the 3 storage unit inventory products' do
+    it 'creates the 3 storage unit inventory products' do
       post :create, donation: donation_params
-      expect(Product.count).to eq 6
+      expect(Product.count).to eq 3
     end
+
+    it 'creates the 3 donation product logs' do
+      post :create, donation: donation_params
+      expect(DonationProduct.count).to eq 3
+    end
+
+    it 'labels products correctly' do
+      post :create, donation: donation_params
+      expect(Product.where(label: 'Beans').count).to eq 1
+    end
+
 
     it 'sets the 3 storage unit inventory products' do
       post :create, donation: donation_params

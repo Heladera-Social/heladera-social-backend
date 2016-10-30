@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160924204106) do
+ActiveRecord::Schema.define(version: 20161022185030) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -49,6 +49,20 @@ ActiveRecord::Schema.define(version: 20160924204106) do
   add_index "admin_users", ["email"], name: "index_admin_users_on_email", unique: true, using: :btree
   add_index "admin_users", ["reset_password_token"], name: "index_admin_users_on_reset_password_token", unique: true, using: :btree
 
+  create_table "donation_products", force: :cascade do |t|
+    t.integer  "product_type_id"
+    t.integer  "donation_id"
+    t.float    "quantity",        default: 0.0
+    t.date     "expiration_date"
+    t.string   "label"
+    t.string   "code"
+    t.datetime "created_at",                    null: false
+    t.datetime "updated_at",                    null: false
+  end
+
+  add_index "donation_products", ["donation_id"], name: "index_donation_products_on_donation_id", using: :btree
+  add_index "donation_products", ["product_type_id"], name: "index_donation_products_on_product_type_id", using: :btree
+
   create_table "donations", force: :cascade do |t|
     t.integer  "user_id"
     t.integer  "storage_unit_id"
@@ -63,16 +77,15 @@ ActiveRecord::Schema.define(version: 20160924204106) do
   add_index "donations", ["user_id"], name: "index_donations_on_user_id", using: :btree
 
   create_table "extraction_products", force: :cascade do |t|
-    t.integer  "product_type_id"
+    t.integer  "product_id"
     t.integer  "extraction_id"
-    t.float    "required_quantity", default: 0.0
-    t.float    "received_quantity", default: 0.0
-    t.datetime "created_at",                      null: false
-    t.datetime "updated_at",                      null: false
+    t.float    "quantity",      default: 0.0
+    t.datetime "created_at",                  null: false
+    t.datetime "updated_at",                  null: false
   end
 
   add_index "extraction_products", ["extraction_id"], name: "index_extraction_products_on_extraction_id", using: :btree
-  add_index "extraction_products", ["product_type_id"], name: "index_extraction_products_on_product_type_id", using: :btree
+  add_index "extraction_products", ["product_id"], name: "index_extraction_products_on_product_id", using: :btree
 
   create_table "extractions", force: :cascade do |t|
     t.integer  "user_id"
@@ -107,12 +120,16 @@ ActiveRecord::Schema.define(version: 20160924204106) do
 
   create_table "products", force: :cascade do |t|
     t.integer  "product_type_id"
-    t.float    "quantity"
+    t.float    "quantity",        default: 0.0
     t.date     "expiration_date"
-    t.datetime "created_at",      null: false
-    t.datetime "updated_at",      null: false
+    t.datetime "created_at",                      null: false
+    t.datetime "updated_at",                      null: false
     t.integer  "donation_id"
     t.integer  "storage_unit_id"
+    t.string   "label"
+    t.string   "code"
+    t.boolean  "opened",          default: false
+    t.date     "open_date"
   end
 
   add_index "products", ["donation_id"], name: "index_products_on_donation_id", using: :btree
@@ -164,10 +181,12 @@ ActiveRecord::Schema.define(version: 20160924204106) do
   add_index "users", ["email"], name: "index_users_on_email", unique: true, using: :btree
   add_index "users", ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true, using: :btree
 
+  add_foreign_key "donation_products", "donations"
+  add_foreign_key "donation_products", "product_types"
   add_foreign_key "donations", "storage_units"
   add_foreign_key "donations", "users"
   add_foreign_key "extraction_products", "extractions"
-  add_foreign_key "extraction_products", "product_types"
+  add_foreign_key "extraction_products", "products"
   add_foreign_key "extractions", "storage_units"
   add_foreign_key "extractions", "users"
   add_foreign_key "fav_storage_units", "storage_units"

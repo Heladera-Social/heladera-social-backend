@@ -55,6 +55,12 @@ class StorageUnitsController < ApplicationController
     render json: ProductType.where(id: product_type_ids), each_serializer: ProductTypeSerializer 
   end
 
+  def inventory
+    storage_unit = StorageUnit.find(params[:id])
+    products = storage_unit.products.available
+    render json: products, each_serializer: ProductSerializer 
+  end
+
   private
 
   def storage_unit_params

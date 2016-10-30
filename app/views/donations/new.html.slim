@@ -14,9 +14,13 @@
         = f.number_field :telephone, class: 'form-control, orange-input', required: true
         = f.label :Heladera
         = f.select "storage_unit_id", options_for_select(@storage_units.collect {|p| [ p['name'], p['id'] ] }), required: true
-        = f.fields_for :products do |products|
+        = f.fields_for :donation_products do |products|
           = f.label :Producto
           = products.select "product_type_id", options_for_select(@product_types.collect {|p| [ p['name'], p['id'] ] }),required: true
+          br
+          = f.label :Etiqueta
+          br
+          = products.text_field :label, class: 'form-control, orange-input', required: true
           br
           = f.label :Cantidad
           br
