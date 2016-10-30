@@ -6,7 +6,6 @@ HeladeraSocialBackend
 [![Code Climate](https://codeclimate.com/github/Wolox/heladera-social-backend/badges/gpa.svg)](https://codeclimate.com/github/Wolox/heladera-social-backend)
 [![Error Tracking](https://d26gfdfi90p7cf.cloudfront.net/rollbar-badge.144534.o.png)](https://rollbar.com)
 
-
 ## Running local server
 
 ### Git pre push hook

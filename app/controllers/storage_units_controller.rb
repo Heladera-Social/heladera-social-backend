@@ -33,7 +33,7 @@ class StorageUnitsController < ApplicationController
     @donations = @storage_unit.donations
     @available_products = @storage_unit.products.unexpired
   end
-  
+
   def update
     @storage_unit = StorageUnit.find(params[:id])
     if @storage_unit.update_attributes(storage_unit_params)
@@ -67,13 +67,13 @@ class StorageUnitsController < ApplicationController
   def product_types
     storage_unit = StorageUnit.find(params[:id])
     product_type_ids = storage_unit.products.available.pluck(:product_type_id)
-    render json: ProductType.where(id: product_type_ids), each_serializer: ProductTypeSerializer 
+    render json: ProductType.where(id: product_type_ids), each_serializer: ProductTypeSerializer
   end
 
   def inventory
     storage_unit = StorageUnit.find(params[:id])
     products = storage_unit.products.available
-    render json: products, each_serializer: ProductSerializer 
+    render json: products, each_serializer: ProductSerializer
   end
 
   private
