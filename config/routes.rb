@@ -3,7 +3,7 @@ HeladeraSocialBackend::Application.routes.draw do
   devise_for :users, :controllers => { :registrations => "users/registrations" }
   devise_for :admin_users, ActiveAdmin::Devise.config
   ActiveAdmin.routes(self)
-  root to: 'application#index'
+  root to: 'storage_units#index'
 
   require 'sidekiq/web'
   mount Sidekiq::Web, at: 'sidekiq'
@@ -23,5 +23,6 @@ HeladeraSocialBackend::Application.routes.draw do
 
   resources :donations, only: [:create, :new, :show]
   resources :extractions, only: [:create, :new, :show]
+  resources :contacts, only: [:create, :new]
   resources :products, only: [:index]
 end
