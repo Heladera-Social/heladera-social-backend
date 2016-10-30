@@ -1,0 +1,19 @@
+.login
+  h2.title
+    = "Contactate y sumate al equipo"
+  = form_for @contact, :method => "post" do |f|
+    .field
+      = f.email_field :email, autofocus: true, class: 'input', placeholder: "Email"
+    .field
+      = f.text_field :first_name, autofocus: true, class: 'input', placeholder: "Nombre"
+    .field
+      = f.text_field :last_name, autofocus: true, class: 'input', placeholder: "Apellido"
+    .field
+      = f.text_field :telephone, autofocus: true, class: 'input', placeholder: "Telefono"
+    .actions
+      = f.submit "CONTACTAR", class: 'main-button'
+    hr
+    .field
+      a href=new_session_path(User)
+        .secondary-button
+          = "INGRESAR"
