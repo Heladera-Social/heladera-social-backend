@@ -11,6 +11,21 @@ class StorageUnitsController < ApplicationController
     redirect_to root_path unless current_user.storage_units.include?(@storage_unit)
   end
 
+  def list
+    @storage_units = StorageUnit.all
+    render json: @storage_units
+  end
+
+  def new
+    return redirect_to root_path if !current_user
+    @storage_unit = StorageUnit.new
+  end
+
+  def create
+    storage_unit = StorageUnit.create!(storage_unit_params.merge(managers: [current_user]))
+    redirect_to storage_unit_path(storage_unit.id)
+  end
+
   def show
     @storage_unit = StorageUnit.find(params[:id])
     @products = @storage_unit.products

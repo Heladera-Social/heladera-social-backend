@@ -16,7 +16,6 @@
 .login{
 	margin: 0 auto;
 	text-align: center;
-	margin-top: 15%;
 
 	.recover-title{
 		font-family:AvenirNext-Bold;
@@ -92,6 +91,10 @@
 
 	.favorite{
 		width: 80%;
+	}
+
+	.right{
+	    float: right !important;
 	}
 
 	h2{

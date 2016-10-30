@@ -1,0 +1,45 @@
+.container.storage-edit
+  .container-fluid
+    .row
+      .col-xs-12.col-md-8
+        h2 
+          = "Crear Heladera"
+    .row
+      = form_for @storage_unit, :method => "post" do |f|
+        .edit-form
+          .row
+            .col-xs-6.col-md-6
+              .form-input
+                = f.label :nombre
+                br
+                = f.text_field :name, class: 'form-control, orange-input', required: true
+              .form-input
+                = f.label :email
+                br
+                = f.email_field :email, class: 'form-control, orange-input', required: true
+              .form-input
+                = f.label :Direccion
+                br
+                = f.text_field :address, class: 'form-control, orange-input', required: true
+              .form-input
+                = f.label :Telefono
+                br
+                = f.text_field :telephone, class: 'form-control, orange-input', required: true
+            .col-xs-6.col-md-6
+              .form-input
+                = f.label :Latitud
+                br
+                = f.text_field :latitude, class: 'form-control, orange-input', required: true
+              .form-input
+                = f.label :Longitud
+                br
+                = f.text_field :longitude, class: 'form-control, orange-input', required: true
+              .form-input
+                = f.label :Desde
+                br
+                = f.text_field :service_time_from, class: 'form-control, orange-input', required: true
+              .form-input
+                = f.label :Hasta
+                br
+                = f.text_field :service_time_to, class: 'form-control, orange-input', required: true
+          = f.submit "Crear Heladera", class: "btn btn-primary"
