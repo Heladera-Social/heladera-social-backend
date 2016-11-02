@@ -13,6 +13,8 @@
             = date_field_tag :expiration_date
             = "Vencidos?"
             = check_box_tag :expired
+            = "Ver productos que vencen en: "
+            = number_field_tag :days, nil ,min: 0
             = submit_tag "Buscar", :name => nil, :class => 'btn-primary'
     hr
     .row

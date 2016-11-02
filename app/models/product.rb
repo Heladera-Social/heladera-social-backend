@@ -14,4 +14,5 @@ class Product < ActiveRecord::Base
   scope :expired, -> { where('expiration_date < ? OR expiration_date IS NULL', Time.zone.today) }
   scope :unexpired, -> { where('expiration_date >= ? OR expiration_date IS NULL', Time.zone.today) }
   scope :available, -> { where('quantity > 0').unexpired }
+  scope :expires_in, ->(days) { where('expiration_date = ? OR expiration_date IS NULL', Time.zone.today + days.days) }
 end
