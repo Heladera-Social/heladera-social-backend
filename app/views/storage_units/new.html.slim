@@ -2,7 +2,7 @@
   .container-fluid
     .row
       .col-xs-12.col-md-8
-        h2 
+        h2
           = "Crear Heladera"
     .row
       = form_for @storage_unit, :method => "post" do |f|
@@ -16,7 +16,7 @@
               .form-input
                 = f.label :email
                 br
-                = f.email_field :email, class: 'form-control, orange-input', required: true,placeholder: "a@alimentar.com"
+                = f.email_field :email, class: 'form-control, orange-input', required: true,placeholder: "mariano@gmail.com"
               .form-input
                 = f.label :Direccion
                 br

@@ -2,37 +2,48 @@
   .container-fluid
     .row
       .col-xs-12.col-md-8
-        h2 
+        h2
           = "Agregar Donacion"
     .row
       = nested_form_for @donation, :method => "post" do |f|
-      	= f.label :Nombre
-        = f.text_field :name, class: 'form-control, orange-input', required: true
-        = f.label :Apellido
-        = f.text_field :last_name, class: 'form-control, orange-input', required: true
-        = f.label :Telefono
-        = f.number_field :telephone, class: 'form-control, orange-input', required: true
-        = f.label :Heladera
-        = f.select "storage_unit_id", options_for_select(@storage_units.collect {|p| [ p['name'], p['id'] ] }), required: true
-        = f.fields_for :donation_products do |products|
-          = f.label :Producto
-          = products.select "product_type_id", options_for_select(@product_types.collect {|p| [ p['name'], p['id'] ] }),required: true
-          br
-          = f.label :Etiqueta
-          br
-          = products.text_field :label, class: 'form-control, orange-input', required: true
-          br
-          = f.label :Cantidad
-          br
-          = products.number_field :quantity, class: 'form-control, orange-input', required: true
-          br
-          .row
-            .col-xs-3.col-md-8
-              = f.label :Vencimiento
-            .col-xs-9.col-md-8
-              = products.text_field :expiration_date, class: 'form-control, orange-input', required: true, data: {provide: "datepicker"}, readonly:"readonly"
-          br  
-          = products.link_to_remove "Eliminar producto", class: 'btn-secondary'
-        p
-          = f.link_to_add "Agregar Producto", :donation_products, class: 'btn-primary'
-        = f.submit "Donar!", class: "btn btn-primary"
+        .row
+          .col-xs-12.col-md-4
+          	= f.label :Nombre
+            br
+            = f.text_field :name, class: 'form-control, orange-input', required: true, placeholder: "Juan"
+            br
+            = f.label :Apellido
+            br
+            = f.text_field :last_name, class: 'form-control, orange-input', required: true, placeholder: "Perez"
+            br
+            = f.label :Telefono
+            br
+            = f.number_field :telephone, class: 'form-control, orange-input', required: true, placeholder: "45052222"
+            br
+            = f.label :Heladera
+            br
+            = f.select "storage_unit_id", options_for_select(@storage_units.collect {|p| [ p['name'], p['id'] ] }), required: true
+          .col-xs-12.col-md-4
+              = f.fields_for :donation_products do |products|
+                = f.label :Producto
+                br
+                = products.select "product_type_id", options_for_select(@product_types.collect {|p| [ p['name'], p['id'] ] }),required: true
+                br
+                = f.label :Etiqueta
+                br
+                = products.text_field :label, class: 'form-control, orange-input', required: true, placeholder: "Estante 1"
+                br
+                = f.label :Cantidad
+                br
+                = products.number_field :quantity, class: 'form-control, orange-input', required: true, placeholder: "3"
+                br
+                = f.label :Vencimiento
+                  = products.text_field :expiration_date, class: 'form-control, orange-input', required: true, data: {provide: "datepicker"}, readonly:"readonly", placeholder: "mm/dd/aaaa"
+                br
+                = products.link_to_remove "Eliminar producto", class: 'btn btn-primary new-donation'
+              = f.link_to_add "Agregar producto", :donation_products, class: 'btn btn-primary'
+        .row
+          .col-xs-12.col-md-4
+          .col-xs-12.col-md-4
+          .col-xs-12.col-md-4
+            = f.submit "Donar!", class: "btn btn-primary submit-donation"
