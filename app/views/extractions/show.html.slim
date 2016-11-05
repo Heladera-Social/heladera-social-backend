@@ -9,10 +9,12 @@
             = "#{@extraction.storage_unit.name}"
     .products
       h3
-        = "Productos Donados"
+        = "Productos Extraídos"
       table.table.table-hover
         thead
           tr
+            th
+              = "Etiqueta"
             th
               = "Nombre"
             th
@@ -21,7 +23,9 @@
           - @extraction.extraction_products.each do |p|
             tr
               td
+                = "#{p.label}"
+              td
                 = "#{p.name}"
               td
-                = "#{p.received_quantity} #{p.measurement_unit}"
+                = "#{p.quantity} #{p.measurement_unit}"
               
