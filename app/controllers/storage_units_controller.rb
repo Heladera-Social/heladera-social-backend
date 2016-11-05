@@ -23,7 +23,6 @@ class StorageUnitsController < ApplicationController
 
   def create
     storage_unit = StorageUnit.create!(storage_unit_params.merge(managers: [current_user]))
-    byebug
     redirect_to storage_unit_path(storage_unit.id)
   end
 
@@ -38,7 +37,7 @@ class StorageUnitsController < ApplicationController
   def update
     @storage_unit = StorageUnit.find(params[:id])
     if @storage_unit.update_attributes(storage_unit_params)
-      redirect_to storage_units_path
+      redirect_to storage_unit_path(@storage_unit)
     else
       render 'edit'
     end
