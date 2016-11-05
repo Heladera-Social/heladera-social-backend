@@ -34,7 +34,9 @@
         thead
           tr
             th
-              = "Nombre"
+              = 'Etiqueta'
+            th
+              = "Tipo de producto"
             th
               = "Cantidad"
             th
@@ -43,11 +45,13 @@
           - @products.each do |p|
             tr
               td
-                = "#{p.product_type.name}"
+                = p.label
+              td
+                = p.product_type.name
               td
                 = "#{p.quantity} #{p.product_type.measurement_unit}"
               td
-                = "#{p.expiration_date}"
+                = p.expiration_date
     - if @products.empty?
       h3
         = "No hay productos disponibles"
