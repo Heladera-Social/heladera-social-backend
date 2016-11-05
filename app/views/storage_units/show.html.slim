@@ -17,11 +17,11 @@
   .storage-information
     h4 id='direccion'
       = "Direccion: #{@storage_unit.address}"
-    h4 id='encargado'
-      a href="#"
-        = "Encargado: #{@storage_unit.managers.first.name}"
+    - if @storage_unit.managers.any?
+      h4 id='encargado'
+        = "Encargado: #{@storage_unit.managers.first.name} #{@storage_unit.managers.first.last_name}"
     h4 id='horarios'
-      = "Horarios de atencion: #{@storage_unit.service_time_from}:#{@storage_unit.service_time_to}"
+      = "Horarios de atencion: #{@storage_unit.service_time_from}-#{@storage_unit.service_time_to}"
     h4 id='telefono'
       = "Telefono: #{@storage_unit.telephone}"
     h4 id='email'
@@ -33,6 +33,8 @@
       thead
         tr
           th
+            = "Etiqueta"
+          th
             = "Nombre"
           th
             = "Cantidad"
@@ -41,6 +43,8 @@
       tbody
         - @products.each do |p|
           tr
+            td
+              = "#{p.label}"
             td
               = "#{p.product_type.name}"
             td

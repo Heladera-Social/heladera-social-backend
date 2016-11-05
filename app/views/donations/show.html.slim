@@ -20,14 +20,18 @@
         thead
           tr
             th
-              = "Nombre"
+              = "Etiqueta"
+            th
+              = "Tipo"
             th
               = "Cantidad"
             th
               = "Fecha de Vencimiento"
         tbody
-          - @donation.products.each do |p|
+          - @donation.donation_products.each do |p|
             tr
+              td
+                = "#{p.label}"
               td
                 = "#{p.name}"
               td
