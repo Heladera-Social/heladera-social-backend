@@ -21,7 +21,7 @@
       a href="mailto:#{@storage_unit.managers.first.email}"
         = "Encargado: #{@storage_unit.managers.first.name}"
     h4 id='horarios'
-      = "Horarios de atencion: #{@storage_unit.service_time_from}:#{@storage_unit.service_time_to}"
+      = "Horarios de atencion: #{@storage_unit.service_time_from}-#{@storage_unit.service_time_to}"
     h4 id='telefono'
       = "Telefono: #{@storage_unit.telephone}"
     h4 id='email'
