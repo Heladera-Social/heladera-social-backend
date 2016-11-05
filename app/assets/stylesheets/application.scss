@@ -90,7 +90,8 @@
 .storage-list{
 
 	.favorite{
-		width: 80%;
+		width: 40%;
+		margin-left: 3%;
 	}
 
 	.right{
@@ -252,22 +253,22 @@ h4 {
 }
 
 .btn-primary{
-	background:#fdb949 !important; 
-	border-color:#fdb949 !important;
-	border:3px solid #fdb949;
-	border-radius:3px;
-	margin-top: 20px;
-	width:200px;
-	height:53px;
-	font-size:16px;
-	color:#4a4a4a;
-	letter-spacing:0px;
-	text-align:center;
-	font-family:Oswald;
-	color:#ffffff;
-	letter-spacing:0px;
-	line-height:39px;
-	text-align:center;
+	background: #fdb949 !important;
+	border-color: #fdb949 !important;
+	border: 3px solid #fdb949;
+	border-radius: 3px;
+	margin-top: 10px;
+	width: 200px;
+	height: 30px;
+	font-size: 16px;
+	color: #4a4a4a;
+	letter-spacing: 0px;
+	text-align: center;
+	font-family: Oswald;
+	color: #ffffff;
+	letter-spacing: 0px;
+	line-height: 39px;
+	text-align: center;
 }
 
 .storage-information, .storage-list h4 {

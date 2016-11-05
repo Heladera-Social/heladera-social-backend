@@ -20,3 +20,19 @@
 #= require_tree .
 
 $('[data-behaviour~=datepicker]').datepicker({"format": "yyyy-mm-dd", "weekStart": 1, "autoclose": true});
+$(window).load ->
+	map = undefined
+	initMap = ->
+	  map = new (google.maps.Map)(document.getElementById('map'),
+	    center:
+	      lat: -34.6037
+	      lng: -58.3816
+	    zoom: 8)
+	lat = parseFloat $("#direccion").data().lat
+	lng = parseFloat $("#direccion").data().long
+	gMap = new (google.maps.Map)(document.getElementById('map'))
+	gMap.setZoom 15
+	gMap.setCenter new (google.maps.LatLng)(lat, lng)
+	newMarker = new (google.maps.Marker)(
+		map: gMap
+		position: new (google.maps.LatLng)(lat, lng))

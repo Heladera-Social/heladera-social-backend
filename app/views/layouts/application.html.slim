@@ -8,20 +8,20 @@ html
     = metamagic
     meta content=("text/html; charset=UTF-8") http-equiv="Content-Type" /
     title Heladera Social
-    //gmap4rails
-    script src="//maps.google.com/maps/api/js?v=3.23&sensor=false&client=&key=&libraries=geometry&language=&hl=&region=" 
-    script src="//cdn.rawgit.com/mahnunchik/markerclustererplus/master/dist/markerclusterer.min.js" 
-    script src="//cdn.rawgit.com/printercu/google-maps-utility-library-v3-read-only/master/infobox/src/infobox_packed.js" type="text/javascript" 
-
+    javascript:
+          var map;
+          function initMap() {
+            map = new google.maps.Map(document.getElementById('map'), {
+              center: {lat: -34.6037, lng: -58.3816},
+              zoom: 14
+            });
+          }
     = stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true
     link crossorigin="anonymous" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7" rel="stylesheet" /
     script crossorigin="anonymous" integrity="sha384-0mSbJDEHialfmuBBQP6A4Qrprq5OVfW37PRR3j5ELqxss1yVqOtnepnHVP9aJ7xS" src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js" 
-
+    script async="" defer="" src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAYN1VdoESNywhgXvSotnGVuiT-31up08Q&callback=initMap"
   body
     = render 'layouts/header'
     
    
     = yield
-    
-
-    

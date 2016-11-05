@@ -12,13 +12,13 @@
         .col-xs-6.col-md-4
           a href=edit_storage_unit_path(@storage_unit)
             button.btn.btn-primary.favorite type="button"  Editar
-  .map
+  #map.map
     = image_tag('map.png')
   .storage-information
-    h4 id='direccion'
+    h4 id='direccion' data={lat:@storage_unit.latitude,long:@storage_unit.longitude}
       = "Direccion: #{@storage_unit.address}"
     h4 id='encargado'
-      a href="#"
+      a href="mailto:#{@storage_unit.managers.first.email}"
         = "Encargado: #{@storage_unit.managers.first.name}"
     h4 id='horarios'
       = "Horarios de atencion: #{@storage_unit.service_time_from}:#{@storage_unit.service_time_to}"
@@ -27,37 +27,45 @@
     h4 id='email'
       = "Email: #{@storage_unit.email}"
   .products
-    h3
-      = "Productos disponibles"
-    table.table.table-hover
-      thead
-        tr
-          th
-            = "Nombre"
-          th
-            = "Cantidad"
-          th
-            = "Fecha de Vencimiento"
-      tbody
-        - @products.each do |p|
+    - unless @products.empty?
+      h3
+        = "Productos disponibles"
+      table.table.table-hover
+        thead
           tr
-            td
-              = "#{p.product_type.name}"
-            td
-              = "#{p.quantity} #{p.product_type.measurement_unit}"
-            td
-              = "#{p.expiration_date}"
+            th
+              = "Nombre"
+            th
+              = "Cantidad"
+            th
+              = "Fecha de Vencimiento"
+        tbody
+          - @products.each do |p|
+            tr
+              td
+                = "#{p.product_type.name}"
+              td
+                = "#{p.quantity} #{p.product_type.measurement_unit}"
+              td
+                = "#{p.expiration_date}"
+    - if @products.empty?
+      h3
+        = "No hay productos disponibles"
   .products
-    h3
-      = "Donaciones"
-    table.table.table-hover
-      thead
-        tr
-          th
-            = "Nombre"
-      tbody
-        - @donations.each do |d|
+    - unless @donations.empty?  
+      h3
+        = "Donaciones"
+      table.table.table-hover
+        thead
           tr
-            td
-              a href=donation_path(d.id)
-                = "Donacion Numero #{d.id}"
+            th
+              = "Nombre"
+        tbody
+          - @donations.each do |d|
+            tr
+              td
+                a href=donation_path(d.id)
+                  = "Donacion Numero #{d.id}"
+    - if @donations.empty?  
+      h3
+        = "No hay donaciones hechas"
