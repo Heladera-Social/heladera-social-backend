@@ -13,6 +13,8 @@ class ExtractionsController < ApplicationController
   def create
     extraction = Extraction.create!(extraction_params.merge(user: current_user))
     redirect_to extraction_path(extraction.id)
+  rescue
+    redirect_to new_extraction_path, flash: { error: 'Necesitás al menos un producto. Recordá respetar los máximos posibles que se muestran' }
   end
 
   private

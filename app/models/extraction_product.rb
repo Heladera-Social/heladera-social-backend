@@ -5,6 +5,7 @@ class ExtractionProduct < ActiveRecord::Base
   belongs_to :extraction
   belongs_to :product
 
-  delegate :name, to: :product_type
-  delegate :measurement_unit, to: :product_type
+  delegate :name, to: :product
+  delegate :label, to: :product
+  delegate :measurement_unit, to: :product
 end

@@ -5,19 +5,22 @@
         h2 
           = "Generar extraccion"
     .row
+      p#error
+        = flash[:error]
       = nested_form_for @extraction, :method => "post" do |f|
       	= f.label :Heladera
         = f.select "storage_unit_id", options_for_select(@storage_units.collect {|p| [ p['name'], p['id'] ] }), required: true
         = f.fields_for :extraction_products do |products|
           = f.label :Producto
           br
-          = products.select "product_type_id", options_for_select(@product_types.collect {|p| [ p['name'], p['id'] ] }),required: true
+          = products.select "product_id", [], {}, { class: 'extraction-product-select', required: true }
           br
           = f.label :Cantidad
+          p.extraction-maximum-amount-warning
           br
-          = products.number_field :required_quantity, class: 'form-control, orange-input', required: true
+          = products.number_field :quantity, class: 'form-control, orange-input', required: true
           br
           = products.link_to_remove "Eliminar producto"
         p
-          = f.link_to_add "Agregar Producto", :extraction_products
-        = f.submit "Donar!", class: "btn btn-primary"
+          = f.link_to_add "Agregar producto a extraer", :extraction_products, onclick: 'addProductSelect()'
+        = f.submit "Registrar Extracción", class: "btn btn-primary"
