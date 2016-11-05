@@ -12,34 +12,34 @@
               .form-input
                 = f.label :nombre
                 br
-                = f.text_field :name, class: 'form-control, orange-input', required: true
+                = f.text_field :name, class: 'form-control, orange-input', required: true,maxlength: 30, placeholder: "Heladera 1"
               .form-input
                 = f.label :email
                 br
-                = f.email_field :email, class: 'form-control, orange-input', required: true
+                = f.email_field :email, class: 'form-control, orange-input', required: true,placeholder: "a@alimentar.com"
               .form-input
                 = f.label :Direccion
                 br
-                = f.text_field :address, class: 'form-control, orange-input', required: true
+                = f.text_field :address, class: 'form-control, orange-input', required: true,maxlength: 30,placeholder: "Ayacucho y Vicente Lopez"
               .form-input
                 = f.label :Telefono
                 br
-                = f.text_field :telephone, class: 'form-control, orange-input', required: true
+                = f.telephone_field :telephone, class: 'form-control, orange-input', required: true,placeholder: "42643721"
             .col-xs-6.col-md-6
               .form-input
                 = f.label :Latitud
                 br
-                = f.text_field :latitude, class: 'form-control, orange-input', required: true
+                = f.number_field :latitude, class: 'form-control, orange-input', required: true,placeholder: "-54"
               .form-input
                 = f.label :Longitud
                 br
-                = f.text_field :longitude, class: 'form-control, orange-input', required: true
+                = f.number_field :longitude, class: 'form-control, orange-input', required: true,placeholder: "54"
               .form-input
-                = f.label :Desde
+                = f.label "Horario De Apertura"
                 br
-                = f.text_field :service_time_from, class: 'form-control, orange-input', required: true
+                = f.number_field :service_time_from, class: 'form-control, orange-input', required: true, max: 24, min: 0,placeholder: "08"
               .form-input
-                = f.label :Hasta
+                = f.label "Horario De Cierre"
                 br
-                = f.text_field :service_time_to, class: 'form-control, orange-input', required: true
+                = f.number_field :service_time_to, class: 'form-control, orange-input', required: true, max: 24, min: 0,placeholder: "18"
           = f.submit "Crear Heladera", class: "btn btn-primary"

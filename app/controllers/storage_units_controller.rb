@@ -23,6 +23,7 @@ class StorageUnitsController < ApplicationController
 
   def create
     storage_unit = StorageUnit.create!(storage_unit_params.merge(managers: [current_user]))
+    byebug
     redirect_to storage_unit_path(storage_unit.id)
   end
 
