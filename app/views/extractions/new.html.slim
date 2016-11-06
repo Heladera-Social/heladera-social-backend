@@ -20,7 +20,11 @@
           br
           = products.number_field :quantity, class: 'form-control, orange-input', required: true
           br
-          = products.link_to_remove "Eliminar producto"
+          = products.link_to_remove "Eliminar producto", class: 'btn btn-primary new-donation'
         p
-          = f.link_to_add "Agregar producto a extraer", :extraction_products, onclick: 'addProductSelect()'
-        = f.submit "Registrar Extracción", class: "btn btn-primary btn-extractions"
+          = f.link_to_add "Agregar producto a extraer", :extraction_products, onclick: 'addProductSelect()', class: 'btn btn-primary'
+          .row
+            .col-xs-12.col-md-4
+            .col-xs-12.col-md-4
+            .col-xs-12.col-md-4
+              = f.submit "Registrar Extracción", class: "btn btn-primary btn-extractions submit-donation"
