@@ -2,7 +2,7 @@
   .container-fluid
     .row
       .col-xs-12.col-md-8
-        h2 
+        h2
           = "Generar extraccion"
     .row
       p#error
@@ -23,4 +23,4 @@
           = products.link_to_remove "Eliminar producto"
         p
           = f.link_to_add "Agregar producto a extraer", :extraction_products, onclick: 'addProductSelect()'
-        = f.submit "Registrar Extracción", class: "btn btn-primary"
+        = f.submit "Registrar Extracción", class: "btn btn-primary btn-extractions"

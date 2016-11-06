@@ -54,7 +54,7 @@
 		border-radius:6px;
 		margin-top: 20px;
 		background:var(--orange1);
-		border:3px solid var(--orange1);
+		border:0px solid var(--orange1);
 		width:240px;
 		height:51px;
 
@@ -72,7 +72,7 @@
 		border-radius:6px;
 		padding-top: 7px;
 		background:var(--orange2);
-		border:3px solid var(--orange2);
+		border:0px solid var(--orange2);
 		width:240px;
 		height:51px;
 		font-family:Oswald;
@@ -100,6 +100,8 @@
 	}
 	.new-storage-unit {
 		background-color:var(--orange2)!important;
+		border-color:var(--orange2)!important;
+		margin-top:20px;
 	}
 
 	.right{
@@ -263,7 +265,7 @@ h4 {
 .btn-primary{
 	background: var(--orange1) !important;
 	border-color: var(--orange1) !important;
-	border: 3px solid var(--orange1);
+	border: 0px solid var(--orange1);
 	border-radius: 3px;
 	width: 200px;
 	height: 39px;
@@ -369,13 +371,82 @@ select {
 
 a.btn-primary.new-donation {
 	background-color:var(--orange2) !important;
+	border-color:var(--orange2) !important;
 	margin-bottom: 30px;
 }
 
 .submit-donation {
 	background-color:var(--orange2) !important;
+	border-color:var(--orange2)!important;
+	margin-bottom: 30px!important;
 }
 
 a.btn-primary.add-new-donation {
 	margin-bottom: 30px;
+}
+
+.btn-extractions {
+margin-bottom: 30px!important;
+}
+
+.footer-base {
+    position: absolute;
+    bottom: -200px;
+    width: 100%;
+    height: 275px;
+    background: #4a4a4a;
+    display: -webkit-box;
+    display: -webkit-flex;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+    -webkit-flex-direction: column;
+    -ms-flex-direction: column;
+    flex-direction: column;
+    -webkit-box-pack: center;
+    -webkit-justify-content: center;
+    -ms-flex-pack: center;
+    justify-content: center;
+    -webkit-box-align: center;
+    -webkit-align-items: center;
+    -ms-flex-align: center;
+    align-items: center;
+}
+.footer-logo {
+    margin-bottom: 20px;
+}
+
+body {
+    min-height:100%;
+    position:relative;
+    padding-bottom:275px;
+}
+.footer {
+    position: absolute;
+    left: 0 ; right: 0; bottom: 0;
+    height:275px;
+}
+
+.footer-logo-icon {
+    width: 75px;
+    display: block;
+    margin: 0 auto 5px;
+}
+.footer-logo-text {
+    width: 250px;
+    display: block;
+    margin: 0 auto;
+}
+.h3-footer {
+    font-size: 18px;
+    color: #FFF;
+    margin-bottom: 5px;
+}
+.rights {
+    color: #FFF;
+}
+.h2-footer {
+    font-size: 20px;
+    color: #FF9E16;
 }
