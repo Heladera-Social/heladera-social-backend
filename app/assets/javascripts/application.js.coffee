@@ -30,6 +30,8 @@ $(window).load ->
 	    zoom: 8)
 	lat = parseFloat $("#direccion").data().lat
 	lng = parseFloat $("#direccion").data().long
+	console.log lat
+	console.log lng
 	gMap = new (google.maps.Map)(document.getElementById('map'))
 	gMap.setZoom 15
 	gMap.setCenter new (google.maps.LatLng)(lat, lng)
