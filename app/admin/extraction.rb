@@ -1,4 +1,4 @@
-ActiveAdmin.register Donation do
+ActiveAdmin.register Extraction do
 
 permit_params :user_id, :storage_unit_id, products_attributes: [:product_type_id, :quantity, :expiration_date]
 
@@ -17,26 +17,12 @@ show do |d|
   end
 
   panel 'Productos' do
-    table_for d.donation_products do
+    table_for d.extraction_products do
       column :product_type
       column :quantity
       column :expiration_date
     end
   end
-end
-
-form do |f|
-  f.inputs "Detalle De Donacion" do
-    f.input :user
-    f.input :storage_unit
-  end
-
-  f.has_many :donation_products do |product|
-    product.input :product_type
-    product.input :quantity, min: 0
-    product.input :expiration_date
-  end
-  f.actions
 end
 
 end
