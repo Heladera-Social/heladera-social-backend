@@ -64,12 +64,16 @@
           tr
             th
               = "Nombre"
+            th
+              = "Fecha"
         tbody
           - @donations.each do |d|
             tr
               td
                 a href=donation_path(d.id)
                   = "Donacion Numero #{d.id}"
+              td
+                = d.created_at.to_date
     - if @donations.empty?  
       h3
         = "No hay donaciones hechas"
