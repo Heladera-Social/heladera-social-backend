@@ -38,7 +38,7 @@
                 = products.number_field :quantity, class: 'form-control, orange-input', required: true, placeholder: "3"
                 br
                 = f.label :Vencimiento
-                  = products.text_field :expiration_date, class: 'form-control, orange-input', required: true, data: {provide: "datepicker"}, readonly:"readonly", placeholder: "mm/dd/aaaa"
+                  = products.text_field :expiration_date, class: 'form-control, orange-input', 'data-date-format':("dd-mm-yyyy"), required: true, data: {provide: "datepicker"}, format:"dd-mm-yyyy", readonly:"readonly", placeholder: "dd/mm/aaaa", id:"datepicker"
                 br
                 = products.link_to_remove "Eliminar producto", class: 'btn btn-primary new-donation'
               = f.link_to_add "Agregar producto", :donation_products, class: 'btn btn-primary'
