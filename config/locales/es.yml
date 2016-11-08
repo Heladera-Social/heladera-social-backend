@@ -20,14 +20,6 @@
 # available at http://guides.rubyonrails.org/i18n.html.
 
 es:
-  time:
-    formats:
-      default: "%Y/%m/%d"
-      short: "%b %d"
-      long: "%B %d, %Y"
-  date:
-    formats:
-      long: "%Y-%m-%d %H:%M:%S"
   hello: "Hola mundo"
   sign_up: "Registrate"
   login_title: 'Inciar Sesion'
