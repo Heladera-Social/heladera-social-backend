@@ -1,5 +1,7 @@
 var currentData = [];
 
+
+
 function fetchProducts() {
   $.ajax({
     url: "/storage_units/" + $("#extraction_storage_unit_id")[0].value + "/inventory",
@@ -43,6 +45,18 @@ function changeProductSelect(data) {
       warning.text('La cantidad máxima disponible es ' + maxQuantity + ' ' + unit);
     });
   });
+};
+
+function getProductFromBarCode() {
+  var button = $(event.target)
+  var code = button.closest(".barcode-section").find('.barcode')[0].value
+  var url = "http://localhost:3000/bar_code/get_product?code=" + code
+  $.ajax({url: url, success: function(result){
+    var amount = result[0]["amount"];
+    var product = result[0]["product_type_id"];
+    button.closest(".fields").find('#amount').val(amount);
+    button.closest(".fields").find('select').val(product);
+  }});
 };
 
 $(document).ready(function() {
