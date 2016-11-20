@@ -1,7 +1,8 @@
-nav.navbar.navbar-default.navbar-static-top.header
-  .container
-    a.navbar-brand href=root_path
-      = image_tag('ic_header_logo.svg') 
+header.header
+  = image_tag('ic_header_logo.svg')
+  .header-actions
+    a.social-link href="https://www.facebook.com/Proyecto-Alimentar-1059783267444904/"
+      img src="assets/ic_facebook.svg" /
     .navbar-text
 	    a.navbar-link href=storage_units_path
 	      = "Heladeras"
@@ -11,10 +12,9 @@ nav.navbar.navbar-default.navbar-static-top.header
           a.navbar-link href=new_extraction_path
             = "Extraccion"
           a.navbar-link href=products_path
-            = "Productos"  
+            = "Productos"
     .navbar-text.navbar-right
       - if current_user
       	= link_to('Cerrar Sesion', destroy_user_session_path, :method => :delete, class:'navbar-link')
       - unless current_user
         a.navbar-link href=new_session_path(User)  Iniciar Sesion
-        
