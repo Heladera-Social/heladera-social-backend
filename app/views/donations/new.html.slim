@@ -1,4 +1,4 @@
-.container.storage-edit
+.section.container.storage-edit
   .container-fluid
     .row
       .col-xs-12.col-md-8
@@ -7,45 +7,52 @@
     .row
       = nested_form_for @donation, :method => "post" do |f|
         .row
-          .col-xs-12.col-md-4
+          .col-xs-4.col-md-4
           	= f.label :Nombre
             br
             = f.text_field :name, class: 'form-control, orange-input', required: true, placeholder: "Juan"
-            br
+          .col-xs-4.col-md-4
             = f.label :Apellido
             br
             = f.text_field :last_name, class: 'form-control, orange-input', required: true, placeholder: "Perez"
-            br
+          .col-xs-4.col-md-4
             = f.label :Telefono
             br
             = f.number_field :telephone, class: 'form-control, orange-input', required: true, placeholder: "45052222"
             br
-            = f.label :Heladera
-            br
-            = f.select "storage_unit_id", options_for_select(@storage_units.collect {|p| [ p['name'], p['id'] ] }), required: true
-          .col-xs-12.col-md-4
+
+          .col-xs-12.col-md-12
+            hr
+            .col-xs-4.col-md-4
+              = f.label :Heladera
+              br
+              = f.select "storage_unit_id", options_for_select(@storage_units.collect {|p| [ p['name'], p['id'] ] }), required: true
+          .col-xs-12.col-md-12
               = f.fields_for :donation_products do |products|
                 .barcode-section
-                  = number_field_tag :days, nil ,min: 0, class: 'barcode orange-input'
+                  = f.label :Codigo_de_barras
+                  br
+                  = number_field_tag :days, nil ,min: 0, class: 'barcode orange-input', placeholder: "12312312312312"
                   button.btn-primary type="button" href="#" onclick="getProductFromBarCode()"
                     = "Obtener"
-                br
-                = f.label :Producto
-                br
-                = products.select "product_type_id", options_for_select(@product_types.collect {|p| [ p['name'], p['id'] ] }),required: true
-                br
-                = f.label :Etiqueta
-                br
-                = products.text_field :label, class: 'form-control, orange-input', required: true, placeholder: "Estante 1"
-                br
-                = f.label :Cantidad
-                br
-                = products.number_field :quantity, class: 'form-control, orange-input', required: true, placeholder: "3", id:"amount"
-                br
-                = f.label :Vencimiento
+
+                .col-xs-3.col-md-3
+                  = f.label :Producto
+                  br
+                  = products.select "product_type_id", options_for_select(@product_types.collect {|p| [ p['name'], p['id'] ] }),required: true
+                .col-xs-3.col-md-3
+                  = f.label :Etiqueta
+                  br
+                  = products.text_field :label, class: 'form-control, orange-input', required: true, placeholder: "Estante 1"
+                .col-xs-3.col-md-3
+                  = f.label :Cantidad
+                  br
+                  = products.number_field :quantity, class: 'form-control, orange-input', required: true, placeholder: "3", id:"amount"
+                .col-xs-3.col-md-3
+                  = f.label :Vencimiento
                   = products.text_field :expiration_date, class: 'form-control, orange-input', 'data-date-format':("dd-mm-yyyy"), required: true, data: {provide: "datepicker"}, format:"dd-mm-yyyy", readonly:"readonly", placeholder: "dd/mm/aaaa", id:"datepicker"
-                br
                 = products.link_to_remove "Eliminar producto", class: 'btn btn-primary new-donation'
+                hr
               = f.link_to_add "Agregar producto", :donation_products, class: 'btn btn-primary'
         .row
           .col-xs-12.col-md-4

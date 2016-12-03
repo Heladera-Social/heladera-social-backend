@@ -1,4 +1,4 @@
-.container.storage-edit
+.section.container.storage-edit
   .container-fluid
     .row
       .col-xs-12.col-md-8
@@ -12,19 +12,23 @@
           .col-xs-12.col-md-4
           	= f.label :Heladera
             = f.select "storage_unit_id", options_for_select(@storage_units.collect {|p| [ p['name'], p['id'] ] }), required: true
-          .col-xs-12.col-md-4
-            = f.fields_for :extraction_products do |products|
+
+
+        = f.fields_for :extraction_products do |products|
+          .row
+            .col-xs-4.col-md-4
               = f.label :Producto
               br
               = products.select "product_id", [], {}, { class: 'extraction-product-select', required: true }
-              br
+            .col-xs-4.col-md-4
               = f.label :Cantidad
               p.extraction-maximum-amount-warning
               = products.number_field :quantity, class: 'form-control, orange-input', required: true
-              br
+            .col-xs-4.col-md-4
               = products.link_to_remove "Eliminar producto", class: 'btn btn-primary new-donation'
-            p
-              = f.link_to_add "Agregar producto a extraer", :extraction_products, onclick: 'addProductSelect()', class: 'btn btn-primary'
+            hr
+        p
+          = f.link_to_add "Agregar producto a extraer", :extraction_products, onclick: 'addProductSelect()', class: 'btn btn-primary'
         .row
           .col-xs-12.col-md-4
           .col-xs-12.col-md-4

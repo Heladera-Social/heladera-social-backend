@@ -1,17 +1,26 @@
-.login
-  h2.title
-    = t('login_title')
-  = form_for(resource, as: resource_name, url: session_path(resource_name)) do |f|
-    .field
-      = f.email_field :email, autofocus: true, class: 'input', placeholder: "Email"
-    .field
-      = f.password_field :password, autocomplete: "off", class: 'input', placeholder: "Contraseña"
-    .actions
-      = f.submit "Log in", class: 'main-button'
-    .field.recover
-      = link_to "Recuperar Contraseña", new_password_path(resource_name)
-    hr
-    .field
+.section
+
+.row
+  .col-xs-4.col-md-4.contact-sector
+    h2.contact-sector-title
+      = "Proyecto alimentar"
+    .contact-sector-text
+      = "Este sistema ayuda a administrar las donaciones y extracciones"
+    .center-button.padding-top-secondary-button
       a href=new_contact_path
         .secondary-button
-          = "Registrate!"
+          = "Contactate"
+
+  .col-xs-8.col-md-8
+    .login
+      h2.title.padding-top-container
+        = t('login_title')
+      = form_for(resource, as: resource_name, url: session_path(resource_name)) do |f|
+        .field
+          = f.email_field :email, autofocus: true, class: 'input', placeholder: "Email"
+        .field
+          = f.password_field :password, autocomplete: "off", class: 'input', placeholder: "Contraseña"
+        .field.recover.align-left
+          = link_to "Recuperar Contraseña", new_password_path(resource_name)
+        .actions
+          = f.submit "Ingresar", class: 'main-button'
