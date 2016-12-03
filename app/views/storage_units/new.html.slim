@@ -26,6 +26,7 @@
                 br
                 = f.number_field :telephone, class: 'form-control, orange-input', required: true,placeholder: "42643721"
             .col-xs-6.col-md-6
+              = f.label :Locacion
               #map.map
               = f.hidden_field :latitude
               = f.hidden_field :longitude

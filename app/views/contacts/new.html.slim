@@ -10,10 +10,7 @@
       = f.text_field :last_name, autofocus: true, class: 'input', placeholder: "Apellido"
     .field
       = f.text_field :telephone, autofocus: true, class: 'input', placeholder: "Telefono"
+    br
     .actions
-      = f.submit "CONTACTAR", class: 'main-button'
-    hr
-    .field
-      a href=new_session_path(User)
-        .secondary-button
-          = "INGRESAR"
+      = f.submit "Contactar", class: 'primary-button'
+    br

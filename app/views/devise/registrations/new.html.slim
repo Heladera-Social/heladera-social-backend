@@ -14,9 +14,9 @@
     .field
       = f.password_field :password_confirmation, autocomplete: "off", class: 'input', placeholder: "Repetir Contraseña"
     .actions
-      = f.submit "REGISTRARSE", class: 'main-button'
+      = f.submit "REGISTRARSE", class: 'primary-button'
     hr
     .field
       a href=new_session_path(resource_name)
-        .secondary-button
+        .primary-button
           = "INGRESAR"
