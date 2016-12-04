@@ -50,7 +50,7 @@ function changeProductSelect(data) {
 function getProductFromBarCode() {
   var button = $(event.target)
   var code = button.closest(".barcode-section").find('.barcode')[0].value
-  var url = "http://localhost:3000/bar_code/get_product?code=" + code
+  var url = "http://heladera-social.herokuapp.com/bar_code/get_product?code=" + code
   $.ajax({url: url, success: function(result){
     var amount = result[0]["amount"];
     var product = result[0]["product_type_id"];
