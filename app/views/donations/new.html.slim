@@ -10,15 +10,15 @@
           .col-xs-4.col-md-4
           	= f.label :Nombre
             br
-            = f.text_field :name, class: 'form-control, orange-input', required: true, placeholder: "Juan"
+            = f.text_field :name, class: 'form-control, orange-input', placeholder: "Juan"
           .col-xs-4.col-md-4
             = f.label :Apellido
             br
-            = f.text_field :last_name, class: 'form-control, orange-input', required: true, placeholder: "Perez"
+            = f.text_field :last_name, class: 'form-control, orange-input', placeholder: "Perez"
           .col-xs-4.col-md-4
             = f.label :Telefono
             br
-            = f.number_field :telephone, class: 'form-control, orange-input', required: true, placeholder: "45052222"
+            = f.number_field :telephone, class: 'form-control, orange-input', placeholder: "45052222"
             br
 
           .col-xs-12.col-md-12
@@ -43,7 +43,7 @@
                 .col-xs-3.col-md-3
                   = f.label :Etiqueta
                   br
-                  = products.text_field :label, class: 'form-control, orange-input', required: true, placeholder: "Estante 1"
+                  = products.text_field :label, class: 'form-control, orange-input', placeholder: "Estante 1"
                 .col-xs-3.col-md-3
                   = f.label :Cantidad
                   br
