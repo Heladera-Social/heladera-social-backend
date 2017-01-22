@@ -3,7 +3,7 @@
     .row
       .col-xs-12.col-md-8
         h2
-          = "Editar Heladera"
+          = "Editar Comedor"
     .row
       = form_for @storage_unit do |f|
         .edit-form
@@ -12,7 +12,7 @@
               .form-input
                 = f.label :nombre
                 br
-                = f.text_field :name, class: 'form-control, orange-input', required: true,maxlength: 30, placeholder: "Heladera 1"
+                = f.text_field :name, class: 'form-control, orange-input', required: true,maxlength: 30, placeholder: "Comedor 1"
               .form-input
                 = f.label :email
                 br

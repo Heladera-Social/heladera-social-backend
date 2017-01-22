@@ -3,7 +3,7 @@
     .row
       .col-xs-12.col-md-8
         h2
-          = "Crear Heladera"
+          = "Crear Comedor"
     .row
       = form_for @storage_unit, :method => "post" do |f|
         .edit-form
@@ -12,7 +12,7 @@
               .form-input
                 = f.label :nombre
                 br
-                = f.text_field :name, class: 'form-control, orange-input', required: true,maxlength: 30, placeholder: "Heladera 1"
+                = f.text_field :name, class: 'form-control, orange-input', required: true,maxlength: 30, placeholder: "Comedor 1"
               .form-input
                 = f.label :email
                 br
@@ -38,4 +38,4 @@
                 = f.label "Horario De Cierre"
                 br
                 = f.number_field :service_time_to, class: 'form-control, orange-input', required: true, max: 24, min: 0,placeholder: "18"
-          = f.submit "Crear Heladera", class: "btn btn-primary"
+          = f.submit "Crear Comedor", class: "btn btn-primary"

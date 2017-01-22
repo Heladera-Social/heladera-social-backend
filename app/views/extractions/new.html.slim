@@ -10,7 +10,7 @@
       = nested_form_for @extraction, :method => "post" do |f|
         .row
           .col-xs-12.col-md-4
-          	= f.label :Heladera
+          	= f.label :Comedor
             = f.select "storage_unit_id", options_for_select(@storage_units.collect {|p| [ p['name'], p['id'] ] }), required: true
 
 

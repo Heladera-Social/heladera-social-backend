@@ -7,12 +7,12 @@
         .col-xs-12.col-md-8
           .h2.align-left
             - unless current_user && current_user.manager
-              = "Heladeras"
+              = "Comedores"
             - if current_user && current_user.manager
-              = "Mis Heladeras"
+              = "Mis Comedores"
         .col-xs-6.col-md-4.right
           a href=new_storage_unit_path
-            button.btn.btn-primary.favorite.new-storage-unit type="button"  Nueva Heladera
+            button.btn.btn-primary.favorite.new-storage-unit type="button"  Nuevo Comedor
     br
     - @storage_units.each do |storage|
       .row

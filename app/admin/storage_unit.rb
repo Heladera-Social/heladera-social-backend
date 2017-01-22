@@ -36,7 +36,7 @@ show do
 end
 
 form do |f|
-  f.inputs "Detalle De Heladera" do
+  f.inputs "Detalle De Comedor" do
     f.input :email
     f.input :name
     f.input :address
