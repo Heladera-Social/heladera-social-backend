@@ -15,6 +15,7 @@ HeladeraSocialBackend::Application.routes.draw do
       get :list
     end
     member do
+      get :pending_donations
       get :product_types
       get :inventory
       post :favorite

@@ -1,0 +1,29 @@
+.page-wrap
+.container.storage-list
+  .container-fluid
+    .row
+      .col-xs-12.col-md-8
+        h2
+          = @storage_unit.name
+  .products
+    - unless @pending_donations.empty?
+      h3
+        = "Donaciones pendientes"
+      table.table.table-hover
+        thead
+          tr
+            th
+              = "Nombre"
+            th
+              = "Fecha"
+        tbody
+          - @pending_donations.each do |d|
+            tr
+              td
+                a href=donation_path(d.id)
+                  = "Donacion Numero #{d.id}"
+              td
+                = d.created_at.to_date
+    - if @pending_donations.empty?
+      h3
+        = "No hay donaciones pendientes"

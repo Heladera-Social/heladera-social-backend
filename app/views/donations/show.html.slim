@@ -15,6 +15,9 @@
           = "Telefono: #{@donation.telephone}"
         h5 id=''
           = "Estado: #{@donation.delivered ? 'Entregado' : 'No entregado'}"
+        - if current_user && current_user.manager && !@donation.delivered
+          = button_to "Confirmar entrega de donacion", { :controller => 'donations', action: 'confirm_delivery', id: @donation.id }, method: :post, class: 'btn btn-primary favorite'
+
     .products
       h3
         = "Productos Donados"
