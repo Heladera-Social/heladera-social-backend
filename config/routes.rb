@@ -16,6 +16,7 @@ HeladeraSocialBackend::Application.routes.draw do
       get :map
     end
     member do
+      get :pending_donations
       get :product_types
       get :inventory
       post :favorite
@@ -32,6 +33,9 @@ HeladeraSocialBackend::Application.routes.draw do
   resources :donations, only: [:create, :new, :show] do
     collection do
       get :creation_info
+    end
+    member do
+      post :confirm_delivery
     end
   end
   resources :extractions, only: [:create, :new, :show]

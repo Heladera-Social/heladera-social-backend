@@ -10,7 +10,6 @@
           .form-group
             = select_tag :storage_unit_id, options_for_select(@storage_units.collect {|p| [ p['name'], p['id'] ] })
             = select_tag :product_type, options_for_select(@products_types.collect {|p| [ p['name'], p['id'] ] })
-            = date_field_tag :expiration_date
             = "Vencidos?"
             = check_box_tag :expired
             = "Ver productos que vencen en: "
@@ -35,6 +34,8 @@
                   = "Heladera"
                 th
                   = "Fecha de Vencimiento"
+                th
+                  = ""
             tbody
               - @products.each do |p|
                 tr
@@ -51,3 +52,10 @@
                       = "#{p.storage_unit.name}"
                   td
                     = "#{p.expiration_date}"
+                  td
+                    - if "#{p.expiration_date}" >= Time.zone.now 
+                      .green-label
+                        = "Apto para consumir"
+                    - else 
+                      .red-label
+                        = "Vencido" 

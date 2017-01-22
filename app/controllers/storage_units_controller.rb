@@ -80,6 +80,11 @@ class StorageUnitsController < ApplicationController
     render json: products, each_serializer: ProductSerializer
   end
 
+  def pending_donations
+    @storage_unit = StorageUnit.find(params[:id])
+    @pending_donations = @storage_unit.donations.where(delivered: false)
+  end
+
   private
 
   def storage_unit_params

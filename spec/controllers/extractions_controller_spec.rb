@@ -12,7 +12,10 @@ describe ExtractionsController do
     create(:donation_product, product_type: meat, quantity: 2, expiration_date: Time.zone.tomorrow)
   end
   let!(:donation) do
-    create(:donation, user: user, storage_unit: storage_unit, donation_products: [meat1, meat2])
+    create(
+      :donation, user: user, storage_unit: storage_unit, delivered: true,
+      donation_products: [meat1, meat2]
+    )
   end
   let!(:start_inventory) { storage_unit.products.order('expiration_date ASC') }
 
@@ -26,7 +29,7 @@ describe ExtractionsController do
   end
 
   before(:each) { sign_in user }
-  
+
   describe '#create' do
     it 'creates an extraction' do
       post :create, extraction: extraction_params

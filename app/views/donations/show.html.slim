@@ -2,7 +2,7 @@
   .container-fluid
     .row
       .col-xs-12.col-md-8
-        h2 
+        h2
           = "Donacion Numero #{@donation.id}"
         h3
           a href=storage_unit_path(@donation.storage_unit)
@@ -13,6 +13,11 @@
           = "Apellido: #{@donation.last_name}"
         h5 id='telefono'
           = "Telefono: #{@donation.telephone}"
+        h5 id=''
+          = "Estado: #{@donation.delivered ? 'Entregado' : 'No entregado'}"
+        - if current_user && current_user.manager && !@donation.delivered
+          = button_to "Confirmar entrega de donacion", { :controller => 'donations', action: 'confirm_delivery', id: @donation.id }, method: :post, class: 'btn btn-primary favorite'
+
     .products
       h3
         = "Productos Donados"
