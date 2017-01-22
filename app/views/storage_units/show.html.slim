@@ -45,6 +45,8 @@
               = "Cantidad"
             th
               = "Fecha de Vencimiento"
+            th
+              = ""
         tbody
           - @products.each do |p|
             tr
@@ -56,6 +58,13 @@
                 = "#{p.quantity} #{p.product_type.measurement_unit}"
               td
                 = p.expiration_date
+              td
+                - if p.expiration_date >= Time.zone.now 
+                  .green-label
+                    = "Apto para consumir"
+                - else 
+                  .red-label
+                    = "Vencido"
     - if @products.empty?
       h3
         = "No hay productos disponibles"
@@ -69,7 +78,7 @@
             th
               = "Nombre"
             th
-              = "Fecha"
+              = "Fecha de la donacion"
         tbody
           - @donations.each do |d|
             tr
