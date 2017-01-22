@@ -24,3 +24,6 @@ es:
   sign_up: "Registrate"
   login_title: 'Inciar Sesion'
   recover_password_title: "Recuperar Contraseña"
+  date:
+    formats:
+      long: "%Y-%m-%d"
