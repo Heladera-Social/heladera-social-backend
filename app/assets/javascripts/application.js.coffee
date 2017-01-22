@@ -30,7 +30,6 @@ $(window).load ->
         lng: -58.3816
       zoom: 8)
   if $("#edit-directions").data()
-    debugger
     lat = parseFloat $("#edit-directions").data().lat
     lng = parseFloat $("#edit-directions").data().long
     console.log lat
@@ -55,11 +54,46 @@ $(window).load ->
       $("#storage_unit_latitude")[0].value = newMarker.getPosition().lat()
       $("#storage_unit_longitude")[0].value = newMarker.getPosition().lng()
       return
+  else if  $("#storage_units").data()
+    gMap = new (google.maps.Map)(document.getElementById('map'))
+    gMap.setZoom 12
+    gMap.setCenter new (google.maps.LatLng)(-34.6037, -58.3816)
+    storages = $("#storage_units").data().storages
+    for storage in storages
+      lat = parseFloat storage.latitude
+      lng = parseFloat storage.longitude 
+      newMarker = new (google.maps.Marker)(
+        map: gMap
+        position: new (google.maps.LatLng)(lat, lng)
+        url: "http://localhost:3000/storage_units/"+storage.id)
+      google.maps.event.addListener newMarker, 'click', ->
+        window.location.href = @url
+        return
+    # Create the search box and link it to the UI element.
+    input = document.getElementById('pac-input')
+    searchBox = new (google.maps.places.SearchBox)(input)
+    gMap.controls[google.maps.ControlPosition.TOP_LEFT].push input
+    # Bias the SearchBox results towards current map's viewport.
+    gMap.addListener 'bounds_changed', ->
+      searchBox.setBounds gMap.getBounds()
+      return
+    searchBox.addListener 'places_changed', ->
+      places = searchBox.getPlaces()
+      if places.length == 0
+        return
+      bounds = new (google.maps.LatLngBounds)
+      places.forEach (place) ->
+        if place.geometry.viewport
+          # Only geocodes have viewport.
+          bounds.union place.geometry.viewport
+        else
+          bounds.extend place.geometry.location
+        return
+      gMap.fitBounds bounds
+      return
   else if  $("#direccion").data()
     lat = parseFloat $("#direccion").data().lat
     lng = parseFloat $("#direccion").data().long
-    console.log lat
-    console.log lng
     gMap = new (google.maps.Map)(document.getElementById('map'))
     gMap.setZoom 15
     gMap.setCenter new (google.maps.LatLng)(lat, lng)

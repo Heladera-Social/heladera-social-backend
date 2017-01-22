@@ -16,6 +16,11 @@ class DonationsController < ApplicationController
     redirect_to donation_path(donation.id)
   end
 
+  def creation_info
+    @product_types = ProductType.all
+    render json: @product_types
+  end
+
   def confirm_delivery
     donation = Donation.find(params[:id])
     donation.update_attributes!(delivered: true)
