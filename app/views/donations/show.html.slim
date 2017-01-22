@@ -2,7 +2,7 @@
   .container-fluid
     .row
       .col-xs-12.col-md-8
-        h2 
+        h2
           = "Donacion Numero #{@donation.id}"
         h3
           a href=storage_unit_path(@donation.storage_unit)
@@ -13,6 +13,8 @@
           = "Apellido: #{@donation.last_name}"
         h5 id='telefono'
           = "Telefono: #{@donation.telephone}"
+        h5 id=''
+          = "Estado: #{@donation.delivered ? 'Entregado' : 'No entregado'}"
     .products
       h3
         = "Productos Donados"
