@@ -6,6 +6,10 @@ class StorageUnitsController < ApplicationController
     # TODO: Filter by location
   end
 
+  def map
+    @storage_units = StorageUnit.all.to_json
+  end
+
   def edit
     @storage_unit = StorageUnit.find(params[:id])
     redirect_to root_path unless current_user.storage_units.include?(@storage_unit)

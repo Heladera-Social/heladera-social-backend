@@ -13,6 +13,7 @@ HeladeraSocialBackend::Application.routes.draw do
     collection do
       get :favorites
       get :list
+      get :map
     end
     member do
       get :product_types

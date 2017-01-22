@@ -1,18 +1,18 @@
 header.header
   = image_tag('ic_header_logo.svg')
   .header-actions
-    a.social-link href="https://www.facebook.com/Proyecto-Alimentar-1059783267444904/"
-      img src="assets/ic_facebook.svg" /
     .navbar-text
-	    a.navbar-link href=storage_units_path
-	      = "Heladeras"
-        - if current_user && current_user.manager
-          a.navbar-link href=new_donation_path
-            = "Agregar Donacion"
-          a.navbar-link href=new_extraction_path
-            = "Extraccion"
-          a.navbar-link href=products_path
-            = "Productos"
+      a.navbar-link href=map_storage_units_path
+        = "Mapa"
+      a.navbar-link href=storage_units_path
+        = "Heladeras"
+      - if current_user && current_user.manager
+        a.navbar-link href=new_donation_path
+          = "Agregar Donacion"
+        a.navbar-link href=new_extraction_path
+          = "Extraccion"
+        a.navbar-link href=products_path
+          = "Productos"
     .navbar-text.navbar-right
       - if current_user
       	= link_to('Cerrar Sesion', destroy_user_session_path, :method => :delete, class:'navbar-link')
