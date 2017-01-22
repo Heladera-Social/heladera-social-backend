@@ -16,14 +16,20 @@
 
         = f.fields_for :extraction_products do |products|
           .row
+            .barcode-section
+                  = f.label :Codigo_de_barras
+                  br
+                  = number_field_tag :days, nil ,min: 0, class: 'barcode orange-input', placeholder: "12312312312312"
+                  button.btn-primary type="button" href="#" onclick="getProductFromBarCode()"
+                    = "Obtener"
             .col-xs-4.col-md-4
               = f.label :Producto
               br
-              = products.select "product_id", [], {}, { class: 'extraction-product-select', required: true }
+              = products.select "product_id", options_for_select(@product_types.collect {|p| [ p['name'], p['id'] ] }),required: true
             .col-xs-4.col-md-4
               = f.label :Cantidad
               p.extraction-maximum-amount-warning
-              = products.number_field :quantity, class: 'form-control, orange-input', required: true
+              = products.number_field :quantity, class: 'form-control, orange-input', required: true, placeholder: "1", id:"amount"
             .col-xs-4.col-md-4
               = products.link_to_remove "Eliminar producto", class: 'btn btn-primary new-donation'
             hr
