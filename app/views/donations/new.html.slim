@@ -54,6 +54,13 @@
                 = products.link_to_remove "Eliminar producto", class: 'btn btn-primary new-donation'
                 hr
               = f.link_to_add "Agregar producto", :donation_products, class: 'btn btn-primary'
+        br
+        .row
+          .col-xs-12.col-md-4
+            = f.label :Entregado
+            = f.check_box :delivered
+          .col-xs-12.col-md-4
+          .col-xs-12.col-md-4
         .row
           .col-xs-12.col-md-4
           .col-xs-12.col-md-4
