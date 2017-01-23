@@ -103,6 +103,9 @@ gem 'ruby-graphviz'
 
 gem 'mail'
 
+# API Version
+gem 'versionist'
+
 group :development do
   # Gem to detect N+1 queries
   gem 'bullet'
