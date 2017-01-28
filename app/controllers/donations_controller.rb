@@ -12,13 +12,8 @@ class DonationsController < ApplicationController
   end
 
   def create
-    donation = Donation.create!(donation_params.merge(user: current_user))
+    donation = Donation.create!(donation_params)
     redirect_to donation_path(donation.id)
-  end
-
-  def creation_info
-    @product_types = ProductType.all
-    render json: @product_types
   end
 
   def confirm_delivery

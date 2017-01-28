@@ -1,10 +1,9 @@
 class Donation < ActiveRecord::Base
-  validates :user, :storage_unit, :donation_products, presence: true
+  validates :storage_unit, :donation_products, :delivered ,presence: true
 
   has_many :products
   has_many :donation_products
 
-  belongs_to :user
   belongs_to :storage_unit
   accepts_nested_attributes_for :donation_products, allow_destroy: true
   after_create :add_to_storage_unit, if: :delivered
