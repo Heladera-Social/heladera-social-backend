@@ -44,6 +44,7 @@ HeladeraSocialBackend::Application.routes.draw do
 
   api_version(module: 'V1', path: { value: 'api/v1' }, defaults: { format: :json }) do
     resources :product_types, only: [:index]
+    resources :storage_units, only: [:index]
     resources :donations, only: [:create]
   end
 end
