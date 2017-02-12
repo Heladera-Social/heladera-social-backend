@@ -4,7 +4,7 @@ module V1
     
     def create
       donation = Donation.create!(donation_params)
-      render status: 200
+      render json: { donatio: donation }, status: 200
     end
 
     def donation_params
