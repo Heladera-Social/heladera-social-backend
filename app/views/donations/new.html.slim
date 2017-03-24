@@ -29,6 +29,7 @@
               = f.select "storage_unit_id", options_for_select(@storage_units.collect {|p| [ p['name'], p['id'] ] }), required: true
           .col-xs-12.col-md-12
               = f.fields_for :donation_products do |products|
+                
                 .barcode-section
                   = f.label :Codigo_de_barras
                   br
@@ -36,24 +37,27 @@
                   button.btn-primary type="button" href="#" onclick="getProductFromBarCode()"
                     = "Obtener"
 
-                .col-xs-3.col-md-3
-                  = f.label :Producto
-                  br
-                  = products.select "product_type_id", options_for_select(@product_types.collect {|p| [ p['name'], p['id'] ] }),required: true
-                .col-xs-3.col-md-3
-                  = f.label :Etiqueta
-                  br
-                  = products.text_field :label, class: 'form-control, orange-input', placeholder: "Estante 1"
-                .col-xs-3.col-md-3
-                  = f.label :Cantidad
-                  br
-                  = products.number_field :quantity, class: 'form-control, orange-input', required: true, placeholder: "3", id:"amount"
-                .col-xs-3.col-md-3
-                  = f.label :Vencimiento
-                  = products.text_field :expiration_date, class: 'form-control, orange-input', 'data-date-format':("dd-mm-yyyy"), required: true, data: {provide: "datepicker"}, format:"dd-mm-yyyy", readonly:"readonly", placeholder: "dd/mm/aaaa", id:"datepicker"
-                = products.link_to_remove "Eliminar producto", class: 'btn btn-primary new-donation'
+                .row
+                  .col-xs-3.col-md-3
+                    = f.label :Producto
+                    br
+                    = products.select "product_type_id", options_for_select(@product_types.collect {|p| [ p['name'], p['id'] ] }),required: true
+                  .col-xs-3.col-md-3
+                    = f.label :Etiqueta
+                    br
+                    = products.text_field :label, class: 'form-control, orange-input', placeholder: "Estante 1"
+                  .col-xs-3.col-md-3
+                    = f.label :Cantidad
+                    br
+                    = products.number_field :quantity, class: 'form-control, orange-input', required: true, placeholder: "3", id:"amount"
+                  .col-xs-3.col-md-3
+                    = f.label :Vencimiento
+                    = products.text_field :expiration_date, class: 'form-control, orange-input', 'data-date-format':("dd-mm-yyyy"), required: true, data: {provide: "datepicker"}, format:"dd-mm-yyyy", readonly:"readonly", placeholder: "dd/mm/aaaa", id:"datepicker"
+                    = products.link_to_remove do 
+                      = image_tag "error.png", class: 'cancel-product'
                 hr
-              = f.link_to_add "Agregar producto", :donation_products, class: 'btn btn-primary'
+              p
+                = f.link_to_add "Agregar producto", :donation_products, class: 'btn btn-primary'
         br
         .row
           .col-xs-12.col-md-4

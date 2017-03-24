@@ -31,12 +31,13 @@
               p.extraction-maximum-amount-warning
               = products.number_field :quantity, class: 'form-control, orange-input', required: true, placeholder: "1", id:"amount"
             .col-xs-4.col-md-4
-              = products.link_to_remove "Eliminar producto", class: 'btn btn-primary new-donation'
-            hr
+              = products.link_to_remove do 
+                = image_tag "error.png", class: 'cancel-product'
+          hr
         p
           = f.link_to_add "Agregar producto a extraer", :extraction_products, onclick: 'addProductSelect()', class: 'btn btn-primary'
         .row
           .col-xs-12.col-md-4
           .col-xs-12.col-md-4
           .col-xs-12.col-md-4
-            = f.submit "Registrar Extracción", class: "btn btn-primary btn-extractions submit-donation"
+            = f.submit "Registrar Extracción", class: "btn btn-primary btn-extractions submit-extraction"
