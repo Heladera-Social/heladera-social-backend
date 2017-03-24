@@ -11,8 +11,10 @@
 @import 'https://fonts.googleapis.com/css?family=Open+Sans';
 
 :root {
-	--orange1: #fdb949;
+  --orange1: #fdb949;
   --orange2: #f39700;
+  --green1: #458B00;
+  --green2: #3B5323;
 }
 
 .form-control[readonly]{
@@ -427,9 +429,15 @@ a.btn-primary.new-donation {
 }
 
 .submit-donation {
-	background-color:var(--orange2) !important;
-	border-color:var(--orange2)!important;
+	background-color:var(--green1) !important;
+	border-color:var(--green2)!important;
 	margin-bottom: 30px!important;
+}
+
+.submit-extraction {
+    background-color:var(--orange2) !important;
+    border-color:var(--orange2)!important;
+    margin-bottom: 30px!important;
 }
 
 a.btn-primary.add-new-donation {
