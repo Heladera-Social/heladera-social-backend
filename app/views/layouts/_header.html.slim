@@ -17,4 +17,5 @@ header.header
       - if current_user
       	= link_to('Cerrar Sesion', destroy_user_session_path, :method => :delete, class:'navbar-link')
       - unless current_user
-        a.navbar-link href=new_session_path(User)  Iniciar Sesion
+        - if request.path != '/users/sign_in'
+          a.navbar-link href=new_session_path(User)  Iniciar Sesion
