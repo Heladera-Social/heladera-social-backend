@@ -2,6 +2,8 @@
   .container-fluid
 	h2
 		= "Mapa de comedores"
-	input#pac-input.controls placeholder=("Search Box") type="text" /
+	h4
+		= "Utilizar el recuadro de busqueda para ingresar una direccion y econtrar los comedores disponibles cerca!"
+	input#pac-input.controls placeholder=("Buscar Comedor") type="text" /
 	#map.map-index
 	#storage_units data={storages: @storage_units}

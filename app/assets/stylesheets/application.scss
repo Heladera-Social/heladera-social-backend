@@ -150,7 +150,6 @@
 	}
 
 	h2{
-		text-decoration: underline;
 		font-family:AvenirNext-Bold;
 		text-transform: capitalize;
 		font-size:24px;
@@ -158,7 +157,6 @@
 	}
 
 	h4{
-		text-decoration: underline;
 		margin-bottom: 33px;
 		font-family:AvenirNext-Medium;
 		font-size:18px;
@@ -174,9 +172,8 @@
 
 	.map{
 		width: 100%;
-		height: 200px;
+		height: 250px;
 		border: 1px solid #979797;
-		margin-top: 50px;
 
 		img{
 			max-width: 100%;

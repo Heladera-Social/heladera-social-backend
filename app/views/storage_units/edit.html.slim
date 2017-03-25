@@ -20,7 +20,8 @@
               .form-input
                 = f.label :Direccion
                 br
-                = f.text_field :address, class: 'form-control, orange-input', required: true,maxlength: 30,placeholder: "Ayacucho y Vicente Lopez"
+                input#pac-input.controls placeholder=("Buscar Comedor") type="text" /
+                = f.text_field :address, class: 'form-control, orange-input pac-input', required: true,maxlength: 30,placeholder: "Ayacucho y Vicente Lopez"
               .form-input
                 = f.label :Telefono
                 br

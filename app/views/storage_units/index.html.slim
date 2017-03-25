@@ -19,7 +19,7 @@
         .col-xs-12.col-md-8
           .h4.align-left
             a href=storage_unit_path(storage)
-              = storage.name
+              = "#{storage.name} - #{storage.address} - #{storage.managers.first.name} #{storage.managers.first.last_name}"
         - if current_user && !current_user.manager
           .col-xs-6.col-md-4
             a href=storage_unit_path(storage)

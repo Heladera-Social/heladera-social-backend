@@ -13,7 +13,6 @@
 #= require jquery
 #= require bootstrap-sprockets
 #= require chosen-jquery
-#= require turbolinks
 #= require underscore
 #= require bootstrap-datepicker
 #= require jquery_nested_form
@@ -48,6 +47,7 @@ $(window).load ->
         i++
       newMarker = new (google.maps.Marker)(
         map: gMap
+        draggable: true
         position: e.latLng)
       markers.push(newMarker)
       gMap.setCenter newMarker.getPosition()
@@ -111,6 +111,7 @@ $(window).load ->
         i++
       newMarker = new (google.maps.Marker)(
         map: gMap
+        draggable: true
         position: e.latLng)
       markers.push(newMarker)
       gMap.setCenter newMarker.getPosition()
