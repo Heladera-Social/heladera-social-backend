@@ -54,6 +54,35 @@ $(window).load ->
       $("#storage_unit_latitude")[0].value = newMarker.getPosition().lat()
       $("#storage_unit_longitude")[0].value = newMarker.getPosition().lng()
       return
+    # Create the search box and link it to the UI element.
+    input = $(".pac-input")[0]
+    searchBox = new (google.maps.places.SearchBox)(input)
+    searchBox.addListener 'places_changed', ->
+      places = searchBox.getPlaces()
+      if places.length == 0
+        return
+      bounds = new (google.maps.LatLngBounds)
+      places.forEach (place) ->
+        if place.geometry.viewport
+          # Only geocodes have viewport.
+          bounds.union place.geometry.viewport
+          i = 0
+          while i < markers.length
+            markers[i].setMap null
+            i++
+          newMarker = new (google.maps.Marker)(
+            map: gMap
+            draggable: true
+            position: new (google.maps.LatLng)(place.geometry.location.lat(), place.geometry.location.lng()))
+          markers.push(newMarker)
+          gMap.setCenter newMarker.getPosition()
+          $("#storage_unit_latitude")[0].value = newMarker.getPosition().lat()
+          $("#storage_unit_longitude")[0].value = newMarker.getPosition().lng()
+        else
+          bounds.extend place.geometry.location
+        return
+      gMap.fitBounds bounds
+      return
   else if  $("#storage_units").data()
     gMap = new (google.maps.Map)(document.getElementById('map'))
     gMap.setZoom 12
@@ -117,5 +146,34 @@ $(window).load ->
       gMap.setCenter newMarker.getPosition()
       $("#storage_unit_latitude")[0].value = newMarker.getPosition().lat()
       $("#storage_unit_longitude")[0].value = newMarker.getPosition().lng()
+      return
+    # Create the search box and link it to the UI element.
+    input = $(".pac-input")[0]
+    searchBox = new (google.maps.places.SearchBox)(input)
+    searchBox.addListener 'places_changed', ->
+      places = searchBox.getPlaces()
+      if places.length == 0
+        return
+      bounds = new (google.maps.LatLngBounds)
+      places.forEach (place) ->
+        if place.geometry.viewport
+          # Only geocodes have viewport.
+          bounds.union place.geometry.viewport
+          i = 0
+          while i < markers.length
+            markers[i].setMap null
+            i++
+          newMarker = new (google.maps.Marker)(
+            map: gMap
+            draggable: true
+            position: new (google.maps.LatLng)(place.geometry.location.lat(), place.geometry.location.lng()))
+          markers.push(newMarker)
+          gMap.setCenter newMarker.getPosition()
+          $("#storage_unit_latitude")[0].value = newMarker.getPosition().lat()
+          $("#storage_unit_longitude")[0].value = newMarker.getPosition().lng()
+        else
+          bounds.extend place.geometry.location
+        return
+      gMap.fitBounds bounds
       return
   
