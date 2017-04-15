@@ -209,7 +209,7 @@
 
 .storage-edit{
 	.edit-form{
-		width: 80%;
+		width: 100%;
     	margin: auto;
 
         .map{
@@ -222,6 +222,10 @@
                 max-width: 100%;
                 height: 100%;
             }
+        }
+
+        .pac-input{
+            width: 300px;
         }
 	}
 
@@ -447,10 +451,11 @@ margin-bottom: 30px!important;
 
 .footer-base {
     position: absolute;
-    bottom: -255px;
     width: 100%;
     height: 275px;
     background: #4a4a4a;
+    right: 0;
+    left: 0;
     display: -webkit-box;
     display: -webkit-flex;
     display: -ms-flexbox;
@@ -481,6 +486,23 @@ body {
     position: absolute;
     left: 0 ; right: 0; bottom: 0;
     height:275px;
+    display: -webkit-box;
+    display: -webkit-flex;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+    -webkit-flex-direction: column;
+    -ms-flex-direction: column;
+    flex-direction: column;
+    -webkit-box-pack: center;
+    -webkit-justify-content: center;
+    -ms-flex-pack: center;
+    justify-content: center;
+    -webkit-box-align: center;
+    -webkit-align-items: center;
+    -ms-flex-align: center;
+    align-items: center;
 }
 
 .footer-logo-icon {
@@ -1131,18 +1153,7 @@ body {
 .section-content-wrapper {
     max-width: 940px
 }
-.footer {
-    background: #4A4A4A;
-    display: -ms-flexbox;
-    display: flex;
-    -ms-flex-direction: column;
-    flex-direction: column;
-    -ms-flex-pack: center;
-    justify-content: center;
-    -ms-flex-align: center;
-    align-items: center;
-    padding: 60px 20px
-}
+
 .footer .logo {
     margin-bottom: 20px;
     height: 104px

@@ -1,11 +1,9 @@
 .container.storage-edit
-  .container-fluid
-    .row
-      .col-xs-12.col-md-8
+  .container-fluid  
+    .row        
+      = form_for @storage_unit, :method => "post" do |f|
         h2
           = "Crear Comedor"
-    .row
-      = form_for @storage_unit, :method => "post" do |f|
         .edit-form
           .row
             .col-xs-6.col-md-6
