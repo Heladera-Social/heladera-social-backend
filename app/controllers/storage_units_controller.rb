@@ -1,9 +1,7 @@
 class StorageUnitsController < ApplicationController
   def index
-    @storage_units = StorageUnit.all unless current_user && current_user.manager
-    @storage_units = current_user.storage_units if current_user && current_user.manager
-    # TODO: Filter by product type (if storage unit inventory contains product)
-    # TODO: Filter by location
+    @storage_units = StorageUnit.all.page params[:page] unless current_user && current_user.manager
+    @storage_units = current_user.storage_units.page params[:page] if current_user && current_user.manager
   end
 
   def map
@@ -32,11 +30,11 @@ class StorageUnitsController < ApplicationController
 
   def show
     @storage_unit = StorageUnit.find(params[:id])
-    @products = @storage_unit.products
+    @products = @storage_unit.products.page params[:page]
     @products = @products.uniq
-    @donations = @storage_unit.donations.where(delivered: true)
-    @pending_donations = @storage_unit.donations.where(delivered: false)
-    @available_products = @storage_unit.products.unexpired
+    @donations = @storage_unit.donations.where(delivered: true).page params[:page]
+    @pending_donations = @storage_unit.donations.where(delivered: false).page params[:page]
+    @available_products = @storage_unit.products.unexpired.page params[:page]
   end
 
   def update

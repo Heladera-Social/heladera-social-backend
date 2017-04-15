@@ -1,6 +1,5 @@
 class Product < ActiveRecord::Base
-  include PgSearch
-
+  paginates_per 5
   validates :product_type, presence: true
   belongs_to :product_type
 

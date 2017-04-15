@@ -1,4 +1,5 @@
 class Donation < ActiveRecord::Base
+  paginates_per 5
   validates :storage_unit, :donation_products, presence: true
 
   has_many :products

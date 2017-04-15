@@ -5,6 +5,7 @@ class ProductsController < ApplicationController
     @products = params[:expired] ? Product.expired : Product.unexpired
     @products = Product.expires_in(params[:days].to_i) if params[:days].present?
     @products = @products.where(product_type: product_type) if product_type.present?
+    @products = @products.page params[:page]
     @products_types = ProductType.all
   end
 
