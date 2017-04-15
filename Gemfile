@@ -106,6 +106,8 @@ gem 'mail'
 # API Version
 gem 'versionist'
 
+gem 'sortable-table', github: 'caselle/sortable-table'
+
 group :development do
   # Gem to detect N+1 queries
   gem 'bullet'
