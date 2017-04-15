@@ -19,7 +19,7 @@ class DonationsController < ApplicationController
   def confirm_delivery
     donation = Donation.find(params[:id])
     donation.update_attributes!(delivered: true)
-    redirect_to donation_path(donation.id)
+    redirect_to storage_unit_path(donation.storage_unit_id)
   end
 
   private

@@ -12,10 +12,6 @@
         .col-xs-6.col-md-4
           a href=edit_storage_unit_path(@storage_unit)
             button.btn.btn-primary.favorite type="button"  Editar
-      - if current_user && current_user.manager
-        .col-xs-6.col-md-4
-          a href=pending_donations_storage_unit_path(@storage_unit)
-            button.btn.btn-primary.favorite type="button"  Donaciones pendientes
     .storage-information
       .row
         .col-md-6
@@ -32,6 +28,57 @@
             = "Email: #{@storage_unit.email}"
         .col-md-6
           #map.map
+    .products
+      - unless @pending_donations.empty?
+        h3
+          = "Donaciones a Ingresar"
+        #accordion aria-multiselectable="true" role="tablist" 
+          - @pending_donations.each do |d|
+            .card
+              #headingOne.card-header role="tab" 
+                h5.mb-0
+                  a aria-controls="collapseOne" aria-expanded="true" data-parent="#accordion" data-toggle="collapse" href="#collapse#{d.id}"
+                    = "Donacion Numero #{d.id}"
+              .collapse aria-labelledby="headingOne" role="tabpanel" id="collapse#{d.id}" 
+                .card-block
+                  table.table.table-hover
+                    thead
+                      tr
+                        th
+                          = "Etiqueta"
+                        th
+                          = "Tipo"
+                        th
+                          = "Cantidad"
+                        th
+                          = "Fecha de Vencimiento"
+                        th
+                          - if current_user && current_user.manager && !d.delivered
+                            = button_to "Confirmar entrega de donacion", { :controller => 'donations', action: 'confirm_delivery', id: d.id }, method: :post, class: 'btn btn-primary confirm'
+                    tbody
+                      - d.donation_products.each do |p|
+                        tr
+                          td
+                            = "#{p.label}"
+                          td
+                            = "#{p.name}"
+                          td
+                            = "#{p.quantity} #{p.measurement_unit}"
+                          td
+                            = "#{p.expiration_date}"
+                          td
+                            - if "#{p.expiration_date}" >= Time.zone.now 
+                              .green-label
+                                = "Apto para consumir"
+                            - else 
+                              .red-label
+                                = "Vencido"
+            
+      - if @pending_donations.empty? && current_user && current_user.manager
+        h3
+          = "No hay donaciones a ingresar"
+
+
     .products
       - unless @products.empty?
         h3
@@ -91,4 +138,5 @@
                   = d.created_at.to_date
       - if @donations.empty?
         h3
-          = "No hay donaciones a ingresar"
+          = "No hay donaciones"
+    

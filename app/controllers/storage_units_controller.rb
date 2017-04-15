@@ -34,7 +34,8 @@ class StorageUnitsController < ApplicationController
     @storage_unit = StorageUnit.find(params[:id])
     @products = @storage_unit.products
     @products = @products.uniq
-    @donations = @storage_unit.donations
+    @donations = @storage_unit.donations.where(delivered: true)
+    @pending_donations = @storage_unit.donations.where(delivered: false)
     @available_products = @storage_unit.products.unexpired
   end
 
