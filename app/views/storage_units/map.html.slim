@@ -1,9 +1,11 @@
+#loader.loader-back
+	.loader
 .section.container.storage-list
   .container-fluid
-	h2
-		= "Mapa de comedores"
-	h4
-		= "Utilizar el recuadro de busqueda para ingresar una direccion y econtrar los comedores disponibles cerca!"
-	input#pac-input.controls placeholder=("Buscar Comedor") type="text" /
-	#map.map-index
-	#storage_units data={storages: @storage_units}
+		h2
+			= "Mapa de comedores"
+		h4
+			= "Utilizar el recuadro de busqueda para ingresar una direccion y econtrar los comedores disponibles cerca!"
+		input#pac-input.controls placeholder=("Buscar Comedor") type="text" /
+		#map.map-index
+		#storage_units data={storages: @storage_units}

@@ -107,6 +107,7 @@ gem 'mail'
 gem 'versionist'
 
 gem 'kaminari'
+gem 'kaminari-i18n'
 
 group :development do
   # Gem to detect N+1 queries

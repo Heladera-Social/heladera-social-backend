@@ -9,9 +9,9 @@
         .col-xs-6.col-md-4
           button.btn.btn-primary.favorite-button type="button"  Favorito
       - if current_user && current_user.manager
-        .col-xs-6.col-md-4
+        .col-xs-6.col-md-4.right
           a href=edit_storage_unit_path(@storage_unit)
-            button.btn.btn-primary.favorite type="button"  Editar
+            button.btn.btn-primary.favorite.edit-button type="button"  Editar
     .storage-information
       .row
         .col-md-6
@@ -74,7 +74,7 @@
                             - else 
                               .red-label
                                 = "Vencido"
-          = paginate @pending_donations  
+          = paginate @pending_donations, param_name: "pending_donations_page"
       - if @pending_donations.empty? && current_user && current_user.manager
         h3
           = "No hay donaciones a ingresar"
@@ -116,7 +116,8 @@
                   - else 
                     .red-label
                       = "Vencido"
-        = paginate @pending_donations
+        .paginator
+          = paginate @products, param_name: "product_page"
       - if @products.empty?
         h3
           = "No hay productos disponibles"
@@ -140,7 +141,7 @@
                     = "Donacion Numero #{d.id}"
                 td
                   = d.created_at.to_date
-        = paginate @donations
+        = paginate @donations, param_name: "donation_page"
       - if @donations.empty?
         h3
           = "No hay donaciones"

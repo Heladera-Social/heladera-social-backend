@@ -1,5 +1,5 @@
 class Product < ActiveRecord::Base
-  paginates_per 5
+  paginates_per 1
   validates :product_type, presence: true
   belongs_to :product_type
 

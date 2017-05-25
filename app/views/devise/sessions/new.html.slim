@@ -1,28 +1,27 @@
 .section
+  .row.cover-section
+    .col-xs-4.col-md-4.contact-sector
+      h2.contact-sector-title
+        = "Proyecto alimentar"
+      .contact-sector-text
+        = "Facilitamos la administración de stock de donaciones y extracciones"
+        br
+        = "Si sos un administrador de un comedor social contactate con nosotros así te facilitamos nuestra solución y podés comenzar a contabilizar la cantidad de alimentos que das y recibís a diario"
+      .center-button.padding-top-secondary-button
+        a href=new_contact_path
+          .secondary-button
+            = "Contactate"
 
-.row
-  .col-xs-4.col-md-4.contact-sector
-    h2.contact-sector-title
-      = "Proyecto alimentar"
-    .contact-sector-text
-      = "Facilitamos la administración de stock de donaciones y extracciones"
-      br
-      = "Si sos un administrador de un comedor social contactate con nosotros así te facilitamos nuestra solución y podés comenzar a contabilizar la cantidad de alimentos que das y recibís a diario"
-    .center-button.padding-top-secondary-button
-      a href=new_contact_path
-        .secondary-button
-          = "Contactate"
-
-  .col-xs-8.col-md-8
-    .login
-      h2.title.padding-top-container
-        = t('login_title')
-      = form_for(resource, as: resource_name, url: session_path(resource_name)) do |f|
-        .field
-          = f.email_field :email, autofocus: true, class: 'input', placeholder: "Email"
-        .field
-          = f.password_field :password, autocomplete: "off", class: 'input', placeholder: "Contraseña"
-        .field.recover.align-left
-          = link_to "Recuperar Contraseña", new_password_path(resource_name)
-        .actions
-          = f.submit "Ingresar", class: 'primary-button'
+    .col-xs-8.col-md-8
+      .login
+        h2.title.padding-top-container
+          = t('login_title')
+        = form_for(resource, as: resource_name, url: session_path(resource_name)) do |f|
+          .field
+            = f.email_field :email, autofocus: true, class: 'input', placeholder: "Email"
+          .field
+            = f.password_field :password, autocomplete: "off", class: 'input', placeholder: "Contraseña"
+          .field.recover.align-left
+            = link_to "Recuperar Contraseña", new_password_path(resource_name)
+          .actions
+            = f.submit "Ingresar", class: 'primary-button'

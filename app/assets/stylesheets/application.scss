@@ -10,6 +10,10 @@
 @import 'https://fonts.googleapis.com/css?family=Oswald:700';
 @import 'https://fonts.googleapis.com/css?family=Open+Sans';
 
+html, body {
+    height: 100%;
+}
+
 :root {
   --orange1: #fdb949;
   --orange2: #f39700;
@@ -17,9 +21,52 @@
   --green2: #3B5323;
 }
 
+.paginator{
+    width: 100%;
+    text-align: center;
+}
+
+.pagination>.active>a:focus, 
+.pagination>.active>a:hover, 
+.pagination>.active>span, 
+.pagination>.active>span:focus, 
+.pagination>.active>span:hover{
+    background-color: #fdb949 !important;
+    border-color: #fdb949 !important;
+}
+
+.pagination>.active>a{
+    background-color: #fdb949 !important;
+    border-color: #fdb949 !important;
+    color: #fff !important;
+}
+
+.pagination>li>a:focus, .pagination>li>a:hover, 
+.pagination>li>span:focus, .pagination>li>span:hover
+{
+    color: #fff !important;
+    background-color: #fdb949 !important;
+    border-color: #fdb949 !important;
+
+}
+
+.pagination>li>a, .pagination>li>span{
+    color: #fdb949 !important;
+}
+
 .form-control[readonly]{
 	background-color: white !important;
 }
+
+.capitalize{
+    text-transform: capitalize;    
+}
+
+
+.container{
+    height: 65%;
+}
+
 .login{
 	margin: 0 auto;
 	text-align: center;
@@ -77,12 +124,54 @@
 	}
 }
 
+.loader-back{
+    width: 100%;
+    height: 100%;
+    background-color: #fff;
+    position: absolute;
+    z-index: 1;
+}
+
+.loader {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  z-index: 1;
+  width: 150px;
+  height: 150px;
+  margin: -75px 0 0 -75px;
+  border: 16px solid #f3f3f3;
+  border-radius: 50%;
+  border-top: 16px solid var(--orange1);
+  border-bottom: 16px solid var(--orange1);
+  width: 120px;
+  height: 120px;
+  -webkit-animation: spin 2s linear infinite;
+  animation: spin 2s linear infinite;
+}
+
+@-webkit-keyframes spin {
+  0% { -webkit-transform: rotate(0deg); }
+  100% { -webkit-transform: rotate(360deg); }
+}
+
+@keyframes spin {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
+
 .storage-list{
 
 	.favorite{
 		width: 40%;
 		margin-left: 3%;
 	}
+
+    .edit-button{
+        margin-top: 20px;
+        margin-bottom: 10px;
+        float: right;
+    }
 
     .confirm{
         width: 100%;
@@ -148,6 +237,7 @@
 		background-color:var(--orange2)!important;
 		border-color:var(--orange2)!important;
 		margin-top:20px;
+        float: right;
 	}
 
 	.right{
@@ -197,7 +287,7 @@
 	}
 
 	table{
-		width: 80%;
+		width: 100%;
 		text-align: center;
 	}
 
@@ -247,6 +337,21 @@
 			}
 		}
 	}
+    th {
+        font-family:Oswald;
+        font-size:16px;
+        color:#000000;
+        letter-spacing:0px;
+        text-align:center;
+    }
+
+    td {
+        font-family:'Open Sans';
+        font-size:16px;
+        color:#000000;
+        letter-spacing:0px;
+        text-align:center;
+    }
 }
 
 .field {
@@ -372,9 +477,12 @@ h4 {
 	text-align:center;
 }
 
+.top0{
+    margin-top: 0px;
+}
+
 .orange-input{
 	background:#ffffff;
-	box-shadow:inset 0px 1px 3px 0px rgba(0,0,0,0.50);
 	border-radius:3px;
 	margin-top: 20px;
 	border:2px solid var(--orange1);
@@ -387,6 +495,7 @@ h4 {
 	text-align:left;
 	margin-bottom:30px;
 	margin-top:0px;
+    padding-left: 5px;
 }
 
 .btn-secondary {
@@ -435,9 +544,9 @@ a.btn-primary.new-donation {
 }
 
 .submit-donation {
-	background-color:var(--green1) !important;
-	border-color:var(--green2)!important;
-	margin-bottom: 30px!important;
+	background-color:var(--orange2) !important;
+	border-color:var(--orange2)!important;
+    float: left;
 }
 
 .submit-extraction {
@@ -457,7 +566,7 @@ margin-bottom: 30px!important;
 .footer-base {
     position: absolute;
     width: 100%;
-    height: 275px;
+    height: 30%;
     background: #4a4a4a;
     right: 0;
     left: 0;
@@ -535,6 +644,7 @@ body {
 
 .container-fluid {
 	width: 100%;
+    height: 100%;
 }
 .section {
 	margin-top: 90px;
@@ -556,7 +666,7 @@ body {
 
 .contact-sector {
 	background-image: asset-url("background-login.jpg");
-	height: 450px;
+	height: 100%;
 }
 
 .contact-sector-title {
@@ -998,8 +1108,12 @@ body {
     background: #fff;
     width: 100%;
     box-sizing: border-box;
-    box-shadow: 0 0 16px 0 rgba(0, 0, 0, 0.15);
+    box-shadow: 0 0 3px 0 rgba(0, 0, 0, 0.15);
     top: 0
+}
+
+.cover-section{
+    height: 100%;
 }
 .section {
     display: -ms-flexbox;
@@ -1010,8 +1124,9 @@ body {
     justify-content: center;
     -ms-flex-align: center;
     align-items: center;
-    padding: 0px 20px;
-    text-align: center
+    padding: 0px 0px;
+    text-align: center;
+    height: 65%;
 }
 .section.grey {
     background: #4A4A4A

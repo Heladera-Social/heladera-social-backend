@@ -176,4 +176,5 @@ $(window).load ->
         return
       gMap.fitBounds bounds
       return
+  $("#loader").fadeOut(1000);
   

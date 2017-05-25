@@ -30,10 +30,10 @@ class StorageUnitsController < ApplicationController
 
   def show
     @storage_unit = StorageUnit.find(params[:id])
-    @products = @storage_unit.products.page params[:page]
+    @products = @storage_unit.products.page params[:product_page]
     @products = @products.uniq
-    @donations = @storage_unit.donations.where(delivered: true).page params[:page]
-    @pending_donations = @storage_unit.donations.where(delivered: false).page params[:page]
+    @donations = @storage_unit.donations.where(delivered: true).page params[:donation_page]
+    @pending_donations = @storage_unit.donations.where(delivered: false).page params[:pending_donations_page]
     @available_products = @storage_unit.products.unexpired.page params[:page]
   end
 
