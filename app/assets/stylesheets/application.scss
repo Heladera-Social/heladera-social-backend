@@ -26,6 +26,54 @@ html, body {
     text-align: center;
 }
 
+.navbar-inverse{
+    background: #fff !important;
+    border-radius: 0px;
+    border-color: rgb(255, 255, 255) !important;
+    border-bottom-color: #777 !important;    
+}
+
+.navbar-inverse .navbar-nav>.active>a, .navbar-inverse .navbar-nav>.active>a:focus, .navbar-inverse .navbar-nav>.active>a:hover {
+    color: #777 !important;
+    background-color: #fff !important;
+}
+
+.navbar-inverse .navbar-nav>li>a:focus, .navbar-inverse .navbar-nav>li>a:hover {
+    color: #777 !important;
+    background-color: #fff !important;
+}
+
+.navbar-inverse .navbar-nav>li>a {
+    font-family: 'Open Sans', sans-serif;
+    color: #777 !important;
+}
+
+.navbar-inverse .navbar-toggle:focus, .navbar-inverse .navbar-toggle:hover {
+    background-color: #f39700 !important;
+}
+
+.navbar-inverse .navbar-toggle .icon-bar {
+    background-color: #fdb949 !important;
+}
+
+.navbar-inverse .navbar-toggle {
+    border-color: #777 !important;
+}
+
+.navbar-inverse .navbar-collapse, .navbar-inverse .navbar-form {
+    border-color: #777;
+}
+
+.navbar {
+    position: relative;
+    min-height: 50px;
+    margin-bottom: 20px;
+    border: 1px solid transparent;
+    height: 90px !important;
+    padding: 20px 0px !important;
+    border-radius: 0px !important;
+}
+
 .pagination>.active>a:focus, 
 .pagination>.active>a:hover, 
 .pagination>.active>span, 
