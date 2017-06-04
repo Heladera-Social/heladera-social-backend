@@ -3,7 +3,7 @@
 @import 'font-awesome';
 @import 'bootstrap-datepicker3';
 @import 'variables/colors';
-
+@import 'chosen';
 @import 'overrides/bootstrap_overrides';
 
 @import 'commons';
@@ -31,6 +31,10 @@ html, body {
     border-radius: 0px;
     border-color: rgb(255, 255, 255) !important;
     border-bottom-color: #777 !important;    
+}
+
+.resume{
+    position: fixed;
 }
 
 .navbar-inverse .navbar-nav>.active>a, .navbar-inverse .navbar-nav>.active>a:focus, .navbar-inverse .navbar-nav>.active>a:hover {

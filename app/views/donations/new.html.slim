@@ -29,7 +29,7 @@
             .col-xs-4.col-md-4
               = f.label :Comedor
               br
-              = f.select "storage_unit_id", options_for_select(@storage_units.collect {|p| [ p['name'], p['id'] ] }), required: true
+              = f.select "storage_unit_id", options_for_select(@storage_units.collect {|p| [ p['name'], p['id'] ] }), {}, {required: 'true', class: 'chosen-select', :data => {:placeholder => 'Seleccione un Comedor'}}
             .col-xs-4.col-md-4
               = f.label :Entregado
               br
@@ -54,7 +54,7 @@
                 .col-xs-6.col-md-6
                   = f.label :Producto
                   br
-                  = products.select "product_type_id", options_for_select(@product_types.collect {|p| [ p['name'], p['id'] ] }),required: true
+                  = products.select "product_type_id", options_for_select(@product_types.collect {|p| [ p['name'], p['id'], {:data => {unit: p['measurement_unit']}} ]  }), {}, {required: 'true', class: 'chosen-select', :data => {:placeholder => 'Seleccione un Alimento', units: @product_types}}
                 .col-xs-6.col-md-6
                   = f.label :Etiqueta
                   br
@@ -63,7 +63,7 @@
                 .col-xs-6.col-md-6
                   = f.label :Cantidad
                   br
-                  = products.number_field :quantity, class: 'form-control, orange-input barcode', required: true, placeholder: "3", id:"amount"
+                  = products.number_field :quantity, class: 'form-control, orange-input barcode quantity', required: true, placeholder: "3", id:"amount"
                 .col-xs-6.col-md-6
                   = f.label :Vencimiento
                   br
@@ -74,7 +74,9 @@
             p
               = f.link_to_add "Agregar producto", :donation_products, class: 'btn btn-primary'
           .col-xs-4.col-md-4
-            h3
-              = "Resumen"
-            = f.submit "Donar!", class: "btn btn-primary submit-donation"
+            .resume
+              h3
+                = "Resumen"
+              .products#products
+              = f.submit "Donar!", class: "btn btn-primary submit-donation"
             

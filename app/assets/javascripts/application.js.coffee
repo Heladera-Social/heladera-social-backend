@@ -20,7 +20,39 @@
 
 markers = []
 
+$(document).on 'nested:fieldAdded', (event) ->
+  $('.chosen-select').chosen
+    allow_single_deselect: true
+    no_results_text: 'No hay resultados'
+    width: '200px'
+  fields = $(".fields")
+  text = ""
+  for i in [0...fields.length-1]
+    value = fields[i].getElementsByClassName('chosen-select')[0].value
+    if value
+      text += "<p>" + fields[i].getElementsByClassName('quantity')[0].value + "  " + fields[i].getElementsByClassName('chosen-select')[0].options[parseInt(value)].dataset.unit + " de " + fields[i].getElementsByClassName('chosen-select')[0].options[parseInt(value)].text + "</p>"
+  $("#products")[0].innerHTML = " "
+  $("#products")[0].innerHTML = text
+  return
+
+$(document).on '  nested:fieldRemoved', (event) ->
+  fields = $(".fields")
+  text = " "
+  $("#products")[0].innerHTML = " "
+  for i in [0...fields.length-1]
+    value = fields[i].getElementsByClassName('chosen-select')[0].value
+    if value
+      text += "<p>" + fields[i].getElementsByClassName('quantity')[0].value + "  " + fields[i].getElementsByClassName('chosen-select')[0].options[parseInt(value)].dataset.unit + " de " + fields[i].getElementsByClassName('chosen-select')[0].options[parseInt(value)].text + "</p>"
+  debugger
+  $("#products")[0].innerHTML = text
+  return
+
+
 $(window).load ->
+  $('.chosen-select').chosen
+    allow_single_deselect: true
+    no_results_text: 'No hay resultados'
+    width: '200px'
   map = undefined
   initMap = ->
     map = new (google.maps.Map)(document.getElementById('map'),
@@ -177,4 +209,7 @@ $(window).load ->
       gMap.fitBounds bounds
       return
   $("#loader").fadeOut(1000);
+
+  
+
   
