@@ -46,10 +46,10 @@
                   = f.label :Codigo_de_barras
                   br
                   .col-xs-6.col-md-6
-                    = number_field_tag :days, nil ,min: 0, class: 'barcode orange-input', placeholder: "12312312312312"
+                    = number_field_tag :days, nil ,min: 0, class: 'barcode orange-input', placeholder: "Ingrese cod. de barras"
                   .col-xs-6.col-md-6
                     button.btn-primary type="button" href="#" onclick="getProductFromBarCode()"
-                      = "Obtener"
+                      = "Obtener producto"
               .row
                 .col-xs-6.col-md-6
                   = f.label :Producto
@@ -75,7 +75,7 @@
               = f.link_to_add "Agregar producto", :donation_products, class: 'btn btn-primary'
           .col-xs-4.col-md-4
             .resume
-              h3
+              h4
                 = "Resumen"
               .products#products
               = f.submit "Donar!", class: "btn btn-primary submit-donation"
