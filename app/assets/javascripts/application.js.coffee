@@ -29,21 +29,32 @@ $(document).on 'nested:fieldAdded', (event) ->
   text = ""
   for i in [0...fields.length-1]
     value = fields[i].getElementsByClassName('chosen-select')[0].value
-    if value
+    if value 
       text += "<p>" + fields[i].getElementsByClassName('quantity')[0].value + "  " + fields[i].getElementsByClassName('chosen-select')[0].options[parseInt(value)].dataset.unit + " de " + fields[i].getElementsByClassName('chosen-select')[0].options[parseInt(value)].text + "</p>"
   $("#products")[0].innerHTML = " "
   $("#products")[0].innerHTML = text
   return
 
-$(document).on '  nested:fieldRemoved', (event) ->
+$(document).on 'nested:fieldRemoved', (event) ->
   fields = $(".fields")
   text = " "
   $("#products")[0].innerHTML = " "
   for i in [0...fields.length-1]
     value = fields[i].getElementsByClassName('chosen-select')[0].value
-    if value
+    if value && event.field[0] != fields[i]
       text += "<p>" + fields[i].getElementsByClassName('quantity')[0].value + "  " + fields[i].getElementsByClassName('chosen-select')[0].options[parseInt(value)].dataset.unit + " de " + fields[i].getElementsByClassName('chosen-select')[0].options[parseInt(value)].text + "</p>"
+  $("#products")[0].innerHTML = text
+  return
+
+$('.chosen-select').on 'change', (e) ->
   debugger
+  fields = $(".fields")
+  text = ""
+  for i in [0...fields.length-1]
+    value = fields[i].getElementsByClassName('chosen-select')[0].value
+    if value 
+      text += "<p>" + fields[i].getElementsByClassName('quantity')[0].value + "  " + fields[i].getElementsByClassName('chosen-select')[0].options[parseInt(value)].dataset.unit + " de " + fields[i].getElementsByClassName('chosen-select')[0].options[parseInt(value)].text + "</p>"
+  $("#products")[0].innerHTML = " "
   $("#products")[0].innerHTML = text
   return
 
