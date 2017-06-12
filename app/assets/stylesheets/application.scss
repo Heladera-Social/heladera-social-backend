@@ -627,8 +627,8 @@ a.btn-primary.new-donation {
 }
 
 .submit-donation {
-	background-color:var(--orange2) !important;
-	border-color:var(--orange2)!important;
+	background-color:var(--green1) !important;
+	border-color:var(--green2)!important;
     float: left;
     margin-left: 10px;
     margin-bottom: 20px !important;
@@ -672,6 +672,7 @@ margin-bottom: 30px!important;
     -webkit-align-items: center;
     -ms-flex-align: center;
     align-items: center;
+    bottom:0;
 }
 .footer-logo {
     margin-bottom: 20px;

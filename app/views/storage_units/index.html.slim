@@ -5,8 +5,9 @@
         h2
           = "Listado de Comedores"
       .col-xs-6.col-md-4.right
-        a href=new_storage_unit_path
-          button.btn.btn-primary.favorite.new-storage-unit type="button"  Nuevo Comedor
+        - if current_user
+          a href=new_storage_unit_path
+            button.btn.btn-primary.favorite.new-storage-unit type="button"  Nuevo Comedor
     br
     .table-responsive
       table.table
@@ -42,10 +43,10 @@
                   .closed-storage
                     = "Cerrado"
               td
-                - if current_user && !current_user.manager
+                - if (current_user && !current_user.manager) || !current_user
                     a href=storage_unit_path(storage)
-                      button.btn.btn-primary.favorite type="button"  Ver
-                    button.btn.btn-primary.favorite type="button"  Favorito
+                      .see-detail-info  Ver
+                    
                 - if current_user && current_user.manager
                     .see-edit-detail-info
                       a href=storage_unit_path(storage)
