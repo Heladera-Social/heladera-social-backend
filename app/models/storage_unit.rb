@@ -1,5 +1,5 @@
 class StorageUnit < ActiveRecord::Base
-  paginates_per 10
+  paginates_per 5
   validates :name, :email, :telephone, :address, :latitude, :longitude, presence: true
 
   has_and_belongs_to_many :managers, class_name: 'User', join_table: :storage_unit_managers
