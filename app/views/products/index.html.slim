@@ -8,13 +8,23 @@
       .col-xs-12
         = form_tag products_path, :method => "get" do
           .form-group
-            = select_tag :storage_unit_id, options_for_select(@storage_units.collect {|p| [ p['name'], p['id'] ] }), {required: 'true', class: 'chosen-select', :data => {:placeholder => 'Seleccione un Comedor'}}
-            = select_tag :product_type, options_for_select(@products_types.collect {|p| [ p['name'], p['id'] ] }), {required: 'true', class: 'chosen-select', :data => {:placeholder => 'Seleccione un Alimento'}}
-            = "Vencidos?"
-            = check_box_tag :expired
-            = "Ver productos que vencen en: "
-            = number_field_tag :days, nil ,min: 0
-            = submit_tag "Buscar", :name => nil, :class => 'btn-primary'
+            .rown
+              .col-xs-3
+                h5
+                  = "Filtrar por comedor"
+                = select_tag :storage_unit_id, options_for_select(@storage_units.collect {|p| [ p['name'], p['id'] ] }), {required: 'true', class: 'chosen-select', :data => {:placeholder => 'Seleccione un Comedor'}}
+              .col-xs-3
+                h5
+                  = "Filtrar por producto"
+                = select_tag :product_type, options_for_select(@products_types.collect {|p| [ p['name'], p['id'] ] }), {required: 'true', class: 'chosen-select', :data => {:placeholder => 'Seleccione un Alimento'}}
+              .col-xs-3
+                h5
+                  = "Filtrar productos que vencen en"
+                .days-input
+                  = number_field_tag :days, nil ,min: 0
+                = "Dias"
+              .col-xs-3
+                = submit_tag "Buscar", :name => nil, :class => 'btn-primary'
     hr
     .row
       .col-xs-12

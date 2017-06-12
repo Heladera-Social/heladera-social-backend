@@ -5,8 +5,9 @@
         h2
           = "Listado de Comedores"
       .col-xs-6.col-md-4.right
-        a href=new_storage_unit_path
-          button.btn.btn-primary.favorite.new-storage-unit type="button"  Nuevo Comedor
+        - if current_user
+          a href=new_storage_unit_path
+            button.btn.btn-primary.favorite.new-storage-unit type="button"  Nuevo Comedor
     br
     .table-responsive
       table.table
@@ -20,8 +21,9 @@
               = "Encargado"
             th
               = "Estado"
-            th
-              = "Acciones"
+            - if current_user
+              th
+                = "Acciones"
         tbody
           - @storage_units.each do |storage|
             tr

@@ -26,6 +26,16 @@ html, body {
     text-align: center;
 }
 
+.days-input{
+    width: 50%;
+    display: inline;
+    margin-right: 10px;
+
+    input{
+        width: 25%;
+        display: inline;
+    }
+}
 .navbar-inverse{
     background: #fff !important;
     border-radius: 0px;
