@@ -1,6 +1,6 @@
 .container.storage-edit
-  .container-fluid  
-    .row        
+  .container-fluid
+    .row
       = form_for @storage_unit, :method => "post" do |f|
         h2
           = "Crear Comedor"
@@ -8,23 +8,23 @@
           .row
             .col-xs-6.col-md-6
               .form-input
-                = f.label :nombre
+                = f.label :Nombre
                 br
                 = f.text_field :name, class: 'form-control, orange-input', required: true,maxlength: 30, placeholder: "Comedor 1"
               .form-input
-                = f.label :email
+                = f.label :Email
                 br
                 = f.email_field :email, class: 'form-control, orange-input', required: true,placeholder: "mariano@gmail.com"
               .form-input
-                = f.label :Direccion
+                = f.label :Dirección
                 br
                 = f.text_field :address, class: 'form-control, orange-input pac-input', required: true,maxlength: 30,placeholder: "Buscar direccion"
               .form-input
-                = f.label :Telefono
+                = f.label :Teléfono
                 br
                 = f.number_field :telephone, class: 'form-control, orange-input', required: true,placeholder: "42643721"
             .col-xs-6.col-md-6
-              = f.label :Locacion
+              = f.label :Locación
               #map.map
               = f.hidden_field :latitude
               = f.hidden_field :longitude

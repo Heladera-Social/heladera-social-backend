@@ -1,7 +1,7 @@
 .section.login
   h2.title
-    = "Contactate y sumate al equipo"
-  = form_for @contact, :method => "post" do |f|
+    = "Contáctate y súmate al equipo"
+  = form_for @contact, method: 'post' do |f|
     .field
       = f.email_field :email, autofocus: true, class: 'input', placeholder: "Email"
     .field
@@ -9,7 +9,7 @@
     .field
       = f.text_field :last_name, autofocus: true, class: 'input', placeholder: "Apellido"
     .field
-      = f.text_field :telephone, autofocus: true, class: 'input', placeholder: "Telefono"
+      = f.text_field :telephone, autofocus: true, class: 'input', placeholder: "Teléfono"
     br
     .actions
       = f.submit "Contactar", class: 'primary-button'
