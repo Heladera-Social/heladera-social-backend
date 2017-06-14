@@ -29,14 +29,14 @@ $(document).on 'nested:fieldAdded', (event) ->
   text = ""
   for i in [0...fields.length-1]
     value = fields[i].getElementsByClassName('chosen-select')[0].value
-    if value 
+    if value
       text += "<p>" + fields[i].getElementsByClassName('quantity')[0].value + " X " + fields[i].getElementsByClassName('chosen-select')[0].options[parseInt(value)].text + "</p>"
   $("#products")[0].innerHTML = " "
   $("#products")[0].innerHTML = text
   return
 
 $(document).on 'nested:fieldRemoved', (event) ->
-  fields = $(".fields")
+  fields = $(".fields:visible")
   text = " "
   $("#products")[0].innerHTML = " "
   for i in [0...fields.length-1]
@@ -47,12 +47,11 @@ $(document).on 'nested:fieldRemoved', (event) ->
   return
 
 $('.chosen-select').on 'change', (e) ->
-  debugger
   fields = $(".fields")
   text = ""
   for i in [0...fields.length-1]
     value = fields[i].getElementsByClassName('chosen-select')[0].value
-    if value 
+    if value
       text += "<p>" + fields[i].getElementsByClassName('quantity')[0].value + " X " + fields[i].getElementsByClassName('chosen-select')[0].options[parseInt(value)].text + "</p>"
   $("#products")[0].innerHTML = " "
   $("#products")[0].innerHTML = text
@@ -133,7 +132,7 @@ $(window).load ->
     storages = $("#storage_units").data().storages
     for storage in storages
       lat = parseFloat storage.latitude
-      lng = parseFloat storage.longitude 
+      lng = parseFloat storage.longitude
       newMarker = new (google.maps.Marker)(
         map: gMap
         position: new (google.maps.LatLng)(lat, lng)
@@ -221,6 +220,6 @@ $(window).load ->
       return
   $("#loader").fadeOut(1000);
 
-  
 
-  
+
+
