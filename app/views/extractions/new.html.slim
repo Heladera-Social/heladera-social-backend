@@ -3,12 +3,12 @@
     .row
       .col-xs-12.col-md-8
         h2
-          = "Generar extraccion"
+          = "Generar extracción"
     .row
       .col-xs-12.col-md-8
         h3
           = "1. Seleccionar Comedor"
-    = nested_form_for @extraction, :method => "post" do |f|
+    = nested_form_for @extraction, method: "post" do |f|
       .row
         .col-xs-12.col-md-4
           = f.label :Comedor
@@ -22,7 +22,7 @@
           = f.fields_for :extraction_products do |products|
             .row
               .barcode-section
-                    = f.label :Codigo_de_barras
+                    = f.label :Código_de_barras
                     br
                     = number_field_tag :days, nil ,min: 0, class: 'barcode orange-input', placeholder: "12312312312312"
                     button.btn-primary type="button" href="#" onclick="getProductFromBarCode()"
@@ -37,14 +37,14 @@
                 p.extraction-maximum-amount-warning
                 = products.number_field :required_quantity, class: 'form-control, orange-input quantity', required: true, placeholder: "1", id:"amount"
               .col-xs-4.col-md-4
-                = products.link_to_remove do 
+                = products.link_to_remove do
                   = image_tag "error.png", class: 'cancel-product'
             hr
           p
             = f.link_to_add "Agregar producto a extraer", :extraction_products, onclick: 'addProductSelect()', class: 'btn btn-primary'
         .col-xs-4.col-md-4
           .resume
-            h3
+            h4
               = "Resumen"
             .products#products
             = f.submit "Registrar Extracción", class: "btn btn-primary btn-extractions submit-extraction"

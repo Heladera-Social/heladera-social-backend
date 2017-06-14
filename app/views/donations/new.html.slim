@@ -3,13 +3,13 @@
     .row
       .col-xs-12.col-md-8
         h2
-          = "Ingresar Donacion"
+          = "Ingresar Donación"
     .row
       .col-xs-12.col-md-8
         h3
-          = "1. Informacion General"
+          = "1. Información General"
     .row
-      = nested_form_for @donation, :method => "post" do |f|
+      = nested_form_for @donation, method: 'post' do |f|
         .row
           .col-xs-4.col-md-4
           	= f.label :Nombre
@@ -18,9 +18,9 @@
           .col-xs-4.col-md-4
             = f.label :Apellido
             br
-            = f.text_field :last_name, class: 'form-control, orange-input', placeholder: "Perez"
+            = f.text_field :last_name, class: 'form-control, orange-input', placeholder: 'Pérez'
           .col-xs-4.col-md-4
-            = f.label :Telefono
+            = f.label :Teléfono
             br
             = f.number_field :telephone, class: 'form-control, orange-input', placeholder: "45052222"
             br
@@ -41,12 +41,12 @@
         .row
           .col-xs-8.col-md-8
             = f.fields_for :donation_products do |products|
-              .row  
+              .row
                 .barcode-section
-                  = f.label :Codigo_de_barras
+                  = f.label :Código_de_barras
                   br
                   .col-xs-6.col-md-6
-                    = number_field_tag :days, nil ,min: 0, class: 'barcode orange-input', placeholder: "Ingrese cod. de barras"
+                    = number_field_tag :days, nil ,min: 0, class: 'barcode orange-input', placeholder: "Ingrese cód. de barras"
                   .col-xs-6.col-md-6
                     button.btn-primary type="button" href="#" onclick="getProductFromBarCode()"
                       = "Obtener producto"
@@ -68,7 +68,7 @@
                   = f.label :Vencimiento
                   br
                   = products.text_field :expiration_date, class: 'form-control, orange-input', 'data-date-format':("dd-mm-yyyy"), required: true, data: {provide: "datepicker"}, format:"dd-mm-yyyy", readonly:"readonly", placeholder: "dd/mm/aaaa", id:"datepicker"
-                = products.link_to_remove do 
+                = products.link_to_remove do
                   = image_tag "error.png", class: 'cancel-product'
               hr
             p
@@ -78,5 +78,5 @@
               h4
                 = "Resumen"
               .products#products
-              = f.submit "Donar!", class: "btn btn-primary submit-donation"
-            
+              = f.submit "¡Donar!", class: "btn btn-primary submit-donation"
+

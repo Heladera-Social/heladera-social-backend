@@ -16,7 +16,7 @@
             th
               = "Nombre"
             th
-              = "Direccion"
+              = "Dirección"
             th
               = "Encargado"
             th
@@ -38,7 +38,7 @@
                   = storage.managers.first.name
               td
                 - if Time.now.hour.to_formatted_s(:time).to_i >= "#{storage.service_time_from}".to_i && Time.now.hour.to_formatted_s(:time).to_i < "#{storage.service_time_to}".to_i
-                  .open-storage 
+                  .open-storage
                     = "Abierto"
                 - else
                   .closed-storage
@@ -47,7 +47,7 @@
                 - if (current_user && !current_user.manager) || !current_user
                     a href=storage_unit_path(storage)
                       .see-detail-info  Ver
-                    
+
                 - if current_user && current_user.manager
                     .see-edit-detail-info
                       a href=storage_unit_path(storage)

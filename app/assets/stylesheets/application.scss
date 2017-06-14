@@ -40,7 +40,7 @@ html, body {
     background: #fff !important;
     border-radius: 0px;
     border-color: rgb(255, 255, 255) !important;
-    border-bottom-color: #777 !important;    
+    border-bottom-color: #777 !important;
 }
 
 .resume{
@@ -120,10 +120,10 @@ html, body {
     border-radius: 0px !important;
 }
 
-.pagination>.active>a:focus, 
-.pagination>.active>a:hover, 
-.pagination>.active>span, 
-.pagination>.active>span:focus, 
+.pagination>.active>a:focus,
+.pagination>.active>a:hover,
+.pagination>.active>span,
+.pagination>.active>span:focus,
 .pagination>.active>span:hover{
     background-color: #fdb949 !important;
     border-color: #fdb949 !important;
@@ -135,7 +135,7 @@ html, body {
     color: #fff !important;
 }
 
-.pagination>li>a:focus, .pagination>li>a:hover, 
+.pagination>li>a:focus, .pagination>li>a:hover,
 .pagination>li>span:focus, .pagination>li>span:hover
 {
     color: #fff !important;
@@ -153,7 +153,7 @@ html, body {
 }
 
 .capitalize{
-    text-transform: capitalize;    
+    text-transform: capitalize;
 }
 
 
@@ -166,13 +166,13 @@ html, body {
 	text-align: center;
 
 	.recover-title{
-		font-family:Oswald;
+		font-family: 'Oswald', sans-serif;
 		font-size:28px;
 		color:#4a4a4a;
 	}
 
 	.title{
-		font-family:Oswald;
+		font-family: 'Oswald', sans-serif;
 		font-size:36px;
 		color:#4a4a4a;
 		text-align: center;
@@ -186,7 +186,7 @@ html, body {
 		border:2px solid var(--orange1);
 		width:435px;
 		height:53px;
-		font-family:'Oswald';
+		font-family: 'Oswald', sans-serif;
 		font-size:16px;
 		color:#4a4a4a;
 		letter-spacing:0px;
@@ -201,7 +201,7 @@ html, body {
 		width:240px;
 		height:51px;
 
-		font-family:Oswald;
+		font-family: 'Oswald', sans-serif;
 		font-size:25px;
 		color:#ffffff;
 		letter-spacing:0px;
@@ -210,7 +210,7 @@ html, body {
 	}
 
 	.recover{
-		font-family:AvenirNext-Medium;
+		font-family: AvenirNext-Medium sans-serif;
 		font-size:16px;
 		color:#4a4a4a;
 		margin-top: 15px;
@@ -339,7 +339,7 @@ html, body {
 	}
 
 	h2{
-		font-family:AvenirNext-Bold;
+		font-family: AvenirNext-Bold, sans-serif;
 		text-transform: capitalize;
 		font-size:24px;
 		color:#4a4a4a;
@@ -347,13 +347,13 @@ html, body {
 
 	h4{
 		margin-bottom: 33px;
-		font-family:AvenirNext-Medium;
+		font-family: AvenirNext-Medium, sans-serif;
 		font-size:18px;
 		color:#4a4a4a;
 	}
 
 	h3{
-		font-family:AvenirNext-Bold;
+		font-family: AvenirNext-Bold, sans-serif;
 		text-transform: capitalize;
 		font-size:20px;
 		color:#4a4a4a;
@@ -645,9 +645,10 @@ a.btn-primary.new-donation {
 }
 
 .submit-extraction {
-    background-color:var(--orange2) !important;
-    border-color:var(--orange2)!important;
+    background-color:var(--green1) !important;
+    border-color:var(--green2)!important;
     margin-bottom: 30px!important;
+    martin-left: 15px;
 }
 
 a.btn-primary.add-new-donation {
@@ -1439,7 +1440,7 @@ body {
 }
 
 .closed-storage {
-    color: red;   
+    color: red;
 }
 
 .see-edit-detail-info {

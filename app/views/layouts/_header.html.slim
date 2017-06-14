@@ -8,14 +8,14 @@ header.header
         = "Comedores"
       - if current_user && current_user.manager
         a.navbar-link href=new_donation_path
-          = "Ingresar Donacion"
+          = "Ingresar Donación"
         a.navbar-link href=new_extraction_path
-          = "Extraccion"
+          = "Extracción"
         a.navbar-link href=products_path
           = "Productos"
     .navbar-text.navbar-right
       - if current_user
-      	= link_to('Cerrar Sesion', destroy_user_session_path, :method => :delete, class:'navbar-link')
+        = link_to('Cerrar Sesión', destroy_user_session_path, method: :delete, class: 'navbar-link')
       - unless current_user
         - if request.path != '/users/sign_in'
-          a.navbar-link href=new_session_path(User)  Iniciar Sesion
+          a.navbar-link href=new_session_path(User)  Iniciar Sesión

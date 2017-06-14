@@ -1,5 +1,5 @@
 .container.storage-edit
-  .container-fluid        
+  .container-fluid
     .row
       = form_for @storage_unit do |f|
         h2
@@ -10,17 +10,17 @@
               .form-input
                 = f.label :nombre
                 br
-                = f.text_field :name, class: 'form-control, orange-input', required: true,maxlength: 30, placeholder: "Comedor 1"
+                = f.text_field :name, class: 'form-control, orange-input', required: true, maxlength: 30, placeholder: "Comedor 1"
               .form-input
                 = f.label :email
                 br
                 = f.email_field :email, class: 'form-control, orange-input', required: true,placeholder: "a@alimentar.com"
               .form-input
-                = f.label :Direccion
+                = f.label :Dirección
                 br
-                = f.text_field :address, class: 'form-control, orange-input pac-input', required: true,maxlength: 30,placeholder: "Ayacucho y Vicente Lopez"
+                = f.text_field :address, class: 'form-control, orange-input pac-input', required: true,maxlength: 30,placeholder: "Ayacucho y Vicente López"
               .form-input
-                = f.label :Telefono
+                = f.label :Teléfono
                 br
                 = f.number_field :telephone, class: 'form-control, orange-input', required: true,placeholder: "42643721"
             .col-xs-6.col-md-6
