@@ -3,6 +3,7 @@ var currentData = [];
 
 
 function fetchProducts() {
+  console.log($("#extraction_storage_unit_id")[0].value)
   $.ajax({
     url: "/storage_units/" + $("#extraction_storage_unit_id")[0].value + "/inventory",
     type: 'get',
@@ -32,25 +33,32 @@ function changeProductSelect(data) {
     $(productSelect).empty();
     options.forEach(function(option) {
       $(productSelect).append(
-        $('<option>', 
+        $('<option>',
           { value: option.id, 'data-unit': option.measurement_unit, 'data-quantity': option.quantity }
-        ).text(option.label + '(' + option.name + ')')
+        ).text(option.name + ' con etiqueta: ' + option.label )
       );
     })
+    $(productSelect).trigger("liszt:updated");
+    $(productSelect).trigger("chosen:updated");
     $(productSelect).change(function(event) {
-      var warning = $(this).parent().find('.extraction-maximum-amount-warning');
-      var selectedOption = $(this).find(':selected');
-      var maxQuantity = selectedOption.data('quantity');
-      var unit = selectedOption.data('unit');
-      warning.text('La cantidad máxima disponible es ' + maxQuantity + ' ' + unit);
+      setWarning(this);
     });
+    setWarning(productSelect);
   });
 };
+
+function setWarning(productSelect) {
+  var warning = $(productSelect).parent().parent().find('.extraction-maximum-amount-warning');
+  var selectedOption = $(productSelect).find(':selected');
+  var maxQuantity = selectedOption.data('quantity');
+  var unit = selectedOption.data('unit');
+  warning.text('La cantidad máxima disponible es ' + maxQuantity + ' ' + unit);
+}
 
 function getProductFromBarCode() {
   var button = $(event.target)
   var code = button.closest(".barcode-section").find('.barcode')[0].value
-  var url = "http://heladera-social.herokuapp.com/bar_code/get_product?code=" + code
+  var url = "/bar_code/get_product?code=" + code
   $.ajax({url: url, success: function(result){
     var amount = result[0]["amount"];
     var product = result[0]["product_type_id"];

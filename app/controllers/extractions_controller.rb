@@ -1,13 +1,13 @@
-class ExtractionsController < ApplicationController
+ class ExtractionsController < ApplicationController
 
   def show
     @extraction = Extraction.find(params[:id])
   end
-  
+
   def new
     return redirect_to root_path if !current_user
-    @storage_units = current_user.storage_units if current_user && current_user.manager
-    @product_types = ProductType.all
+    @storage_units = current_user.storage_units.with_available_products if current_user.manager
+    @product_types = ProductType.where(id: current_user.products.available.pluck(:product_type_id))
     @extraction = Extraction.new
   end
 
@@ -23,8 +23,8 @@ class ExtractionsController < ApplicationController
   def extraction_params
     params.require(:extraction).permit(
       :storage_unit_id,
-      :name, 
-      :last_name, 
+      :name,
+      :last_name,
       :telephone,
       extraction_products_attributes: [:product_id, :quantity]
     )

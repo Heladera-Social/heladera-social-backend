@@ -6,6 +6,8 @@ class User < ActiveRecord::Base
 
   has_many :donations
 
+  has_many :products, through: :storage_units
+
   has_and_belongs_to_many :storage_units, join_table: :storage_unit_managers
 
   has_and_belongs_to_many :favorite_storage_units, class_name: 'StorageUnit',

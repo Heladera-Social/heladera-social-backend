@@ -136,7 +136,7 @@ $(window).load ->
       newMarker = new (google.maps.Marker)(
         map: gMap
         position: new (google.maps.LatLng)(lat, lng)
-        url: "http://heladera-social.herokuapp.com/storage_units/"+storage.id)
+        url: "/storage_units/"+storage.id)
       google.maps.event.addListener newMarker, 'click', ->
         window.location.href = @url
         return

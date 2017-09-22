@@ -2,11 +2,14 @@ class ProductsController < ApplicationController
 
   def index
     @storage_units = current_user.storage_units.all
-    @products = params[:expired] ? Product.expired : Product.unexpired
-    @products = Product.expires_in(params[:days].to_i) if params[:days].present?
+    @products = current_user.products
+    @products = params[:expired] ? @products.expired : @products.unexpired
+    @products = @products.expires_in(params[:days].to_i) if params[:days].present?
     @products = @products.where(product_type: product_type) if product_type.present?
-    @products = @products.page params[:page]
-    @products_types = ProductType.all
+    @products = @products.joins(:product_type)
+    @products = @products.order("#{params[:order]} #{params[:direction] || :asc}") if params[:order].present?
+    @products = @products.page(params[:page]).per(10)
+    @products_types = ProductType.where(id: @products.pluck(:product_type_id))
   end
 
   private

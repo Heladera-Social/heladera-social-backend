@@ -9,7 +9,7 @@
         h3
           = "1. Información General"
     .row
-      = nested_form_for @donation, method: 'post' do |f|
+      = nested_form_for @donation, novalidate: true, method: 'post' do |f|
         .row
           .col-xs-4.col-md-4
           	= f.label :Nombre

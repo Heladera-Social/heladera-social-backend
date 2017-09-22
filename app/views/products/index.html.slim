@@ -12,7 +12,7 @@
               .col-xs-3
                 h5
                   = "Filtrar por comedor"
-                = select_tag :storage_unit_id, options_for_select(@storage_units.collect {|p| [ p['name'], p['id'] ] }), {required: 'true', class: 'chosen-select', :data => {:placeholder => 'Seleccione un Comedor'}}
+                = select_tag :storage_unit_id, options_for_select(@storage_units.collect {|p| [ p['name'], p['id'] ] }), {required: 'true', class: 'chosen-select', include_blank: true, :data => {:placeholder => 'Seleccione un Comedor'}}
               .col-xs-3
                 h5
                   = "Filtrar por producto"
@@ -33,19 +33,37 @@
             thead
               tr
                 th
-                  = 'Código'
+                  - if params[:order] != 'code'
+                    = link_to 'Código', params.merge(order: 'code', direction: params[:direction])
+                  - else
+                    = link_to 'Código', params.merge(order: 'code', direction: (params[:direction] == 'desc') ? 'asc' : 'desc')
                 th
-                  = 'Etiqueta'
+                  - if params[:order] != 'label'
+                    = link_to 'Etiqueta', params.merge(order: 'label', direction: params[:direction])
+                  - else
+                    = link_to 'Etiqueta', params.merge(order: 'label', direction: (params[:direction] == 'desc') ? 'asc' : 'desc')
                 th
-                  = "Tipo"
+                  - if params[:order] != 'product_types.name'
+                    = link_to 'Tipo', params.merge(order: 'product_types.name', direction: params[:direction])
+                  - else
+                    = link_to 'Tipo', params.merge(order: 'product_types.name', direction: (params[:direction] == 'desc') ? 'asc' : 'desc')
                 th
-                  = "Cantidad"
+                  - if params[:order] != 'quantity'
+                    = link_to 'Cantidad', params.merge(order: 'quantity', direction: params[:direction])
+                  - else
+                    = link_to 'Cantidad', params.merge(order: 'quantity', direction: (params[:direction] == 'desc') ? 'asc' : 'desc')
                 th
-                  = "Comedor"
+                  - if params[:order] != 'storage_units.name'
+                    = link_to 'Comedor', params.merge(order: 'storage_units.name', direction: params[:direction])
+                  - else
+                    = link_to 'Comedor', params.merge(order: 'storage_units.name', direction: (params[:direction] == 'desc') ? 'asc' : 'desc')
                 th
-                  = "Fecha de Vencimiento"
+                  - if params[:order] != 'expiration_date'
+                    = link_to 'Fecha de Vencimiento', params.merge(order: 'expiration_date', direction: params[:direction])
+                  - else
+                    = link_to 'Fecha de Vencimiento', params.merge(order: 'expiration_date', direction: (params[:direction] == 'desc') ? 'asc' : 'desc')
                 th
-                  = ""
+                  = "Consumible"
             tbody
               - @products.each do |p|
                 tr
@@ -63,10 +81,10 @@
                   td
                     = "#{p.expiration_date}"
                   td
-                    - if "#{p.expiration_date}" >= Time.zone.now 
+                    - if "#{p.expiration_date}" >= Time.zone.now
                       .green-label
                         = "Apto para consumir"
-                    - else 
+                    - else
                       .red-label
-                        = "Vencido" 
+                        = "Vencido"
               = paginate @products

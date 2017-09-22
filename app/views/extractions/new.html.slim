@@ -12,7 +12,7 @@
       .row
         .col-xs-12.col-md-4
           = f.label :Comedor
-          = f.select "storage_unit_id", options_for_select(@storage_units.collect {|p| [ p['name'], p['id'] ] }), {}, {required: 'true', class: 'chosen-select', :data => {:placeholder => 'Seleccione un Comedor'}}
+          = f.select "storage_unit_id", options_for_select(@storage_units.collect {|p| [ p['name'], p['id'] ] }), {}, {required: 'true', class: 'chosen-select', allow_empty: false, :data => {:placeholder => 'Seleccione un Comedor'}}
       .row
         .col-xs-12.col-md-8
           h3
@@ -31,7 +31,7 @@
               .col-xs-4.col-md-4
                 = f.label :Producto
                 br
-                = products.select "product_type_id", options_for_select(@product_types.collect {|p| [ p['name'], p['id'], {:data => {unit: p['measurement_unit']}} ]  }), {}, {required: 'true', class: 'chosen-select', :data => {:placeholder => 'Seleccione un Alimento', units: @product_types}}
+                = products.select "product_type_id", options_for_select(@product_types.collect {|p| [ p['name'], p['id'], {:data => {unit: p['measurement_unit']}} ]  }), {}, {required: 'true', class: 'extraction-product-select chosen-select', :data => {:placeholder => 'Seleccione un Alimento', units: @product_types}}
               .col-xs-4.col-md-4
                 = f.label :Cantidad
                 p.extraction-maximum-amount-warning

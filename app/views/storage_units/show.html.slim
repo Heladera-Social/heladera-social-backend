@@ -89,15 +89,27 @@
           thead
             tr
               th
-                = 'Etiqueta'
+                - if params[:order] != 'label'
+                  = link_to 'Etiqueta', params.merge(order: 'label', direction: params[:direction])
+                - else
+                  = link_to 'Etiqueta', params.merge(order: 'label', direction: (params[:direction] == 'desc') ? 'asc' : 'desc')
               th
-                = "Tipo de producto"
+                - if params[:order] != 'product_types.name'
+                  = link_to 'Tipo', params.merge(order: 'product_types.name', direction: params[:direction])
+                - else
+                  = link_to 'Tipo', params.merge(order: 'product_types.name', direction: (params[:direction] == 'desc') ? 'asc' : 'desc')
               th
-                = "Cantidad"
+                - if params[:order] != 'quantity'
+                  = link_to 'Cantidad', params.merge(order: 'quantity', direction: params[:direction])
+                - else
+                  = link_to 'Cantidad', params.merge(order: 'quantity', direction: (params[:direction] == 'desc') ? 'asc' : 'desc')
               th
-                = "Fecha de Vencimiento"
+                - if params[:order] != 'expiration_date'
+                  = link_to 'Fecha de Vencimiento', params.merge(order: 'expiration_date', direction: params[:direction])
+                - else
+                  = link_to 'Fecha de Vencimiento', params.merge(order: 'expiration_date', direction: (params[:direction] == 'desc') ? 'asc' : 'desc')
               th
-                = ""
+                = "Consumible"
           tbody
             - @products.each do |p|
               tr

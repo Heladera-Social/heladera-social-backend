@@ -13,6 +13,8 @@ class StorageUnit < ActiveRecord::Base
 
   has_many :products
 
+  scope :with_available_products, -> { where(id: Product.available.pluck(:storage_unit_id)) }
+
   def add_to_inventory(product)
     Product.create!(
       product_type: product.product_type,
