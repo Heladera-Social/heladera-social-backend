@@ -589,6 +589,11 @@ h4 {
 	text-align:left;
 	margin-bottom:30px;
 	margin-top:0px;
+    padding: 0 10px;
+
+    &.full-width-input {
+        width: 100%;
+    }
 }
 
 .btn-secondary {
@@ -1452,4 +1457,99 @@ body {
 .products p {
     margin-left: 20px;
     margin-right: 20px;
+}
+
+.full-width-chosen {
+    .chosen-container {
+        width: 100% !important;
+    }
+
+    .chosen-default,
+    .chosen-container-active.chosen-with-drop .chosen-single {
+        height: 40px;
+        line-height: 40px;
+        background: white;
+        border: 2px solid var(--orange1);
+        border-radius: 3px;
+        box-shadow: none;
+    }
+
+    .chosen-container-active.chosen-with-drop .chosen-single div b {
+        margin-top: 10px;
+    }
+
+    .chosen-container-single .chosen-single div b {
+        margin-top: 8px;
+    }
+}
+
+.checkbox-wrapper {
+    .checkbox {
+      width: 40px;
+      height: 40px;
+      position: relative;
+      display: inline-flex;
+      justify-content: center;
+      align-items: center;
+      vertical-align: top;
+      margin: 0 !important;
+
+      &::before {
+        content: '';
+        border-radius: 3px;
+        border: 2px solid var(--orange1);
+        background: #FAFAFA;
+        width: 100%;
+        height: 100%;
+        position: absolute;
+        top: 0;
+        box-sizing: border-box;
+        pointer-events: none;
+        z-index: 0;
+      }
+    }
+
+    .checkbox-input {
+      opacity: 0;
+      z-index: 2;
+      position: absolute;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      margin: 0;
+      cursor: pointer;
+      margin: 0 !important;
+
+      &:focus {
+        outline: none;
+      }
+    }
+
+    .checkbox-fill {
+      background: var(--orange1);
+      width: 0;
+      height: 0;
+      border-radius: 2px;
+      transition: width 0.2s ease-in, height 0.2s ease-in;
+      pointer-events: none;
+      z-index: 1;
+    }
+
+    .checkbox-input:checked ~ .checkbox-fill {
+      width: calc(100% - 10px);
+      height: calc(100% - 10px);
+      transition: width 0.2s ease-out, height 0.2s ease-out;
+    }
+}
+
+.m-bottom-40 {
+    margin-bottom: 40px;
+}
+
+.full-width {
+    width: 100%;
+}
+
+.extraction-maximum-amount-warning:empty {
+    display: none;
 }

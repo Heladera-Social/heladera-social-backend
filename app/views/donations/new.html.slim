@@ -11,29 +11,32 @@
     .row
       = nested_form_for @donation, novalidate: true, method: 'post' do |f|
         .row
-          .col-xs-4.col-md-4
+          .col-xs-4.col-md-4.text-left
           	= f.label :Nombre
             br
-            = f.text_field :name, class: 'form-control, orange-input', placeholder: "Juan"
-          .col-xs-4.col-md-4
+            = f.text_field :name, class: 'form-control, orange-input full-width-input', placeholder: "Juan"
+          .col-xs-4.col-md-4.text-left
             = f.label :Apellido
             br
-            = f.text_field :last_name, class: 'form-control, orange-input', placeholder: 'Pérez'
-          .col-xs-4.col-md-4
+            = f.text_field :last_name, class: 'form-control, orange-input full-width-input', placeholder: 'Pérez'
+          .col-xs-4.col-md-4.text-left
             = f.label :Teléfono
             br
-            = f.number_field :telephone, class: 'form-control, orange-input', placeholder: "45052222"
+            = f.number_field :telephone, class: 'form-control, orange-input full-width-input', placeholder: "45052222"
             br
 
-          .col-xs-12.col-md-12
-            .col-xs-4.col-md-4
-              = f.label :Comedor
-              br
+        .row.m-bottom-40
+          .col-xs-4.col-md-4.text-left
+            = f.label :Comedor
+            br
+            .full-width-chosen
               = f.select "storage_unit_id", options_for_select(@storage_units.collect {|p| [ p['name'], p['id'] ] }), {}, {required: 'true', class: 'chosen-select', :data => {:placeholder => 'Seleccione un Comedor'}}
-            .col-xs-4.col-md-4
-              = f.label :Entregado
-              br
-              = f.check_box :delivered, {}, "true", "false"
+          .col-xs-4.col-md-4.text-left.checkbox-wrapper
+            = f.label :Entregado
+            br
+            .checkbox
+              = f.check_box :delivered, {class: 'checkbox-input'}, "true", "false"
+              .checkbox-fill
         .row
           .col-xs-12.col-md-8
             h3
@@ -46,30 +49,31 @@
                   = f.label :Código_de_barras
                   br
                   .col-xs-6.col-md-6
-                    = number_field_tag :days, nil ,min: 0, class: 'barcode orange-input', placeholder: "Ingrese cód. de barras"
+                    = number_field_tag :days, nil ,min: 0, class: 'barcode orange-input full-width-input', placeholder: "Ingrese cód. de barras"
                   .col-xs-6.col-md-6
-                    button.btn-primary type="button" href="#" onclick="getProductFromBarCode()"
+                    button.btn-primary.full-width type="button" href="#" onclick="getProductFromBarCode()"
                       = "Obtener producto"
-              .row
+              .row.text-left
                 .col-xs-6.col-md-6
                   = f.label :Producto
                   br
-                  = products.select "product_type_id", options_for_select(@product_types.collect {|p| [ p['name'], p['id'], {:data => {unit: p['measurement_unit']}} ]  }), {}, {required: 'true', class: 'chosen-select', :data => {:placeholder => 'Seleccione un Alimento', units: @product_types}}
+                  .full-width-chosen
+                    = products.select "product_type_id", options_for_select(@product_types.collect {|p| [ p['name'], p['id'], {:data => {unit: p['measurement_unit']}} ]  }), {}, {required: 'true', class: 'chosen-select', :data => {:placeholder => 'Seleccione un Alimento', units: @product_types}}
                 .col-xs-6.col-md-6
                   = f.label :Etiqueta
                   br
-                  = products.text_field :label, class: 'form-control, orange-input', placeholder: "Estante 1"
-              .row
+                  = products.text_field :label, class: 'form-control, orange-input full-width-input', placeholder: "Estante 1"
+              .row.text-left
                 .col-xs-6.col-md-6
                   = f.label :Cantidad
                   br
-                  = products.number_field :quantity, class: 'form-control, orange-input barcode quantity', required: true, placeholder: "3", id:"amount"
+                  = products.number_field :quantity, class: 'form-control, orange-input barcode quantity full-width-input', required: true, placeholder: "3", id:"amount"
                 .col-xs-6.col-md-6
                   = f.label :Vencimiento
                   br
-                  = products.text_field :expiration_date, class: 'form-control, orange-input', 'data-date-format':("dd-mm-yyyy"), required: true, data: {provide: "datepicker"}, format:"dd-mm-yyyy", readonly:"readonly", placeholder: "dd/mm/aaaa", id:"datepicker"
-                = products.link_to_remove do
-                  = image_tag "error.png", class: 'cancel-product'
+                  = products.text_field :expiration_date, class: 'form-control, orange-input full-width-input', 'data-date-format':("dd-mm-yyyy"), required: true, data: {provide: "datepicker"}, format:"dd-mm-yyyy", readonly:"readonly", placeholder: "dd/mm/aaaa", id:"datepicker"
+              = products.link_to_remove do
+                = image_tag "error.png", class: 'cancel-product'
               hr
             p
               = f.link_to_add "Agregar producto", :donation_products, class: 'btn btn-primary'

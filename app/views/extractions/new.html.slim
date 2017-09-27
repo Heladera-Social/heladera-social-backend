@@ -9,10 +9,11 @@
         h3
           = "1. Seleccionar Comedor"
     = nested_form_for @extraction, method: "post" do |f|
-      .row
+      .row.text-left.m-bottom-40
         .col-xs-12.col-md-4
           = f.label :Comedor
-          = f.select "storage_unit_id", options_for_select(@storage_units.collect {|p| [ p['name'], p['id'] ] }), {}, {required: 'true', class: 'chosen-select', allow_empty: false, :data => {:placeholder => 'Seleccione un Comedor'}}
+          .full-width-chosen
+            = f.select "storage_unit_id", options_for_select(@storage_units.collect {|p| [ p['name'], p['id'] ] }), {}, {required: 'true', class: 'chosen-select', allow_empty: false, :data => {:placeholder => 'Seleccione un Comedor'}}
       .row
         .col-xs-12.col-md-8
           h3
@@ -22,23 +23,26 @@
           = f.fields_for :extraction_products do |products|
             .row
               .barcode-section
-                    = f.label :Código_de_barras
-                    br
-                    = number_field_tag :days, nil ,min: 0, class: 'barcode orange-input', placeholder: "12312312312312"
-                    button.btn-primary type="button" href="#" onclick="getProductFromBarCode()"
-                      = "Obtener"
+                = f.label :Código_de_barras
+                br
+                .col-xs-6
+                  = number_field_tag :days, nil ,min: 0, class: 'barcode orange-input full-width-input', placeholder: "12312312312312"
+                .col-xs-6
+                  button.btn-primary.full-width type="button" href="#" onclick="getProductFromBarCode()"
+                    = "Obtener"
             .row
-              .col-xs-4.col-md-4
+              .col-xs-6.col-md-6.text-left
                 = f.label :Producto
                 br
-                = products.select "product_type_id", options_for_select(@product_types.collect {|p| [ p['name'], p['id'], {:data => {unit: p['measurement_unit']}} ]  }), {}, {required: 'true', class: 'extraction-product-select chosen-select', :data => {:placeholder => 'Seleccione un Alimento', units: @product_types}}
-              .col-xs-4.col-md-4
+                .full-width-chosen
+                  = products.select "product_type_id", options_for_select(@product_types.collect {|p| [ p['name'], p['id'], {:data => {unit: p['measurement_unit']}} ]  }), {}, {required: 'true', class: 'extraction-product-select chosen-select', :data => {:placeholder => 'Seleccione un Alimento', units: @product_types}}
+              .col-xs-6.col-md-6.text-left
                 = f.label :Cantidad
+                br
                 p.extraction-maximum-amount-warning
-                = products.number_field :required_quantity, class: 'form-control, orange-input quantity', required: true, placeholder: "1", id:"amount"
-              .col-xs-4.col-md-4
-                = products.link_to_remove do
-                  = image_tag "error.png", class: 'cancel-product'
+                = products.number_field :required_quantity, class: 'form-control, orange-input quantity full-width-input', required: true, placeholder: "1", id:"amount"
+            = products.link_to_remove do
+              = image_tag "error.png", class: 'cancel-product'
             hr
           p
             = f.link_to_add "Agregar producto a extraer", :extraction_products, onclick: 'addProductSelect()', class: 'btn btn-primary'
