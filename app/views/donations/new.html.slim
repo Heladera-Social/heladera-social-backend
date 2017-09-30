@@ -5,11 +5,14 @@
         h2
           = "Ingresar Donación"
     .row
+      h4.donation-extraction-flash-error
+        = flash[:error]
+    .row
       .col-xs-12.col-md-8
         h3
           = "1. Información General"
     .row
-      = nested_form_for @donation, novalidate: true, method: 'post' do |f|
+      = nested_form_for @donation, method: 'post' do |f|
         .row
           .col-xs-4.col-md-4.text-left
           	= f.label :Nombre
@@ -67,11 +70,11 @@
                 .col-xs-6.col-md-6
                   = f.label :Cantidad
                   br
-                  = products.number_field :quantity, class: 'form-control, orange-input barcode quantity full-width-input', required: true, placeholder: "3", id:"amount"
+                  = products.number_field :quantity, class: 'form-control, orange-input barcode quantity full-width-input', required: true, placeholder: "3", id:"amount", min: 0.000001, step: 0.000001
                 .col-xs-6.col-md-6
                   = f.label :Vencimiento
                   br
-                  = products.text_field :expiration_date, class: 'form-control, orange-input full-width-input', 'data-date-format':("dd-mm-yyyy"), required: true, data: {provide: "datepicker"}, format:"dd-mm-yyyy", readonly:"readonly", placeholder: "dd/mm/aaaa", id:"datepicker"
+                  = products.text_field :expiration_date, class: 'form-control, orange-input full-width-input', 'data-date-format':("dd-mm-yyyy"), data: {provide: "datepicker"}, format:"dd-mm-yyyy", readonly:"readonly", placeholder: "dd/mm/aaaa", id:"datepicker"
               = products.link_to_remove do
                 = image_tag "error.png", class: 'cancel-product'
               hr

@@ -2,7 +2,7 @@
   .container-fluid
     .row
       .col-xs-12.col-md-8
-        h2 
+        h2
           = "Extraccion Numero #{@extraction.id}"
         h3
           a href=storage_unit_path(@extraction.storage_unit)
@@ -14,8 +14,6 @@
         thead
           tr
             th
-              = "Etiqueta"
-            th
               = "Nombre"
             th
               = "Cantidad"
@@ -23,9 +21,7 @@
           - @extraction.extraction_products.each do |p|
             tr
               td
-                = "#{p.label}"
-              td
                 = "#{p.name}"
               td
-                = "#{p.quantity} #{p.measurement_unit}"
-              
+                = "#{p.required_quantity} #{p.measurement_unit}"
+

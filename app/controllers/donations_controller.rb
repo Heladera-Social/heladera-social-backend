@@ -14,6 +14,8 @@ class DonationsController < ApplicationController
   def create
     donation = Donation.create!(donation_params)
     redirect_to donation_path(donation.id)
+  rescue => e
+    redirect_to new_donation_path, flash: { error: 'Necesitás ingresar al menos un producto.' }
   end
 
   def confirm_delivery

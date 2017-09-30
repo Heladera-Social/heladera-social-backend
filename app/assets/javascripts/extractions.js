@@ -3,7 +3,6 @@ var currentData = [];
 
 
 function fetchProducts() {
-  console.log($("#extraction_storage_unit_id")[0].value)
   $.ajax({
     url: "/storage_units/" + $("#extraction_storage_unit_id")[0].value + "/inventory",
     type: 'get',
@@ -23,7 +22,7 @@ function addProductSelect() {
     }, 50);
   }
 };
-
+// These are actually product types, not products
 function changeProductSelect(data) {
   var options = [];
   data.forEach(function (product) {
@@ -35,7 +34,7 @@ function changeProductSelect(data) {
       $(productSelect).append(
         $('<option>',
           { value: option.id, 'data-unit': option.measurement_unit, 'data-quantity': option.quantity }
-        ).text(option.name + ' con etiqueta: ' + option.label )
+        ).text(option.name)
       );
     })
     $(productSelect).trigger("liszt:updated");
@@ -48,11 +47,14 @@ function changeProductSelect(data) {
 };
 
 function setWarning(productSelect) {
-  var warning = $(productSelect).parent().parent().find('.extraction-maximum-amount-warning');
+  var warning = $(productSelect).parent().parent().parent().find('.extraction-maximum-amount-warning');
+  var quantityInput = $(productSelect).parent().parent().parent().find('.quantity');
   var selectedOption = $(productSelect).find(':selected');
   var maxQuantity = selectedOption.data('quantity');
   var unit = selectedOption.data('unit');
-  warning.text('La cantidad máxima disponible es ' + maxQuantity + ' ' + unit);
+  debugger
+  $(quantityInput).attr('max', maxQuantity);
+  warning.text('La cantidad máxima disponible es ' + maxQuantity + ' ' + unit + '.');
 }
 
 function getProductFromBarCode() {
@@ -70,4 +72,8 @@ function getProductFromBarCode() {
 
 $(document).ready(function() {
   $('#extraction_storage_unit_id').change(fetchProducts);
+  $('.donation-extraction-submit').submit(function() {
+    $(":hidden").remove();
+    return true;
+  });
 });

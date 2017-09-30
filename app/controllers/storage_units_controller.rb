@@ -78,7 +78,20 @@ class StorageUnitsController < ApplicationController
   def inventory
     storage_unit = StorageUnit.find(params[:id])
     products = storage_unit.products.available
-    render json: products, each_serializer: ProductSerializer
+    product_types = {}
+    products.each do |p|
+      product_type = product_types[p.product_type_id]
+      if product_type.nil?
+        product_type = { name: p.product_type.name, quantity: 0, measurement_unit: p.product_type.measurement_unit }
+      end
+      product_type[:quantity] += p.quantity
+      product_types[p.product_type_id] = product_type
+    end
+    product_type_arr = []
+    product_types.each_key do |k|
+      product_type_arr << product_types[k].merge(id: k)
+    end
+    render json: product_type_arr
   end
 
   def pending_donations

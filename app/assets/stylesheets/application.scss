@@ -391,6 +391,7 @@ html, body {
 }
 
 .header{
+    z-index: 3 !important;
 	a{
 		margin-right: 10px;
 	}
@@ -1483,6 +1484,14 @@ body {
     }
 }
 
+.chosen-select {
+    width: 0px;
+    height: 0px;
+    overflow: hidden;
+    display: inline-block !important;
+    position: absolute;
+}
+
 .checkbox-wrapper {
     .checkbox {
       width: 40px;
@@ -1552,4 +1561,13 @@ body {
 
 .extraction-maximum-amount-warning:empty {
     display: none;
+}
+
+.submit-extraction {
+    margin-left: 10px;
+}
+
+.donation-extraction-flash-error {
+    margin-left: 15px;
+    color: red;
 }

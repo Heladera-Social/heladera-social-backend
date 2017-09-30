@@ -1,4 +1,5 @@
  class ExtractionsController < ApplicationController
+  EMPTY_EXTRACTION_PRODUCTS_ERROR_MSG = 'Extraction products no puede estar en blanco'.freeze
 
   def show
     @extraction = Extraction.find(params[:id])
@@ -14,8 +15,12 @@
   def create
     extraction = Extraction.create!(extraction_params.merge(user: current_user))
     redirect_to extraction_path(extraction.id)
-  rescue
-    redirect_to new_extraction_path, flash: { error: 'Necesitás al menos un producto. Recordá respetar los máximos posibles que se muestran' }
+  rescue => e
+    if e.message.include? EMPTY_EXTRACTION_PRODUCTS_ERROR_MSG
+      redirect_to new_extraction_path, flash: { error: 'Necesitás extraer al menos un producto.' }
+    else
+      redirect_to new_extraction_path, flash: { error: 'Intentaste extraer más de lo posible para un producto. Recordá respetar los máximos posibles que se muestran.' }
+    end
   end
 
   private
@@ -26,7 +31,7 @@
       :name,
       :last_name,
       :telephone,
-      extraction_products_attributes: [:product_id, :quantity]
+      extraction_products_attributes: [:product_id, :product_type_id, :required_quantity, :_destroy]
     )
   end
 end

@@ -5,6 +5,9 @@
         h2
           = "Generar extracción"
     .row
+      h4.donation-extraction-flash-error
+        = flash[:error]
+    .row
       .col-xs-12.col-md-8
         h3
           = "1. Seleccionar Comedor"
@@ -40,7 +43,7 @@
                 = f.label :Cantidad
                 br
                 p.extraction-maximum-amount-warning
-                = products.number_field :required_quantity, class: 'form-control, orange-input quantity full-width-input', required: true, placeholder: "1", id:"amount"
+                = products.number_field :required_quantity, class: 'form-control, orange-input quantity full-width-input', required: true, placeholder: "1", id:"amount", min: 0.000001, step: 0.000001
             = products.link_to_remove do
               = image_tag "error.png", class: 'cancel-product'
             hr
@@ -51,4 +54,4 @@
             h4
               = "Resumen"
             .products#products
-            = f.submit "Registrar Extracción", class: "btn btn-primary btn-extractions submit-extraction"
+            = f.submit "Registrar Extracción", class: "btn btn-primary btn-extractions submit-extraction donation-extraction-submit"

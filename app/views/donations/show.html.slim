@@ -44,11 +44,18 @@
               td
                 = "#{p.quantity} #{p.measurement_unit}"
               td
-                = "#{p.expiration_date}"
-              td
-                - if "#{p.expiration_date}" >= Time.zone.now
-                  .green-label
-                    = "Apto para consumir"
+                - if p.expiration_date.nil?
+                  = 'No perecedero'
                 - else
-                  .red-label
-                    = "Vencido"
+                  = "#{p.expiration_date}"
+              td
+                - if p.expiration_date.nil?
+                  .green-label
+                      = "Apto para consumir"
+                - else
+                  - if "#{p.expiration_date}" >= Time.zone.now
+                    .green-label
+                      = "Apto para consumir"
+                  - else
+                    .red-label
+                      = "Vencido"
