@@ -64,6 +64,7 @@ function getProductFromBarCode() {
     var product = result[0]["product_type_id"];
     button.closest(".fields").find('#amount').val(amount);
     button.closest(".fields").find('select').val(product);
+    button.closest(".fields").find('select').trigger("chosen:updated");
   }});
 };
 
